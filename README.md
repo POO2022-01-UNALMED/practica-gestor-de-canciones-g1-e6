@@ -7,5 +7,5 @@
 - Restringir la visibilidad de playlists a determinados usuarios.
 - Recomendar una canción a un usuasio en específico.
 
-##Diagrama de clases
+## Diagrama de clases
 https://app.diagrams.net/#G10EeKimd4GLuFc0ldBi7V_6WOHvES852b
