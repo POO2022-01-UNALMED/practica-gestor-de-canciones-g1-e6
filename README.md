@@ -1,6 +1,6 @@
 # Primera entrega de diapositiva y video
-[Diapositivas] (https://docs.google.com/presentation/d/1Aygv3Yy-H5lZ9TS758QwRc6S68pJznH9/edit?usp=sharing&ouid=105850236916942973495&rtpof=true&sd=true)
-
+[Diapositivas](https://docs.google.com/presentation/d/1Aygv3Yy-H5lZ9TS758QwRc6S68pJznH9/edit?usp=sharing&ouid=105850236916942973495&rtpof=true&sd=true)
+[Video](https://drive.google.com/file/d/1Av6rZAL1PsDwyk9Ba84ucZVTbWDAS9Au/view?usp=sharing)
 # Practica
 
 ## Funcionalidades
