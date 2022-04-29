@@ -1,4 +1,4 @@
-#Primera entrega de diapositiva y video
+# Primera entrega de diapositiva y video
 
 # Practica
 
