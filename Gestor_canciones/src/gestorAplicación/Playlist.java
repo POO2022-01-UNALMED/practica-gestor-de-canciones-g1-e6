@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Playlist {
 	String nombre;
-	ArrayList<Cancion> cancion;
+	ArrayList<Cancion> cancion = new ArrayList<Cancion>();
 	int duracion;
 	int numero_canciones;
 	private Usuario creador;
@@ -60,5 +60,8 @@ public class Playlist {
 
 	public void setId_playlist(int id_playlist) {
 		this.id_playlist = id_playlist;
+	}
+	public void agg_cancion(Cancion cancion) {
+        this.cancion.add(cancion);
 	}
 }
