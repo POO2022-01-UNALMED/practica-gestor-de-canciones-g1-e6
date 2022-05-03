@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Playlist {
 	String nombre;
-	ArrayList<Cancion> cancion = new ArrayList<Cancion>();
+	ArrayList<Cancion> canciones = new ArrayList<Cancion>();
 	int duracion;
 	int numero_canciones;
 	private Usuario creador;
@@ -18,16 +18,17 @@ public class Playlist {
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Cancion> getCancion() {
-		return cancion;
+	public ArrayList<Cancion> getCanciones() {
+		return canciones;
 	}
 
-	public void setCancion(ArrayList<Cancion> cancion) {
-		this.cancion = cancion;
+	public void setCanciones(ArrayList<Cancion> canciones) {
+		this.canciones = canciones;
 	}
 
 	public int getDuracion() {
@@ -61,7 +62,8 @@ public class Playlist {
 	public void setId_playlist(int id_playlist) {
 		this.id_playlist = id_playlist;
 	}
+
 	public void agg_cancion(Cancion cancion) {
-        this.cancion.add(cancion);
+        canciones.add(cancion);
 	}
 }
