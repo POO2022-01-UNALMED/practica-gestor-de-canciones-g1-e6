@@ -11,11 +11,9 @@ public class Usuario {
 	public Usuario(String nombre) {
 		super();
 		this.nombre = nombre;
-	}
-	static {
-		this.mis_me_gusta= new Me_gusta();
-		this.mis_artistas= new mis_artistas();
-		this.playlists= new ArrayLista<Playlist>();
+		mis_me_gusta= new Me_gusta(this);
+		mis_artistas= new mis_artistas(this);
+		playlists= new ArrayList<Playlist>();
 	}
 	public String getNombre() {
 		return nombre;
