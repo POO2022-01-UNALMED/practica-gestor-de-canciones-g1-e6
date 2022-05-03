@@ -1,5 +1,6 @@
 package gestorAplicación;
 import java.util.ArrayList;
+import java.io.*;
 
 public class Playlist {
 	String nombre;
@@ -11,7 +12,6 @@ public class Playlist {
 	
 	public Playlist(String nombre, ArrayList<Cancion> cancion, int duracion, int numero_canciones, Usuario creador,
 			int id_playlist) {
-		super();
 		this.nombre = nombre;
 	}
 
@@ -65,5 +65,14 @@ public class Playlist {
 
 	public void agg_cancion(Cancion cancion) {
         canciones.add(cancion);
+	}
+	
+	public void elim_cancion(Cancion cancion) {
+		canciones.remove(cancion);
+	}
+	
+	public Cancion repro_aleatoria() {
+		int index = (int)(Math.random() * canciones.size());
+		return canciones.get(index);
 	}
 }
