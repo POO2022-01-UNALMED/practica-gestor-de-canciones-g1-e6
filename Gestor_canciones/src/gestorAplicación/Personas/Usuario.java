@@ -52,7 +52,7 @@ public class Usuario {
     }
     public String elim_Megusta(Cancion cancion) {
     	boolean presente=false;
-    	for (cancion c: mis_me_gusta.canciones) {
+    	for (Cancion c: mis_me_gusta.getCanciones()) {
     		if (cancion==c){
     			presente=true; 
     		}
@@ -71,14 +71,14 @@ public class Usuario {
     }
     public String elim_Misartistas(Artista artista) {
     	boolean presente=false;
-    	for (Artista c: mis_artistas.artistas) {
+    	for (Artista c: mis_artistas.getArtistas()) {
     		if (artista==c){
     			presente=true; 
     		}
     
     	}
     	if (presente==true) {
-    		mis_artistas.elim_artistas(artista);
+    		mis_artistas.elim_artista(artista);
     		return"artista eliminado de mis artistas";
     	}
     	else {
