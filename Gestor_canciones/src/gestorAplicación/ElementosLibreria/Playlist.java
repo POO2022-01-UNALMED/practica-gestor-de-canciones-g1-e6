@@ -20,6 +20,7 @@ public class Playlist {
 		id_playlist++;
 	}
 
+	//gets y sets de cada atributo
 	public String getNombre() {
 		return nombre;
 	}
@@ -63,6 +64,9 @@ public class Playlist {
 	public void setId_playlist(int id_playlist) {
 		this.id_playlist = id_playlist;
 	}
+	
+	//Métodos adicionales
+	
 	//Cambié el tipo de retorno
 	public String agg_cancion(Cancion cancion) {
         if(canciones.contains(cancion)) {
