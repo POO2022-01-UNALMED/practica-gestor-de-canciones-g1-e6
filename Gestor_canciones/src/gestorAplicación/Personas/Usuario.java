@@ -67,6 +67,7 @@ public class Usuario {
     	}
     }
     //Y si ya está o no existe el artista?
+    //vuelve y lo agrega todo bien 
     public void agg_Miartistas(Artista artista) {
     	mis_artistas.agg_artista(artista);
     }
