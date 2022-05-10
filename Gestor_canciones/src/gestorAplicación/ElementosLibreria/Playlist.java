@@ -70,7 +70,7 @@ public class Playlist {
 	//Cambié el tipo de retorno
 	public String agg_cancion(Cancion cancion) {
         if(canciones.contains(cancion)) {
-            return "La cancion ya se encuentra presnte en la playlist...";
+            return "La cancion ya se encuentra presente en la playlist...";
         } else {
 	        //Falta verificar si la canción existo o ya está
 	        canciones.add(cancion);
