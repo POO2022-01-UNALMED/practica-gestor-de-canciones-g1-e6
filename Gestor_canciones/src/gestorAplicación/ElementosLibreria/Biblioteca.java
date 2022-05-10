@@ -1,7 +1,5 @@
 package ElementosLibreria;
-import java.util.ArrayList;
 import Personas.Usuario;
-
 public class Biblioteca {
     private Usuario usuario;
     private Cancion cancion_actual;
@@ -41,6 +39,67 @@ public class Biblioteca {
             }
         }
         return playlist; //aquÃ­ hay que hacer lo de manejo de exepciones 
+    }
+    //FUNCIONALIDAD RECOMENDAR CANCIONES
+    public Cancion recomendar_cancion() {
+    	int rock=0;
+    	int reggaeton=0;
+    	int salsa=0;
+    	int rap=0;
+    	int pelar_pollos=0;
+    	int tusar_calvos=0;
+    	//aqui se cuentan cuantas canciones de cada genero existen
+    	for(Cancion c: usuario.getMis_me_gusta().getCanciones()) {
+    		switch(c.getGenero()) {
+    		  case ROCK: rock++; 
+    		  case REGGAETON: reggaeton++; 
+    		  case SALSA: salsa++; 
+    		  case RAP: rap++; 
+    		  case MUSICA_PARA_PELAR_POLLOS: pelar_pollos++;
+    		  case MUSICA_PARA_TUSAR_CALVOS: tusar_calvos++; 
+    		}	
+    	} 
+    	//aqui se verifica cual es el genero con mas canciones, como son if simples deberia leer cada uno (debería)
+    	//el problema sería un caso en que 2 generos tengan el mismo # de canciones, ahi recomendaría la primera en el if
+    	int mayor=rock;
+    	Genero mayorGen=Genero.ROCK;
+    	if (reggaeton>mayor) {
+    		mayor=reggaeton;
+    		mayorGen=Genero.REGGAETON;
+    	}
+    	if (salsa>mayor) {
+    		mayor=salsa;
+    		mayorGen=Genero.SALSA;
+    	}
+    	if (rap>mayor) {
+    		mayor=rap;
+    		mayorGen=Genero.RAP;
+    	}
+    	if (pelar_pollos>mayor) {
+    		mayor=pelar_pollos;
+    		mayorGen=Genero.MUSICA_PARA_PELAR_POLLOS;
+    	}
+    	if (tusar_calvos>mayor) {
+    		mayor=tusar_calvos;
+    		mayorGen=Genero.MUSICA_PARA_TUSAR_CALVOS;
+    	}
+    	//en este for se recorre la lista de las canciones creadas, y la primera que sea del genero mayor y no este en me gusta, se recomendará
+    	Cancion recomendacion= new Cancion();
+    	for(Cancion c: Cancion.getCancionesCreadas()) {
+    		if (c.getGenero()==mayorGen) {
+    			if (usuario.getMis_me_gusta().getCanciones().contains(c)) {
+    				continue;
+    			}
+    			else {
+    				recomendacion=c;
+    				break;
+    			}
+    		}
+    		else {
+    			continue;
+    		}
+    	}
+    	return(recomendacion);
     }
 
 }
