@@ -8,15 +8,15 @@ public class Playlist {
 	private ArrayList<Cancion> canciones;
 	private int duracion;
 	private int numero_canciones;
-	private String creador;
+	private Usuario creador;
 	private int id_playlist = 1;
 	
-	public Playlist(String nombre) {
+	public Playlist(Usuario creador, String nombre) {
 		this.nombre = nombre;
 		canciones = new ArrayList<Cancion>();
 		duracion = 0;
 		numero_canciones = 0;
-		creador = Usuario.getNombre();
+		this.creador = creador;
 		id_playlist++;
 	}
 
@@ -48,11 +48,11 @@ public class Playlist {
 		this.numero_canciones = numero_canciones;
 	}
 
-	public String getCreador() {
+	public Usuario getCreador() {
 		return creador;
 	}
 
-	public void setCreador(String creador) {
+	public void setCreador(Usuario creador) {
 		this.creador = creador;
 	}
 
@@ -63,19 +63,30 @@ public class Playlist {
 	public void setId_playlist(int id_playlist) {
 		this.id_playlist = id_playlist;
 	}
-	//se le ingresa la clase canción o el id?
-	public void agg_cancion(Cancion cancion) {
-		//Falta verificar si la canción existo o ya está
-        canciones.add(cancion);
-        numero_canciones++;
-        this.duracion += cancion.getDuracion();
+	//Cambié el tipo de retorno
+	public String agg_cancion(Cancion cancion) {
+        if(canciones.contains(cancion)) {
+            return "La cancion ya se encuentra presnte en la playlist...";
+        } else {
+	        //Falta verificar si la canción existo o ya está
+	        canciones.add(cancion);
+	        numero_canciones++;
+	        this.duracion += cancion.getDuracion(); 
+	        return "La cancion fue agregada con exito...";
+        }
 	} 
-	//se le ingresa la clase canción o el id?
-	public void elim_cancion(Cancion cancion) {
-		//Falta verificar si la canción existo o ya está 
-		canciones.remove(cancion);
-		numero_canciones--;
-		this.duracion -= cancion.getDuracion();
+	//Cambié el tipo de retorno
+	public String elim_cancion(Cancion cancion) {
+        if(canciones.contains(cancion)) {
+    		//Falta verificar si la canción existo o ya está 
+    		canciones.remove(cancion);
+    		numero_canciones--;
+    		this.duracion -= cancion.getDuracion();
+            return "La cancion ha sido eliminada de la playlist exitosamente...";
+        } else {
+	        //Falta verificar si la canción existo o ya está
+	        return "La cancion no se encontraba en la lista...";
+        }
 	}
 	
 	public Cancion repro_aleatoria() {

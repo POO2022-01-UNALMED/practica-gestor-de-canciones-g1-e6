@@ -66,6 +66,7 @@ public class Usuario {
     		return"ERROR: la cancion no está en mis me gusta";
     	}
     }
+    //Y si ya está o no existe el artista?
     public void agg_Miartistas(Artista artista) {
     	mis_artistas.agg_artista(artista);
     }
