@@ -1,13 +1,12 @@
 package ElementosLibreria;
-import Personas.Usuario;
-import java.util.ArrayList;
 
 public class Me_gusta extends Playlist{
-	
-	public Me_gusta(Usuario creador){
-		super("Me gusta", new ArrayList<Cancion>(), 0, 0, creador, 1);
+	//Cómo hago para que no se puedan crear más objetos de esta clase? servirá el final?
+	public Me_gusta(){
+		super("Me gusta");
+		setId_playlist(1);
 	}
-	
+	//Falta hacer esto
 	public void unlike(Cancion cancion) {
 		
 	}

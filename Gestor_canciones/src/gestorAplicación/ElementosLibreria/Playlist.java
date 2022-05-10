@@ -3,17 +3,21 @@ import java.util.ArrayList;
 import java.io.*;
 import Personas.Usuario;
 
-;public class Playlist {
-	String nombre;
-	ArrayList<Cancion> canciones = new ArrayList<Cancion>();
-	int duracion;
-	int numero_canciones;
-	private Usuario creador;
-	private int id_playlist;
+public class Playlist {
+	private String nombre;
+	private ArrayList<Cancion> canciones;
+	private int duracion;
+	private int numero_canciones;
+	private String creador;
+	private int id_playlist = 1;
 	
-	public Playlist(String nombre, ArrayList<Cancion> cancion, int duracion, int numero_canciones, Usuario creador,
-			int id_playlist) {
+	public Playlist(String nombre) {
 		this.nombre = nombre;
+		canciones = new ArrayList<Cancion>();
+		duracion = 0;
+		numero_canciones = 0;
+		creador = Usuario.getNombre();
+		id_playlist++;
 	}
 
 	public String getNombre() {
@@ -44,11 +48,11 @@ import Personas.Usuario;
 		this.numero_canciones = numero_canciones;
 	}
 
-	public Usuario getCreador() {
+	public String getCreador() {
 		return creador;
 	}
 
-	public void setCreador(Usuario creador) {
+	public void setCreador(String creador) {
 		this.creador = creador;
 	}
 
@@ -59,14 +63,16 @@ import Personas.Usuario;
 	public void setId_playlist(int id_playlist) {
 		this.id_playlist = id_playlist;
 	}
-
+	//se le ingresa la clase canción o el id?
 	public void agg_cancion(Cancion cancion) {
+		//Falta verificar si la canción existo o ya está
         canciones.add(cancion);
         numero_canciones++;
         this.duracion += cancion.getDuracion();
 	} 
-	
+	//se le ingresa la clase canción o el id?
 	public void elim_cancion(Cancion cancion) {
+		//Falta verificar si la canción existo o ya está 
 		canciones.remove(cancion);
 		numero_canciones--;
 		this.duracion -= cancion.getDuracion();
@@ -74,6 +80,7 @@ import Personas.Usuario;
 	
 	public Cancion repro_aleatoria() {
 		int index = (int)(Math.random() * canciones.size());
+		//Creo que falta poner bien el retorno
 		return canciones.get(index);
 	}
 }
