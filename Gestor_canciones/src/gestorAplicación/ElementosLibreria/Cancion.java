@@ -1,5 +1,6 @@
 package ElementosLibreria;
 import Personas.Artista;
+import java.util.ArrayList;
 
 public class Cancion {
     public String nombre;
@@ -7,14 +8,20 @@ public class Cancion {
     private Artista artista;
     private Genero genero;
     private int id_cancion;
-
+    public static ArrayList<Cancion> cancionesCreadas= new ArrayList<Cancion>(); //atributo estatico para buscar en todas las canciones creadas
+    
+    public Cancion() {
+    	
+    }
     public Cancion(String nombre, int duracion, Artista artista, Genero genero, int id){
         this.nombre = nombre;
         this.duracion = duracion;
         this.artista = artista;
         this.genero = genero;
         this.id_cancion = id;
+        Cancion.cancionesCreadas.add(this);
     }
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -46,8 +53,15 @@ public class Cancion {
     public int getId_cancion() {
         return id_cancion;
     }
+    public static ArrayList<Cancion> getCancionesCreadas() {
+		return cancionesCreadas;
+	}
 
-    public String play(){
+	public static void setCancionesCreadas(ArrayList<Cancion> cancionesCreadas) {
+		Cancion.cancionesCreadas = cancionesCreadas;
+	}
+
+	public String play(){
         return "reproduciendo"+ this.nombre;
     }
 
