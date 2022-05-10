@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.io.*;
 import Personas.Usuario;
 
-public class Playlist {
+;public class Playlist {
 	String nombre;
 	ArrayList<Cancion> canciones = new ArrayList<Cancion>();
 	int duracion;
@@ -36,10 +36,6 @@ public class Playlist {
 		return duracion;
 	}
 
-	public void setDuracion(int duracion) {
-		this.duracion = duracion;
-	}
-
 	public int getNumero_canciones() {
 		return numero_canciones;
 	}
@@ -66,10 +62,14 @@ public class Playlist {
 
 	public void agg_cancion(Cancion cancion) {
         canciones.add(cancion);
-	}
+        numero_canciones++;
+        this.duracion += cancion.getDuracion();
+	} 
 	
 	public void elim_cancion(Cancion cancion) {
 		canciones.remove(cancion);
+		numero_canciones--;
+		this.duracion -= cancion.getDuracion();
 	}
 	
 	public Cancion repro_aleatoria() {
