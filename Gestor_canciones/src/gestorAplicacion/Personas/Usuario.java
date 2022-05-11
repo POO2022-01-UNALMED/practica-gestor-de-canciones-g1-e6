@@ -1,12 +1,20 @@
 package Personas;
 import java.util.ArrayList;
+import java.io.Serializable;
 import ElementosLibreria.Me_gusta;
 import ElementosLibreria.Mis_artistas;
 import ElementosLibreria.Playlist;
 import ElementosLibreria.Biblioteca;
 import ElementosLibreria.Cancion;
 
-public class Usuario {
+public class Usuario  implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	private static ArrayList<Usuario> usuarios;
+	static {
+		usuarios = new ArrayList<Usuario>();
+	}
+	
     public String nombre;
     private Me_gusta mis_me_gusta;
     private Mis_artistas mis_artistas;
@@ -22,6 +30,19 @@ public class Usuario {
 		mis_artistas= new Mis_artistas(this);
 		playlists= new ArrayList<Playlist>();
 		mi_biblioteca= new Biblioteca(this);
+		usuarios.add(this);
+	}
+	public static ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	public static void setUsuarios(ArrayList<Usuario> usuarios) {
+		Usuario.usuarios = usuarios;
+	}
+	public Biblioteca getMi_biblioteca() {
+		return mi_biblioteca;
+	}
+	public void setMi_biblioteca(Biblioteca mi_biblioteca) {
+		this.mi_biblioteca = mi_biblioteca;
 	}
 	public String getNombre() {
 		return nombre;
