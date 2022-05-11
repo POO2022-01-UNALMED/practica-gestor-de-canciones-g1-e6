@@ -1,11 +1,35 @@
 package ElementosLibreria;
+
+import java.util.ArrayList;
+import java.io.Serializable;
 import Personas.Usuario;
-public class Biblioteca {
+
+public class Biblioteca  implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	private static ArrayList<Biblioteca> bibliotecas;
+	static {
+		bibliotecas = new ArrayList<Biblioteca>();
+	}
+	
+	public Biblioteca( Usuario usuario){
+        this.usuario = usuario;
+        bibliotecas.add(this);
+    }
+	
     private Usuario usuario;
     private Cancion cancion_actual;
     private String estado_cancion;
 
-    public Usuario getUsuario() {
+    
+    public static ArrayList<Biblioteca> getBibliotecas() {
+		return bibliotecas;
+	}
+	public static void setBibliotecas(ArrayList<Biblioteca> bibliotecas) {
+		Biblioteca.bibliotecas = bibliotecas;
+	}
+	
+	public Usuario getUsuario() {
         return usuario;
     }
     public void setUsuario(Usuario usuario) {
@@ -24,9 +48,7 @@ public class Biblioteca {
         this.estado_cancion = estado_cancion;
     }
 
-    public Biblioteca( Usuario usuario){
-        this.usuario = usuario;
-    }
+    
 
     public Mis_artistas acceder_misartistas(){
         return this.usuario.getMis_artistas();
