@@ -1,9 +1,18 @@
 package ElementosLibreria;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.io.*;
 import Personas.Usuario;
 
-public class Playlist {
+public class Playlist  implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	private static ArrayList<Playlist> playlists;
+	static {
+		playlists = new ArrayList<Playlist>();
+	}
+	
 	private String nombre;
 	private ArrayList<Cancion> canciones;
 	private int duracion;
@@ -20,11 +29,33 @@ public class Playlist {
 		this.creador = creador;
 		id_real = id_playlist;
 		id_playlist++;
+		playlists.add(this);
 	}
 
 	//gets y sets de cada atributo
+	
 	public String getNombre() {
 		return nombre;
+	}
+
+	public static ArrayList<Playlist> getPlaylists() {
+		return playlists;
+	}
+
+	public static void setPlaylists(ArrayList<Playlist> playlists) {
+		Playlist.playlists = playlists;
+	}
+
+	public int getId_real() {
+		return id_real;
+	}
+
+	public void setId_real(int id_real) {
+		this.id_real = id_real;
+	}
+
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
 	}
 
 	public void setNombre(String nombre) {
