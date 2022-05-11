@@ -1,8 +1,13 @@
 package ElementosLibreria;
-import Personas.Artista;
-import java.util.ArrayList;
 
-public class Cancion {
+import java.util.ArrayList;
+import java.io.Serializable;
+import Personas.Artista;
+
+public class Cancion  implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
     public String nombre;
     private int duracion;
     private Artista artista;
@@ -22,8 +27,7 @@ public class Cancion {
         Cancion.cancionesCreadas.add(this);
     }
     
-
-    public void setNombre(String nombre) {
+	public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     public String getNombre() {
