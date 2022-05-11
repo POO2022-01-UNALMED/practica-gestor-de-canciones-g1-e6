@@ -7,7 +7,6 @@ public class Me_gusta extends Playlist{
 	public Me_gusta(Usuario creador){
 		super(creador, "Me gusta");
 		//Set del id ya que queremos que sea la uno
-		setId_playlist(1);
 	}
 	//Falta hacer esto
 	public void unlike(Cancion cancion) {

@@ -9,7 +9,8 @@ public class Playlist {
 	private int duracion;
 	private int numero_canciones;
 	private Usuario creador;
-	private int id_playlist = 1;
+	private static int id_playlist = 1;
+	private int id_real;
 	
 	public Playlist(Usuario creador, String nombre) {
 		this.nombre = nombre;
@@ -17,6 +18,7 @@ public class Playlist {
 		duracion = 0;
 		numero_canciones = 0;
 		this.creador = creador;
+		id_real = id_playlist;
 		id_playlist++;
 	}
 
