@@ -1,7 +1,17 @@
 package Personas;
+
 import java.util.ArrayList;
+import java.io.Serializable;
 import ElementosLibreria.*;
-public class Artista {
+
+public class Artista implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	private static ArrayList<Artista> artistas;
+	static {
+		artistas = new ArrayList<Artista>();
+	}
+	
     public String nombre;
     private ArrayList<Cancion> canciones;
     private String presentacion;
@@ -15,6 +25,27 @@ public class Artista {
 		this.presentacion = presentacion;
 		this.genero = genero;
 		this.id_artista = id_artista;
+		artistas.add(this);
+	}
+	
+	public static ArrayList<Artista> getArtistas() {
+		return artistas;
+	}
+
+	public static void setArtistas(ArrayList<Artista> artistas) {
+		Artista.artistas = artistas;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setPresentacion(String presentacion) {
+		this.presentacion = presentacion;
 	}
 
 	public ArrayList<Cancion> getCanciones() {
