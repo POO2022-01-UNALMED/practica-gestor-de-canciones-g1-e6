@@ -1,11 +1,27 @@
 package ElementosLibreria;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import Personas.*;
-public class Mis_artistas {
-    private ArrayList<Artista> artistas;
+
+public class Mis_artistas  implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	private static ArrayList<Mis_artistas> mis_artistas;
+	static {
+		mis_artistas = new ArrayList<Mis_artistas>();
+	}
+    public static ArrayList<Mis_artistas> getMis_artistas() {
+		return mis_artistas;
+	}
+	public static void setMis_artistas(ArrayList<Mis_artistas> mis_artistas) {
+		Mis_artistas.mis_artistas = mis_artistas;
+	}
+	private ArrayList<Artista> artistas;
     private Usuario usuario;
     public Mis_artistas(Usuario usuario) {
     	this.usuario=usuario;
+    	mis_artistas.add(this);
     }
 	public ArrayList<Artista> getArtistas() {
 		return artistas;
