@@ -145,7 +145,7 @@ public class Usuario  implements Serializable {
 			return "No hay canciones repetidas";
 		}else{
 			for(Cancion c: repetidas){
-				respuesta = respuesta + c.getNombre();
+				respuesta = respuesta + c.getNombre() + " del artista " + c.getArtista().getNombre();
 			}
 			return respuesta;
 		}
