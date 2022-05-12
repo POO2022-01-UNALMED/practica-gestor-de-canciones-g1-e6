@@ -1,8 +1,8 @@
-package Personas;
+package gestorAplicacion.Personas;
 
 import java.util.ArrayList;
 import java.io.Serializable;
-import ElementosLibreria.*;
+import gestorAplicacion.ElementosLibreria.*;
 
 public class Artista implements Serializable {
 
@@ -96,7 +96,7 @@ public class Artista implements Serializable {
     		return"cancion eliminada";
     	}
     	else {
-    		return"ERROR: la cancion no está subida o no es del artista";
+    		return"ERROR: la cancion no estï¿½ subida o no es del artista";
     	}
     }
     
