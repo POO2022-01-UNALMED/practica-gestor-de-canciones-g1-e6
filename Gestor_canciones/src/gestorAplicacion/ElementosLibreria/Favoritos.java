@@ -1,9 +1,9 @@
-package ElementosLibreria;
+package gestorAplicacion.ElementosLibreria;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import Personas.Usuario;
+import gestorAplicacion.Personas.Usuario;
 
 public class Favoritos extends Playlist{
 	

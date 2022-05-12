@@ -1,8 +1,8 @@
-package ElementosLibreria;
+package gestorAplicacion.ElementosLibreria;
 
 import java.util.ArrayList;
 import java.io.Serializable;
-import Personas.Usuario;
+import gestorAplicacion.Personas.Usuario;
 
 public class Me_gusta extends Playlist{
 	
@@ -18,7 +18,7 @@ public class Me_gusta extends Playlist{
 	public static void setMe_gustas(ArrayList<Me_gusta> me_gustas) {
 		Me_gusta.me_gustas = me_gustas;
 	}
-	//Cómo hago para que no se puedan crear más objetos de esta clase? servirá el final?
+	//Cï¿½mo hago para que no se puedan crear mï¿½s objetos de esta clase? servirï¿½ el final?
 	public Me_gusta(Usuario creador){
 		super(creador, "Me gusta");
 		me_gustas.add(this);

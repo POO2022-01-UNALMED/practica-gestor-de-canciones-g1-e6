@@ -1,8 +1,8 @@
-package ElementosLibreria;
+package gestorAplicacion.ElementosLibreria;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import Personas.*;
+import gestorAplicacion.Personas.*;
 
 public class Mis_artistas  implements Serializable {
 	
@@ -51,7 +51,7 @@ public class Mis_artistas  implements Serializable {
     		return"artista eliminado de mis artistas";
     	}
     	else {
-    		return"ERROR: el artista no está en mis artistas";
+    		return"ERROR: el artista no estï¿½ en mis artistas";
     	}
     }
 }

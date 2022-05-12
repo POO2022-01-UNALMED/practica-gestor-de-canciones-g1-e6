@@ -1,11 +1,11 @@
-package Personas;
+package gestorAplicacion.Personas;
 import java.util.ArrayList;
 import java.io.Serializable;
-import ElementosLibreria.Me_gusta;
-import ElementosLibreria.Mis_artistas;
-import ElementosLibreria.Playlist;
-import ElementosLibreria.Biblioteca;
-import ElementosLibreria.Cancion;
+import gestorAplicacion.ElementosLibreria.Me_gusta;
+import gestorAplicacion.ElementosLibreria.Mis_artistas;
+import gestorAplicacion.ElementosLibreria.Playlist;
+import gestorAplicacion.ElementosLibreria.Biblioteca;
+import gestorAplicacion.ElementosLibreria.Cancion;
 
 public class Usuario  implements Serializable {
 	
@@ -84,10 +84,10 @@ public class Usuario  implements Serializable {
     		return"cancion eliminada de mis me gusta";
     	}
     	else {
-    		return"ERROR: la cancion no está en mis me gusta";
+    		return"ERROR: la cancion no estï¿½ en mis me gusta";
     	}
     }
-    //Y si ya está o no existe el artista?
+    //Y si ya estï¿½ o no existe el artista?
     //vuelve y lo agrega todo bien 
     public void agg_Miartistas(Artista artista) {
     	mis_artistas.agg_artista(artista);
@@ -105,7 +105,7 @@ public class Usuario  implements Serializable {
     		return"artista eliminado de mis artistas";
     	}
     	else {
-    		return"ERROR: el artista no está en mis artistas";
+    		return"ERROR: el artista no estï¿½ en mis artistas";
     	}
     }
     public void agg_Playlist(Playlist playlist) {
@@ -124,7 +124,7 @@ public class Usuario  implements Serializable {
     		return"playlist eliminada";
     	}
     	else {
-    		return"ERROR: la playlist no existe o no está agregada";
+    		return"ERROR: la playlist no existe o no estï¿½ agregada";
     	}
     }
 }

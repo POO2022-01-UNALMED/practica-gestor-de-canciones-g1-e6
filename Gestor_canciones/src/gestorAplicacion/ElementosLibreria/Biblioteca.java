@@ -1,8 +1,8 @@
-package ElementosLibreria;
+package gestorAplicacion.ElementosLibreria;
 
 import java.util.ArrayList;
 import java.io.Serializable;
-import Personas.Usuario;
+import gestorAplicacion.Personas.Usuario;
 
 public class Biblioteca  implements Serializable {
 	
@@ -63,7 +63,7 @@ public class Biblioteca  implements Serializable {
         return playlist; //aquÃ­ hay que hacer lo de manejo de exepciones 
     }
     
-    //Funcionalidad reproducción aleatoria
+    //Funcionalidad reproducciï¿½n aleatoria
 	public String repro_aleatoria(Playlist playlist) {
 	    if(this.usuario.getPlaylists().contains(playlist)) {
 			int index = (int)(Math.random() * playlist.getCanciones().size());
@@ -93,8 +93,8 @@ public class Biblioteca  implements Serializable {
     		  case MUSICA_PARA_TUSAR_CALVOS: tusar_calvos++; 
     		}	
     	} 
-    	//aqui se verifica cual es el genero con mas canciones, como son if simples deberia leer cada uno (debería)
-    	//el problema sería un caso en que 2 generos tengan el mismo # de canciones, ahi recomendaría la primera en el if
+    	//aqui se verifica cual es el genero con mas canciones, como son if simples deberia leer cada uno (deberï¿½a)
+    	//el problema serï¿½a un caso en que 2 generos tengan el mismo # de canciones, ahi recomendarï¿½a la primera en el if
     	int mayor=rock;
     	Genero mayorGen=Genero.ROCK;
     	if (reggaeton>mayor) {
@@ -117,7 +117,7 @@ public class Biblioteca  implements Serializable {
     		mayor=tusar_calvos;
     		mayorGen=Genero.MUSICA_PARA_TUSAR_CALVOS;
     	}
-    	//en este for se recorre la lista de las canciones creadas, y la primera que sea del genero mayor y no este en me gusta, se recomendará
+    	//en este for se recorre la lista de las canciones creadas, y la primera que sea del genero mayor y no este en me gusta, se recomendarï¿½
     	Cancion recomendacion= new Cancion();
     	for(Cancion c: Cancion.getCancionesCreadas()) {
     		if (c.getGenero()==mayorGen) {
