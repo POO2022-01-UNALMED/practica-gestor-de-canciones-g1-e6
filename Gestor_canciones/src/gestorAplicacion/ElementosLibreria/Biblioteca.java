@@ -62,6 +62,14 @@ public class Biblioteca  implements Serializable {
         }
         return playlist; //aquÃ­ hay que hacer lo de manejo de exepciones 
     }
+    
+    //Funcionalidad reproducción aleatoria
+	public Cancion repro_aleatoria(Playlist playlist) {
+		int index = (int)(Math.random() * playlist.getCanciones().size());
+		//Creo que falta poner bien el retorno
+		return playlist.getCanciones().get(index);
+	}
+    
     //FUNCIONALIDAD RECOMENDAR CANCIONES
     public Cancion recomendar_cancion() {
     	int rock=0;
