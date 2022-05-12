@@ -127,4 +127,27 @@ public class Usuario  implements Serializable {
     		return"ERROR: la playlist no existe o no est� agregada";
     	}
     }
+
+	public String cancionSeRepite(Playlist playlist1, Playlist playlist2){
+		ArrayList<Cancion> canciones1 = playlist1.getCanciones();
+		ArrayList<Cancion> canciones2 = playlist2.getCanciones();
+
+		ArrayList<Cancion> repetidas = new ArrayList<Cancion>();
+
+		for(Cancion c: canciones1){
+			if(canciones2.contains(c)){
+				repetidas.add(c);
+			}
+		}
+		String respuesta = new String("Se repiten");
+
+		if (repetidas.isEmpty()){
+			return "No hay canciones repetidas";
+		}else{
+			for(Cancion c: repetidas){
+				respuesta = respuesta + c.getNombre();
+			}
+			return respuesta;
+		}
+	}
 }
