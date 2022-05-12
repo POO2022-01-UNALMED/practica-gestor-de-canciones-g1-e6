@@ -64,12 +64,16 @@ public class Biblioteca  implements Serializable {
     }
     
     //Funcionalidad reproducción aleatoria
-	public Cancion repro_aleatoria(Playlist playlist) {
-		int index = (int)(Math.random() * playlist.getCanciones().size());
-		//Creo que falta poner bien el retorno
-		return playlist.getCanciones().get(index);
+	public String repro_aleatoria(Playlist playlist) {
+	    if(this.usuario.getPlaylists().contains(playlist)) {
+			int index = (int)(Math.random() * playlist.getCanciones().size());
+			//Creo que falta poner bien el retorno
+			return playlist.getCanciones().get(index).getNombre();
+	    } else {
+	        return "La playlist"+playlist.getNombre()+"no existe en el usuario "+this.usuario.getNombre();
+	    }
 	}
-    
+	
     //FUNCIONALIDAD RECOMENDAR CANCIONES
     public Cancion recomendar_cancion() {
     	int rock=0;
