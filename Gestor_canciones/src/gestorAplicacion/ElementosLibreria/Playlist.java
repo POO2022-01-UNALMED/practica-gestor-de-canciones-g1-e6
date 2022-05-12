@@ -126,9 +126,4 @@ public class Playlist  implements Serializable {
         }
 	}
 	
-	public Cancion repro_aleatoria() {
-		int index = (int)(Math.random() * canciones.size());
-		//Creo que falta poner bien el retorno
-		return canciones.get(index);
-	}
 }
