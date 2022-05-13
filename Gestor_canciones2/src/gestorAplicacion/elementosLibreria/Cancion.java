@@ -12,18 +12,20 @@ public class Cancion  implements Serializable {
     private int duracion;
     private Artista artista;
     private Genero genero;
-    private int id_cancion;
+    private static int id_cancion = 1;
+	private int id_realC;
     public static ArrayList<Cancion> cancionesCreadas= new ArrayList<Cancion>(); //atributo estatico para buscar en todas las canciones creadas
     
     public Cancion() {
     	
     }
-    public Cancion(String nombre, int duracion, Artista artista, Genero genero, int id){
+    public Cancion(String nombre, int duracion, Artista artista, Genero genero){
         this.nombre = nombre;
         this.duracion = duracion;
         this.artista = artista;
         this.genero = genero;
-        this.id_cancion = id;
+		id_realC = id_cancion;
+		id_cancion++;
         Cancion.cancionesCreadas.add(this);
     }
     
@@ -52,10 +54,10 @@ public class Cancion  implements Serializable {
         return genero;
     }
     public void setId_cancion(int id_cancion) {
-        this.id_cancion = id_cancion;
+        this.id_realC = id_cancion;
     }
     public int getId_cancion() {
-        return id_cancion;
+        return id_realC;
     }
     public static ArrayList<Cancion> getCancionesCreadas() {
 		return cancionesCreadas;

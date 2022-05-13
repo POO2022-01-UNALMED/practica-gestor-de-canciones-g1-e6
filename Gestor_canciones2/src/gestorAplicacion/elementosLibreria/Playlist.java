@@ -95,7 +95,7 @@ public class Playlist  implements Serializable {
 	}
 
 	public void setId_playlist(int id_playlist) {
-		this.id_playlist = id_playlist;
+		this.id_real = id_playlist;
 	}
 	
 	//M�todos adicionales
