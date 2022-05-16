@@ -150,4 +150,28 @@ public class Usuario  implements Serializable {
 			return respuesta;
 		}
 	}
+
+	public int duracion_total(){
+		ArrayList<Playlist> playlists = getPlaylists();
+		int duracion_total = 0;
+
+		for( Playlist p: playlists){
+			ArrayList<Cancion> canciones = p.getCanciones();
+			int duracion_total_playlist = 0;
+
+			for(Cancion c: canciones){
+				duracion_total_playlist = duracion_total_playlist + c.getDuracion();
+			}
+			duracion_total = duracion_total + duracion_total_playlist;
+
+		}
+
+		Playlist megusta = getMis_me_gusta();
+		ArrayList<Cancion> canciones_gustar = megusta.getCanciones();
+		for(Cancion c: canciones_gustar){
+			duracion_total = c.getDuracion();
+		}
+
+		return duracion_total;
+	}
 }
