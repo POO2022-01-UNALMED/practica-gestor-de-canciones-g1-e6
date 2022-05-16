@@ -18,6 +18,7 @@ public class Test {
 		test9.agg_Megusta(test8);
 		test9.agg_Megusta(test7);
 		test9.agg_Megusta(test10);
+		System.out.println(test9.datosPersona());
 		
 		System.out.println("Canción a recomendar: "+test11.recomendar_cancion().getNombre());
 		for(Artista i: Artista.getArtistas()) {

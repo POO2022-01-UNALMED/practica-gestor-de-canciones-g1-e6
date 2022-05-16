@@ -30,6 +30,7 @@ public class Playlist  implements Serializable {
 		id_real = id_playlist;
 		id_playlist++;
 		playlists.add(this);
+		creador.agg_Playlist(this);
 	}
 
 	//gets y sets de cada atributo
