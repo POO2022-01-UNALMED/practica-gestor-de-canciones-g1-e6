@@ -54,13 +54,18 @@ public class Biblioteca  implements Serializable {
         return this.usuario.getMis_artistas();
     }
 
-    public Playlist acceder_playlist(Playlist playlist){
-        for(Playlist c: this.usuario.getPlaylists()) {
-            if(c.equals(playlist)){
-                return playlist;
+	// muestra una lista de las canciónes que tiene la playlist
+    public String acceder_playlist(Playlist playlist){
+        for(Playlist p: this.usuario.getPlaylists()) {
+            if(p.equals(playlist)){
+				String canciones = "";
+				for(Cancion c: p.getCanciones()){
+					canciones = canciones + c.getNombre() + "\n";
+				}
+				return canciones;
             }
         }
-        return playlist; //aquí hay que hacer lo de manejo de exepciones 
+        return "No existe la playlist";  
     }
     
     //Funcionalidad reproducci�n aleatoria
@@ -68,7 +73,7 @@ public class Biblioteca  implements Serializable {
 	    if(this.usuario.getPlaylists().contains(playlist)) {
 			int index = (int)(Math.random() * playlist.getCanciones().size());
 			//Creo que falta poner bien el retorno
-			return playlist.getCanciones().get(index).getNombre();
+			return playlist.getCanciones().get(index).play();
 	    } else {
 	        return "La playlist"+playlist.getNombre()+"no existe en el usuario "+this.usuario.getNombre();
 	    }
