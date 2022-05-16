@@ -24,6 +24,7 @@ public class Cancion  implements Serializable {
         this.duracion = duracion;
         this.artista = artista;
         this.genero = genero;
+        artista.getCanciones().add(this);
 		id_realC = id_cancion;
 		id_cancion++;
         Cancion.cancionesCreadas.add(this);
