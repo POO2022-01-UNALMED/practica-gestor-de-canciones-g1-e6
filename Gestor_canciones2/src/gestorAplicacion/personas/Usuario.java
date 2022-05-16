@@ -1,13 +1,9 @@
 package gestorAplicacion.personas;
 import java.util.ArrayList;
 import java.io.Serializable;
-import gestorAplicacion.elementosLibreria.Me_gusta;
-import gestorAplicacion.elementosLibreria.Mis_artistas;
-import gestorAplicacion.elementosLibreria.Playlist;
-import gestorAplicacion.elementosLibreria.Biblioteca;
-import gestorAplicacion.elementosLibreria.Cancion;
+import gestorAplicacion.elementosLibreria.*;
 
-public class Usuario  implements Serializable {
+public class Usuario  implements Serializable, Persona {
 	
 	private static final long serialVersionUID = 1L;
 	private static ArrayList<Usuario> usuarios;
@@ -16,21 +12,28 @@ public class Usuario  implements Serializable {
 	}
 	
     public String nombre;
-    private Me_gusta mis_me_gusta;
+    private ArrayList<Playlist> playlists= new ArrayList<Playlist>();
+    private final Me_gusta mis_me_gusta= new Me_gusta(this);
     private Mis_artistas mis_artistas;
-    private ArrayList<Playlist> playlists;
     private Biblioteca mi_biblioteca;
+    private final Favoritos mis_favoritos= new Favoritos(this);
     public Usuario() {
     	
     }
 	public Usuario(String nombre) {
 		super();
 		this.nombre = nombre;
-		mis_me_gusta= new Me_gusta(this);
 		mis_artistas= new Mis_artistas(this);
-		playlists= new ArrayList<Playlist>();
 		mi_biblioteca= new Biblioteca(this);
 		usuarios.add(this);
+	}
+	public String datosPersona() {
+		return 
+				"Nombre: " + nombre + "\n" + 
+				"Tipo: Usuario normal" + "\n" +
+				"número de playlist: " + playlists.size() + "\n" + 
+				"número de canciones en me gusta: " + (mis_me_gusta.getCanciones().size()) + "\n" +
+		        "número de canciones en favoritos: " + (mis_favoritos.getCanciones().size());
 	}
 	public static ArrayList<Usuario> getUsuarios() {
 		return usuarios;
@@ -53,9 +56,7 @@ public class Usuario  implements Serializable {
 	public Me_gusta getMis_me_gusta() {
 		return mis_me_gusta;
 	}
-	public void setMis_me_gusta(Me_gusta mis_me_gusta) {
-		this.mis_me_gusta = mis_me_gusta;
-	}
+	
 	public Mis_artistas getMis_artistas() {
 		return mis_artistas;
 	}
@@ -84,11 +85,30 @@ public class Usuario  implements Serializable {
     		return"cancion eliminada de mis me gusta";
     	}
     	else {
-    		return"ERROR: la cancion no estï¿½ en mis me gusta";
+    		return"ERROR: la cancion no existe en mis me gusta";
     	}
     }
     //Y si ya estï¿½ o no existe el artista?
-    //vuelve y lo agrega todo bien 
+    //vuelve y lo agrega todo bien
+    public void agg_MisFavoritos(Cancion cancion) {
+    	mis_favoritos.agg_cancion(cancion);
+    }
+    public String elim_MisFavoritos(Cancion cancion) {
+    	boolean presente=false;
+    	for (Cancion c: mis_favoritos.getCanciones()) {
+    		if (cancion==c){
+    			presente=true; 
+    		}
+    
+    	}
+    	if (presente==true) {
+    		mis_favoritos.elim_cancion(cancion);
+    		return"cancion eliminada de mis favoritos";
+    	}
+    	else {
+    		return"ERROR: la cancion no existe en mis favoritos";
+    	}
+    }
     public void agg_Miartistas(Artista artista) {
     	mis_artistas.agg_artista(artista);
     }
@@ -105,7 +125,7 @@ public class Usuario  implements Serializable {
     		return"artista eliminado de mis artistas";
     	}
     	else {
-    		return"ERROR: el artista no estï¿½ en mis artistas";
+    		return"ERROR: el artista no existe en mis artistas";
     	}
     }
     public void agg_Playlist(Playlist playlist) {
@@ -124,7 +144,7 @@ public class Usuario  implements Serializable {
     		return"playlist eliminada";
     	}
     	else {
-    		return"ERROR: la playlist no existe o no estï¿½ agregada";
+    		return"ERROR: la playlist no existe o no esta agregada";
     	}
     }
 
