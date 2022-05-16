@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.io.Serializable;
 import gestorAplicacion.elementosLibreria.*;
 
-public class Artista implements Serializable {
+
+public class Artista implements Serializable, Persona {
 
 	private static final long serialVersionUID = 1L;
 	private static ArrayList<Artista> artistas;
@@ -61,7 +62,13 @@ public class Artista implements Serializable {
 		id_artista++;
 		artistas.add(this);
 	}
-	
+	public String datosPersona() {
+		return 
+				"Nombre: " + nombre + "\n" + 
+				"Tipo: Artista" + "\n" +
+				"Presentacion en app: " + presentacion + "\n" + 
+				"número de canciones creadas: " + (canciones.size());
+	}
 	public static ArrayList<Artista> getArtistas() {
 		return artistas;
 	}
