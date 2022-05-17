@@ -2,6 +2,8 @@ package gestorAplicacion.personas;
 import java.util.ArrayList;
 import java.io.Serializable;
 import gestorAplicacion.elementosLibreria.*;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class Usuario  implements Serializable, Persona {
 	
@@ -31,9 +33,9 @@ public class Usuario  implements Serializable, Persona {
 		return 
 				"Nombre: " + nombre + "\n" + 
 				"Tipo: Usuario normal" + "\n" +
-				"número de playlist: " + playlists.size() + "\n" + 
-				"número de canciones en me gusta: " + (mis_me_gusta.getCanciones().size()) + "\n" +
-		        "número de canciones en favoritos: " + (mis_favoritos.getCanciones().size());
+				"nï¿½mero de playlist: " + playlists.size() + "\n" + 
+				"nï¿½mero de canciones en me gusta: " + (mis_me_gusta.getCanciones().size()) + "\n" +
+		        "nï¿½mero de canciones en favoritos: " + (mis_favoritos.getCanciones().size());
 	}
 	public static ArrayList<Usuario> getUsuarios() {
 		return usuarios;
@@ -193,5 +195,42 @@ public class Usuario  implements Serializable, Persona {
 		}
 
 		return duracion_total;
+	}
+
+	public String artista_favorito(){
+
+		ArrayList<Artista> artistillas = getMis_artistas().getArtistas();
+
+		//AcÃ¡ se crea el diccionario
+		Hashtable<Artista, Integer> artistaYNumero = new Hashtable<Artista, Integer>();
+
+		//AcÃ¡ se itera sobre todas las canciones de las playlists y se agregan sus artistas al diccionario
+		for(Playlist p: getPlaylists()){
+			for(Cancion c: p.getCanciones()){
+				if(artistillas.contains(c.getArtista()) && artistaYNumero.containsKey(c.getArtista())){
+					artistaYNumero.put(c.getArtista(), artistaYNumero.get(c.getArtista()) + 1);
+				}else if(artistillas.contains(c.getArtista())){
+					artistaYNumero.put(c.getArtista(), 1);
+				}
+
+			}
+		}
+
+		int mayorCanciones = 0;
+		Artista mayorArtista = artistillas.get(0);
+
+		// AcÃ¡ se itera sobre el diccionario para ver cual es el que tiene mÃ¡s canciones 
+		for (Map.Entry<Artista, Integer> entry : artistaYNumero.entrySet()){
+			if(entry.getValue() > mayorCanciones){
+				mayorCanciones = entry.getValue();
+				mayorArtista = entry.getKey();
+			}
+		}
+
+
+		// AcÃ¡ se hace mimimimi
+
+		return mayorArtista.getNombre();
+
 	}
 }
