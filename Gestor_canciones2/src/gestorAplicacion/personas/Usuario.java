@@ -23,7 +23,6 @@ public class Usuario  implements Serializable, Persona {
     	
     }
 	public Usuario(String nombre) {
-		super();
 		this.nombre = nombre;
 		mis_artistas= new Mis_artistas(this);
 		mi_biblioteca= new Biblioteca(this);
@@ -33,9 +32,9 @@ public class Usuario  implements Serializable, Persona {
 		return 
 				"Nombre: " + nombre + "\n" + 
 				"Tipo: Usuario normal" + "\n" +
-				"n�mero de playlist: " + playlists.size() + "\n" + 
-				"n�mero de canciones en me gusta: " + (mis_me_gusta.getCanciones().size()) + "\n" +
-		        "n�mero de canciones en favoritos: " + (mis_favoritos.getCanciones().size());
+				"numero de playlist: " + playlists.size() + "\n" + 
+				"numero de canciones en me gusta: " + (mis_me_gusta.getCanciones().size()) + "\n" +
+		        "numero de canciones en favoritos: " + (mis_favoritos.getCanciones().size());
 	}
 	public static ArrayList<Usuario> getUsuarios() {
 		return usuarios;
