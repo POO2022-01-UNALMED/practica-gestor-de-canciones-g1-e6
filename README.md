@@ -1,6 +1,6 @@
 ## Integrantes
 
-- Carlos.
+- Carlos 👍👍.
 - David Toro Arango.
 - Manuel Alejandro Gallego Jiménez.
 
