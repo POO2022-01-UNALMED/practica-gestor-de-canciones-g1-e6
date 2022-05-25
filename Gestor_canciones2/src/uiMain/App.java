@@ -50,10 +50,10 @@ public class App {
 				break;
 			case 3:
 				//PedirNombre();
-				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÑADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
+				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÃ‘ADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
 				//ESTE MENU TAMBIEN DEBE TENER LAS OPCIONES:
-				//1. Mostrar duración total de todas las canciones en una playlist.
-				//2. Indicar si una canción se repite en varias playlists.
+				//1. Mostrar duraciÃ³n total de todas las canciones en una playlist.
+				//2. Indicar si una canciÃ³n se repite en varias playlists. (en este podriamos aplicar ligadura dinamica, creando un apuntador tipo playlist pero que se le puede asignar a un me gusta o favoritos)
 				//3. Generar una playlist con canciones en me gusta de un artista en especifico.
 				break;
 			case 4:
