@@ -43,14 +43,14 @@ public class App {
 			switch (opcion) {
 
 			case 1:
-				//menuCreacionUsuario();
+				creacionUsuario();
 				break;
 			case 2:
-				//menuRecomendarCancion();
+				recomendacion();
 				break;
 			case 3:
 				//PedirNombre();
-				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÑADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
+				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÑADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST, crear playlist Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
 				//ESTE MENU TAMBIEN DEBE TENER LAS OPCIONES:
 				//1. Mostrar duración total de todas las canciones en una playlist.
 				//2. Indicar si una canción se repite en varias playlists. (en este podriamos aplicar ligadura dinamica, creando un apuntador tipo playlist pero que se le puede asignar a un me gusta o favoritos)
@@ -84,6 +84,32 @@ public class App {
 			}
 		} while (opcion != 6);
 
+	}
+	static void creacionUsuario() {
+		System.out.println("Ingrese nombre del nuevo usuario:");
+		readString();
+		String nombre= readString();
+		for (Usuario usuario: Usuario.getUsuarios()) {
+			if (nombre.equals(usuario.getNombre())){
+				System.out.println("Usuario ya creado");
+				return;
+			}
+		}
+		new Usuario(nombre);
+		System.out.println("Usuario "+nombre+" creado exitosamente");
+	}
+	static void recomendacion() {
+		System.out.println("Ingrese nombre del usuario a recomendar:");
+		readString();
+		String nombre= readString();
+		for (Usuario usuario: Usuario.getUsuarios()) {
+			if (nombre.equals(usuario.getNombre())){
+				Cancion recomendacion=usuario.getMi_biblioteca().recomendar_cancion();
+				System.out.println("Se recomienda la cancion: "+recomendacion.getNombre());
+				return;
+			}
+		}
+		System.out.println("el usuario ingresado no existe");
 	}
     public static void guardar() {
 	    Serializador.serializarTodo();

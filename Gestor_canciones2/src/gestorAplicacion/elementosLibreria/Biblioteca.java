@@ -125,14 +125,18 @@ public class Biblioteca  implements Serializable {
     	//en este for se recorre la lista de las canciones creadas, y la primera que sea del genero mayor y no este en me gusta, se recomendar�
     	Cancion recomendacion= new Cancion();
     	for(Cancion c: Cancion.getCancionesCreadas()) {
+    		boolean igual=false;
     		if (c.getGenero()==mayorGen) {
-    			if (usuario.getMis_me_gusta().getCanciones().contains(c)) {
-    				continue;
+    			for(Cancion c1: usuario.getMis_me_gusta().getCanciones()) {
+    				if (c.getNombre().equals(c1.getNombre())) {
+    					igual=true;
+    				    break;
     			}
-    			else {
-    				recomendacion=c;
-    				break;
+    		    if (igual==false) {
+    		    	recomendacion=c;
+    		    }
     			}
+    			
     		}
     		else {
     			continue;
