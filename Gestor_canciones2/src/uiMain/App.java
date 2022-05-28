@@ -26,7 +26,16 @@ public class App {
 	}
 	public static void main(String[] args) {
 		Deserializador.deserializarTodo();
-		System.out.println("Saludos!,\n");
+		System.out.println("\n                               ===¡Saludos!===\n");
+		System.out.println("  ********  *******    *******   ********** **  ********   *******     **    **");
+		System.out.println("  **//////  /**////**  **/////** /////**/// /** /**/////   **/////**  //**  **");
+		System.out.println(" /**        /**   /** **     //**    /**    /** /**       **     //**  //****");
+		System.out.println(" /********* /******* /**      /**    /**    /** /******* /**      /**   //** ");
+		System.out.println(" ////////** /**////  /**      /**    /**    /** /**////  /**      /**    /** ");
+		System.out.println("        /** /**      //**     **     /**    /** /**      //**     **     /**  ");
+		System.out.println("  ********  /**       //*******      /**    /** /**       //*******      /** ");
+		System.out.println(" ////////   //         ///////       //     //  //         ///////       // \n");
+		                                                         	                                    
 		int opcion;
 		do {
 			System.out.println("Que accion desea realizar?");
