@@ -17,7 +17,7 @@ public class Mis_artistas  implements Serializable {
 	public static void setMis_artistas(ArrayList<Mis_artistas> mis_artistas) {
 		Mis_artistas.mis_artistas = mis_artistas;
 	}
-	private ArrayList<Artista> artistas;
+	private ArrayList<Artista> artistas = new ArrayList<>();
     private Usuario usuario;
     public Mis_artistas(Usuario usuario) {
     	this.usuario=usuario;
