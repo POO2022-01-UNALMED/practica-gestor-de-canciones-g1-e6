@@ -112,7 +112,7 @@ public class Playlist  implements Serializable {
 	        this.duracion += cancion.getDuracion(); 
 	        return "La cancion fue agregada con exito...";
         }
-	} 
+	}
 	//Cambi� el tipo de retorno
 	public String elim_cancion(Cancion cancion) {
         if(canciones.contains(cancion)) {
