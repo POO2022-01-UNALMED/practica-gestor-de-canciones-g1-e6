@@ -99,30 +99,30 @@ public class Playlist  implements Serializable {
 		this.id_real = id_playlist;
 	}
 	
-	//M�todos adicionales
+	//Mï¿½todos adicionales
 	
-	//Cambi� el tipo de retorno
+	//Cambiï¿½ el tipo de retorno
 	public String agg_cancion(Cancion cancion) {
         if(canciones.contains(cancion)) {
             return "La cancion ya se encuentra presente en la playlist...";
         } else {
-	        //Falta verificar si la canci�n existo o ya est�
+	        //Falta verificar si la canciï¿½n existo o ya estï¿½
 	        canciones.add(cancion);
 	        numero_canciones++;
 	        this.duracion += cancion.getDuracion(); 
 	        return "La cancion fue agregada con exito...";
         }
 	}
-	//Cambi� el tipo de retorno
+	//Cambiï¿½ el tipo de retorno
 	public String elim_cancion(Cancion cancion) {
         if(canciones.contains(cancion)) {
-    		//Falta verificar si la canci�n existo o ya est� 
+    		//Falta verificar si la canciï¿½n existo o ya estï¿½ 
     		canciones.remove(cancion);
     		numero_canciones--;
     		this.duracion -= cancion.getDuracion();
             return "La cancion ha sido eliminada de la playlist exitosamente...";
         } else {
-	        //Falta verificar si la canci�n existo o ya est�
+	        //Falta verificar si la canciï¿½n existo o ya estï¿½
 	        return "La cancion no se encontraba en la lista...";
         }
 	}

@@ -26,7 +26,7 @@ public class App {
 	}
 	public static void main(String[] args) {
 		Deserializador.deserializarTodo();
-		System.out.println("\n                               ===�Saludos!===\n");
+		System.out.println("\n                               ===¡Saludos!===\n");
 		System.out.println("  ********  *******    *******   ********** **  ********   *******     **    **");
 		System.out.println("  **//////  /**////**  **/////** /////**/// /** /**/////   **/////**  //**  **");
 		System.out.println(" /**        /**   /** **     //**    /**    /** /**       **     //**  //****");
@@ -63,10 +63,10 @@ public class App {
 				System.out.println("-----------------------------------------");
 				
 				//PedirNombre();
-				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÑADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST, crear playlist Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
+				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÃ‘ADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST, crear playlist Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
 				//ESTE MENU TAMBIEN DEBE TENER LAS OPCIONES:
-				//1. Mostrar duración total de todas las canciones en una playlist.
-				//2. Indicar si una canción se repite en varias playlists. (en este podriamos aplicar ligadura dinamica, creando un apuntador tipo playlist pero que se le puede asignar a un me gusta o favoritos)
+				//1. Mostrar duraciÃ³n total de todas las canciones en una playlist.
+				//2. Indicar si una canciÃ³n se repite en varias playlists. (en este podriamos aplicar ligadura dinamica, creando un apuntador tipo playlist pero que se le puede asignar a un me gusta o favoritos)
 				//3. Generar una playlist con canciones en me gusta de un artista en especifico.
 				biblio();
 				break;
@@ -144,14 +144,14 @@ public class App {
 		for (Usuario usuario: Usuario.getUsuarios()) {
 			if (nombreb.equals(usuario.getNombre())){
 				do {
-					System.out.println("Bienvenido "+usuario.getNombre()+", estas en la biblioteca.\n�Qu� deseas hacer?\n");
+					System.out.println("Bienvenido "+usuario.getNombre()+", estas en la biblioteca.\n¿Qué deseas hacer?\n");
 					System.out.println(" 1. Mostrar todas las playlists");
 					System.out.println(" 2. Agregar una cancion a una playlist");
 					System.out.println(" 3. Eliminar una cancion de una playlist");
 					System.out.println(" 4. Ver las canciones de todas mis playlists");
 					System.out.println(" 5. Reproducir una cancion aleatoria de una playlist");
 					System.out.println(" 6. Reproducir una cancion de una playlist");
-					System.out.println(" 7. Ver la duraci�n de una playlist");//Falta
+					System.out.println(" 7. Ver la duración de una playlist");//Falta
 					System.out.println(" 8. Ver si una cancion se repite en varias playlists");//Falta
 					System.out.println(" 9. Crear una playlist");
 					System.out.println(" 10. Generar una playlist con canciones en me gusta de un artista en especifico");//Falta
@@ -266,7 +266,7 @@ public class App {
 	}
 	
 	static void repPlayl(Usuario usuario) {
-		System.out.println("Ingrese nombre de la playlist de la que desea reproducir una canci�n aleatoria:");
+		System.out.println("Ingrese nombre de la playlist de la que desea reproducir una canción aleatoria:");
 		readString();
 		String nombrer= readString();
 		for (Playlist playlist: usuario.getPlaylists()) {
@@ -280,7 +280,7 @@ public class App {
 	}
 	
 	static void playl(Usuario usuario) {
-		System.out.println("Ingrese nombre de la playlist en la que desea reproducir una canci�n:");
+		System.out.println("Ingrese nombre de la playlist en la que desea reproducir una canción:");
 		readString();
 		String nombreep= readString();
 		for (Playlist playlist: usuario.getPlaylists()) {

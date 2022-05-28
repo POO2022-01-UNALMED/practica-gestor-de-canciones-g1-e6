@@ -73,6 +73,6 @@ public class Cancion  implements Serializable {
     }
 
     public String pause(){
-        return "la canción" + this.nombre + "ha sido pausada";
+        return "la canciÃ³n" + this.nombre + "ha sido pausada";
     }
 }

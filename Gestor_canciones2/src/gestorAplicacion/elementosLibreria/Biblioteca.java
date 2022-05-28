@@ -54,7 +54,7 @@ public class Biblioteca  implements Serializable {
         return this.usuario.getMis_artistas();
     }
 
-	// muestra una lista de las canciónes que tiene la playlist
+	// muestra una lista de las canciÃ³nes que tiene la playlist
     public String acceder_playlist(Playlist playlist){
         for(Playlist p: this.usuario.getPlaylists()) {
             if(p.equals(playlist)){
@@ -68,7 +68,7 @@ public class Biblioteca  implements Serializable {
         return "No existe la playlist";  
     }
     
-    //Funcionalidad reproducci�n aleatoria
+    //Funcionalidad reproducciï¿½n aleatoria
 	public String repro_aleatoria(Playlist playlist) {
 	    if(this.usuario.getPlaylists().contains(playlist)) {
 			int index = (int)(Math.random() * playlist.getCanciones().size());
@@ -98,8 +98,8 @@ public class Biblioteca  implements Serializable {
     		  case MUSICA_PARA_TUSAR_CALVOS: tusar_calvos++; 
     		}	
     	} 
-    	//aqui se verifica cual es el genero con mas canciones, como son if simples deberia leer cada uno (deber�a)
-    	//el problema ser�a un caso en que 2 generos tengan el mismo # de canciones, ahi recomendar�a la primera en el if
+    	//aqui se verifica cual es el genero con mas canciones, como son if simples deberia leer cada uno (deberï¿½a)
+    	//el problema serï¿½a un caso en que 2 generos tengan el mismo # de canciones, ahi recomendarï¿½a la primera en el if
     	int mayor=rock;
     	Genero mayorGen=Genero.ROCK;
     	if (reggaeton>mayor) {
@@ -122,7 +122,7 @@ public class Biblioteca  implements Serializable {
     		mayor=tusar_calvos;
     		mayorGen=Genero.MUSICA_PARA_TUSAR_CALVOS;
     	}
-    	//en este for se recorre la lista de las canciones creadas, y la primera que sea del genero mayor y no este en me gusta, se recomendar�
+    	//en este for se recorre la lista de las canciones creadas, y la primera que sea del genero mayor y no este en me gusta, se recomendarï¿½
     	Cancion recomendacion= new Cancion();
     	for(Cancion c: Cancion.getCancionesCreadas()) {
     		boolean igual=false;
