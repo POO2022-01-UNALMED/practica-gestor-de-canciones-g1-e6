@@ -69,7 +69,7 @@ public class Cancion  implements Serializable {
 	}
 
 	public String play(){
-        return "reproduciendo"+ this.nombre;
+        return "Reproduciendo: "+ this.nombre;
     }
 
     public String pause(){
