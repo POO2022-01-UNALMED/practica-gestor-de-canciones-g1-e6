@@ -27,7 +27,8 @@ public class App {
 	public static void main(String[] args) {
 		Deserializador.deserializarTodo();
 		inicializar();
-		System.out.println("\n                               ===¡Saludos!===\n");
+		System.out.println("\n===¡Saludos!===\n");
+
 		System.out.println("  ********  *******    *******   ********** **  ********   *******     **    **");
 		System.out.println("  **//////  /**////**  **/////** /////**/// /** /**/////   **/////**  //**  **");
 		System.out.println(" /**        /**   /** **     //**    /**    /** /**       **     //**  //****");
