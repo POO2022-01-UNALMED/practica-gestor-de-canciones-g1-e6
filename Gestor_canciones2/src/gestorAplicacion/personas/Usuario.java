@@ -191,7 +191,12 @@ public class Usuario  implements Serializable, Persona {
 
 	public String artista_favorito(){
 
+
 		ArrayList<Artista> artistillas = getMis_artistas().getArtistas();
+
+		if(artistillas.size() == 0){
+			return("no hay ningún artista en mis artistas");
+		}
 
 		//AcÃ¡ se crea el diccionario
 		Hashtable<Artista, Integer> artistaYNumero = new Hashtable<Artista, Integer>();
