@@ -190,7 +190,7 @@ public class Usuario  implements Serializable, Persona {
 		Playlist megusta = getMis_me_gusta();
 		ArrayList<Cancion> canciones_gustar = megusta.getCanciones();
 		for(Cancion c: canciones_gustar){
-			duracion_total = c.getDuracion();
+			duracion_total = duracion_total + c.getDuracion();
 		}
 
 		return duracion_total;

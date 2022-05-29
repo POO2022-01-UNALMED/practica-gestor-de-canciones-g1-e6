@@ -75,7 +75,10 @@ public class App {
 			case 4:
 				System.out.println("-----------------------------------------");
 				for (Cancion cancion : Cancion.getCancionesCreadas()) {
-					System.out.println(cancion.getNombre());
+					int hor=cancion.getDuracion()/3600;
+			        int min=(cancion.getDuracion()-(3600*hor))/60;
+			        int seg=cancion.getDuracion()-((hor*3600)+(min*60));
+					System.out.println(cancion.getNombre()+" - "+cancion.getArtista().getNombre()+" - "+hor+":"+min+":"+seg);
 				}
 				break;
 			case 5:
@@ -172,7 +175,7 @@ public class App {
 					System.out.println(" 4. Ver las canciones de todas mis playlists");
 					System.out.println(" 5. Reproducir una cancion aleatoria de una playlist");
 					System.out.println(" 6. Reproducir una cancion de una playlist");
-					System.out.println(" 7. Ver la duración de una playlist");//Falta
+					System.out.println(" 7. Ver la duracion total de todas las playlists (incluido Me gusta y Favoritos)");//Falta
 					System.out.println(" 8. Ver si una cancion se repite en varias playlists");//Falta
 					System.out.println(" 9. Crear una playlist");
 					System.out.println(" 10. Generar una playlist con canciones en me gusta de un artista en especifico");//Falta
@@ -200,7 +203,10 @@ public class App {
 							for (Playlist playlist : usuario.getPlaylists()) {
 								System.out.println("Nombre de la playlist: "+playlist.getNombre()+"\n");
 								for (Cancion cancion : playlist.getCanciones()) {
-									System.out.println("-"+cancion.getNombre());
+									int hor=cancion.getDuracion()/3600;
+							        int min=(cancion.getDuracion()-(3600*hor))/60;
+							        int seg=cancion.getDuracion()-((hor*3600)+(min*60));
+									System.out.println("-"+cancion.getNombre()+" - "+cancion.getArtista().getNombre()+" - "+hor+":"+min+":"+seg);
 								}
 								System.out.println();
 							}
@@ -214,6 +220,8 @@ public class App {
 							playl(usuario);
 							break;
 						case 7:
+							System.out.println("-----------------------------------------");
+							duracion(usuario);
 							break;
 						case 8:
 							break;
@@ -320,6 +328,14 @@ public class App {
 			
 		}
 		System.out.println("La playlist ingresada no existe");
+	}
+	
+	static void duracion(Usuario usuario) {
+        int hor=usuario.duracion_total()/3600;
+        int min=(usuario.duracion_total()-(3600*hor))/60;
+        int seg=usuario.duracion_total()-((hor*3600)+(min*60));
+		System.out.println("La duracion total de todas las playlists es de: "+hor+" horas, "+min+" minutos y "+seg+" segundos");
+		return;
 	}
 	
 	static void crearplaylist(Usuario usuario) {
