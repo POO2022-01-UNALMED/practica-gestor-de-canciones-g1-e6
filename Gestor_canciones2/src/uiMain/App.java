@@ -28,18 +28,17 @@ public class App {
 		Deserializador.deserializarTodo();
 		inicializar();
 		System.out.println("\n===¡Saludos!===\n");
-
-		System.out.println("  ********  *******    *******   ********** **  ********   *******     **    **");
-		System.out.println("  **//////  /**////**  **/////** /////**/// /** /**/////   **/////**  //**  **");
-		System.out.println(" /**        /**   /** **     //**    /**    /** /**       **     //**  //****");
-		System.out.println(" /********* /******* /**      /**    /**    /** /******* /**      /**   //** ");
-		System.out.println(" ////////** /**////  /**      /**    /**    /** /**////  /**      /**    /** ");
-		System.out.println("        /** /**      //**     **     /**    /** /**      //**     **     /**  ");
-		System.out.println("  ********  /**       //*******      /**    /** /**       //*******      /** ");
-		System.out.println(" ////////   //         ///////       //     //  //         ///////       // \n");
 		                                                         	                                    
 		int opcion;
 		do {
+			System.out.println(" _____             _   _  __            \r\n"
+					+ "/  ___|           | | (_)/ _|           \r\n"
+					+ "\\ `--. _ __   ___ | |_ _| |_ ___  _   _ \r\n"
+					+ " `--. \\ '_ \\ / _ \\| __| |  _/ _ \\| | | |\r\n"
+					+ "/\\__/ / |_) | (_) | |_| | || (_) | |_| |\r\n"
+					+ "\\____/| .__/ \\___/ \\__|_|_| \\___/ \\__, |\r\n"
+					+ "      | |                          __/ |\r\n"
+					+ "      |_|                         |___/ ");
 			System.out.println("Que accion desea realizar?\n");
 			System.out.println(" 1. Crear usuario");
 			System.out.println(" 2. Recomendar cancion a un usuario");
@@ -168,7 +167,15 @@ public class App {
 		for (Usuario usuario: Usuario.getUsuarios()) {
 			if (nombreb.equals(usuario.getNombre())){
 				do {
-					System.out.println("Bienvenido "+usuario.getNombre()+", estas en la biblioteca.\n¿Qué deseas hacer?\n");
+					System.out.println("______ _ _     _ _       _                 \r\n"
+							+ "| ___ (_) |   | (_)     | |                \r\n"
+							+ "| |_/ /_| |__ | |_  ___ | |_ ___  ___ __ _ \r\n"
+							+ "| ___ \\ | '_ \\| | |/ _ \\| __/ _ \\/ __/ _` |\r\n"
+							+ "| |_/ / | |_) | | | (_) | ||  __/ (_| (_| |\r\n"
+							+ "\\____/|_|_.__/|_|_|\\___/ \\__\\___|\\___\\__,_|\r\n"
+							+ "                                           \r\n"
+							+ "                                           ");
+					System.out.println("Bienvenido "+usuario.getNombre());
 					System.out.println(" 1. Ver mis artistas");
 					System.out.println(" 2. Agregar una cancion a una playlist");
 					System.out.println(" 3. Eliminar una cancion de una playlist");
@@ -232,7 +239,7 @@ public class App {
 							crearplaylist(usuario);
 							break;
 						case 10:
-							System.out.println("Enhorabuena!\nTu artista favorito es: "+usuario.artista_favorito());
+							System.out.println("-----------------------------------------\nEnhorabuena!\nTu artista favorito es: "+usuario.artista_favorito());
 							break;
 						}
 					if (opcion2 != 11) {
