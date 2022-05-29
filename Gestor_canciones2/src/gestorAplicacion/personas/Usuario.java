@@ -186,8 +186,6 @@ public class Usuario  implements Serializable, Persona {
 			duracion_total = duracion_total + duracion_total_playlist;
 
 		}
-
-
 		return duracion_total;
 	}
 
