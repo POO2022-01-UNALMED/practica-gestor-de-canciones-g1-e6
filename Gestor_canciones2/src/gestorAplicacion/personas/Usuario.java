@@ -194,7 +194,7 @@ public class Usuario  implements Serializable, Persona {
 
 		ArrayList<Artista> artistillas = getMis_artistas().getArtistas();
 
-		if(artistillas.size() == 0){
+		if(artistillas.isEmpty()){
 			return("no hay ningún artista en mis artistas");
 		}
 
