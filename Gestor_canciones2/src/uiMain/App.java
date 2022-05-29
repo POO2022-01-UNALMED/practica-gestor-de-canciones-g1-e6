@@ -443,9 +443,14 @@ public class App {
 		for (Playlist playlist: usuario.getPlaylists()) {
 			if (nombreep.equals(playlist.getNombre())){
 				System.out.println("Ingrese nombre de la segunda playlist a comparar con "+playlist.getNombre()+":");
+				if(playlist.getNombre()=="Me gusta") {
+					System.out.println("En caso de no ingresar nada, se comparara automaticamente con Favoritos");
+				}
+				else {
+					System.out.println("En caso de no ingresar nada, se comparara automaticamente con Me gusta");
+				}
 				String nombreecp2= readString();
 				if(nombreecp2=="") {
-					System.out.println("Se compara por defecto con me gusta o con favoritos si la playlist ingresada es me gusta");
 					System.out.println(usuario.cancionSeRepite(playlist));
 					return;
 				}

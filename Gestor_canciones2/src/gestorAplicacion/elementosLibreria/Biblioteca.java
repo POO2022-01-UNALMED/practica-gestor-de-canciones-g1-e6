@@ -127,6 +127,10 @@ public class Biblioteca  implements Serializable {
     			continue;
     		}
     	}
+    	if(recomendacion.getNombre()==null) {
+    		int index = (int)(Math.random() * Cancion.getCancionesCreadas().size());
+    		recomendacion=Cancion.getCancionesCreadas().get(index);
+    	}
     	return(recomendacion);
     }
 
