@@ -18,8 +18,6 @@ public class Biblioteca  implements Serializable {
     }
 	
     private Usuario usuario;
-    private Cancion cancion_actual;
-    private String estado_cancion;
 
     
     public static ArrayList<Biblioteca> getBibliotecas() {
@@ -35,19 +33,6 @@ public class Biblioteca  implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    public Cancion getCancion_actual() {
-        return cancion_actual;
-    }
-    public void setCancion_actual(Cancion cancion_actual) {
-        this.cancion_actual = cancion_actual;
-    }
-    public String getEstado_cancion() {
-        return estado_cancion;
-    }
-    public void setEstado_cancion(String estado_cancion) {
-        this.estado_cancion = estado_cancion;
-    }
-
     
 
     public Mis_artistas acceder_misartistas(){
