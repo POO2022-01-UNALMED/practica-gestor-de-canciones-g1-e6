@@ -160,13 +160,13 @@ public class Usuario  implements Serializable, Persona {
 				repetidas.add(c);
 			}
 		}
-		String respuesta = new String("Se repiten");
+		String respuesta = new String("Se repiten: \n");
 
 		if (repetidas.isEmpty()){
 			return "No hay canciones repetidas";
 		}else{
 			for(Cancion c: repetidas){
-				respuesta = respuesta + c.getNombre() + " del artista " + c.getArtista().getNombre();
+				respuesta = respuesta + c.getNombre() + " del artista " + c.getArtista().getNombre()+"\n";
 			}
 			return respuesta;
 		}
@@ -187,11 +187,6 @@ public class Usuario  implements Serializable, Persona {
 
 		}
 
-		Playlist megusta = getMis_me_gusta();
-		ArrayList<Cancion> canciones_gustar = megusta.getCanciones();
-		for(Cancion c: canciones_gustar){
-			duracion_total = c.getDuracion();
-		}
 
 		return duracion_total;
 	}
