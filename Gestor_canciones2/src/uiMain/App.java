@@ -237,16 +237,18 @@ public class App {
 					System.out.println(" 1. Ver mis artistas");
 					System.out.println(" 2. Agregar una cancion a una playlist");
 					System.out.println(" 3. Eliminar una cancion de una playlist");
-					System.out.println(" 4. Ver info general de playlists");
-					System.out.println(" 5. Ver canciones con duracion de mis playlists");
-					System.out.println(" 6. verificar quien creo una playlist");
-					System.out.println(" 7. Reproducir una cancion aleatoria de una playlist");
-					System.out.println(" 8. Reproducir una cancion de una playlist");
-					System.out.println(" 9. Ver la duracion total de todas las playlists (incluido Me gusta y Favoritos)");
-					System.out.println(" 10. Ver si una cancion se repite en varias playlists");
-					System.out.println(" 11. Crear una playlist");
-					System.out.println(" 12. Descubrir a mi artista favorito");
-					System.out.println(" 13. Salir de la biblioteca");
+					System.out.println(" 4. Agregar un Artista a mis artistas");
+					System.out.println(" 5. Eliminar un Artista de mis artistas");
+					System.out.println(" 6. Ver info general de playlists");
+					System.out.println(" 7. Ver canciones con duracion de mis playlists");
+					System.out.println(" 8. verificar quien creo una playlist");
+					System.out.println(" 9. Reproducir una cancion aleatoria de una playlist");
+					System.out.println(" 10. Reproducir una cancion de una playlist");
+					System.out.println(" 11. Ver la duracion total de todas las playlists (incluido Me gusta y Favoritos)");
+					System.out.println(" 12. Ver si una cancion se repite en varias playlists");
+					System.out.println(" 13. Crear una playlist");
+					System.out.println(" 14. Descubrir a mi artista favorito");
+					System.out.println(" 15. Salir de la biblioteca");
 
 					opcion2 = (int) readInt();
 
@@ -267,9 +269,17 @@ public class App {
 							break;
 						case 4:
 							System.out.println("-----------------------------------------");
-							infoPlaylist(usuario);
+							agregarArtista(usuario);
 							break;
 						case 5:
+							System.out.println("-----------------------------------------");
+							eliminarArtista(usuario);
+							break;
+						case 6:
+							System.out.println("-----------------------------------------");
+							infoPlaylist(usuario);
+							break;
+						case 7:
 							System.out.println("-----------------------------------------");
 							for (Playlist playlist : usuario.getPlaylists()) {
 								System.out.println("Nombre de la playlist: "+playlist.getNombre()+"\n");
@@ -282,35 +292,35 @@ public class App {
 								System.out.println();
 							}
 							break;
-						case 6:
+						case 8:
 							System.out.println("-----------------------------------------");
 							creador(usuario);
 							break;
-						case 7:
+						case 9:
 							System.out.println("-----------------------------------------");
 							repPlayl(usuario);
 							break;
-						case 8:
+						case 10:
 							System.out.println("-----------------------------------------");
 							playl(usuario);
 							break;
-						case 9:
+						case 11:
 							System.out.println("-----------------------------------------");
 							duracion(usuario);
 							break;
-						case 10:
+						case 12:
 							System.out.println("-----------------------------------------");
 							repite(usuario);
 							break;
-						case 11:
+						case 13:
 							System.out.println("-----------------------------------------\nRecuerda que las playlists deben tener nombres diferentes");
 							crearplaylist(usuario);
 							break;
-						case 12:
+						case 14:
 							System.out.println("-----------------------------------------\nEnhorabuena!\nTu artista favorito es: "+usuario.artista_favorito());
 							break;
 						}
-					if (opcion2 != 13) {
+					if (opcion2 != 15) {
 						System.out.println();
 						System.out.println("\nPresione Enter para continuar");
 						try {
@@ -319,7 +329,7 @@ public class App {
 							e.printStackTrace();
 						}
 					}
-				} while (opcion2 != 13);
+				} while (opcion2 != 15);
 				return;
 				}
 			}
@@ -370,6 +380,40 @@ public class App {
 			
 		}
 		System.out.println("La playlist ingresada no existe");
+	}
+	static void agregarArtista(Usuario usuario) {
+		System.out.println("Ingrese nombre del artista que desea agregar:");
+		readString();
+		String nombrep= readString();
+				for (Artista artista: Artista.getArtistas()) {
+					if (nombrep.equals(artista.getNombre())){
+						for (Artista artista1: usuario.getMis_artistas().getArtistas()) {
+							if (artista1.getNombre().equals(artista.getNombre())){
+								System.out.println("El artista "+nombrep+" ya fue agregado anteriormente");
+								return;
+							}
+						}
+						usuario.agg_Miartistas(artista);
+						System.out.println("El artista "+artista.getNombre()+" se agrego con exito en mis artistas");
+						return;
+					}
+				}
+				System.out.println("El artistas ingresado no existe");
+				return;		
+	}
+	
+	static void eliminarArtista(Usuario usuario) {
+		System.out.println("Ingrese nombre del artista que desea eliminar de mis artistas:");
+		readString();
+		String nombreep= readString();
+		for (Artista artista: Artista.getArtistas()) {
+			if (nombreep.equals(artista.getNombre())){
+				System.out.println(usuario.elim_Misartistas(artista));
+				return;
+			}
+		}
+		System.out.println("El artistas ingresado no existe");
+		return;	
 	}
 	static void creador(Usuario usuario) {
 		System.out.println("Ingrese nombre de la playlist"+"\n");

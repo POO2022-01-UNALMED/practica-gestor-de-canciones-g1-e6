@@ -121,10 +121,10 @@ public class Usuario  implements Serializable, Persona {
     	}
     	if (presente==true) {
     		mis_artistas.elim_artista(artista);
-    		return"artista eliminado de mis artistas";
+    		return"artista "+artista.getNombre()+ " eliminado de mis artistas";
     	}
     	else {
-    		return"ERROR: el artista no existe en mis artistas";
+    		return"ERROR: el artista "+artista.getNombre()+" no existe en mis artistas";
     	}
     }
     public void agg_Playlist(Playlist playlist) {
