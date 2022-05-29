@@ -98,7 +98,12 @@ public class Playlist  implements Serializable {
 	public void setId_playlist(int id_playlist) {
 		this.id_real = id_playlist;
 	}
-	
+	public String creadorPlaylist() {
+	  return"Esta playlist fue creada por "+this.creador.getNombre()+"\n"+"Spotifoy todos los derechos reservados";	
+	}
+	public String toString() {
+		return"La playlist de nombre "+nombre+"\n"+ "fue creada por: "+creador.getNombre()+"\n"+"y tiene el id "+id_real;
+	}
 	//Mï¿½todos adicionales
 	
 	//Cambiï¿½ el tipo de retorno

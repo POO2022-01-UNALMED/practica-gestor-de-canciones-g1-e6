@@ -23,6 +23,12 @@ public class Me_gusta extends Playlist{
 		me_gustas.add(this);
 		//Set del id ya que queremos que sea la uno
 	}
+	public String creadorPlaylist() {
+		  return"Esta playlist fue creada por defecto"+"\n"+"Spotifoy todos los derechos reservados";	
+		}
+	public String toString() {
+		return"La playlist Me gusta es creada por Spotifoy al crear el usuario"+"\n"+ "y tiene el id "+getId_real();
+	}	
 	public void unlike(Cancion cancion) {
 		boolean presente=false;
     	for (Cancion c: this.getCanciones()) {

@@ -89,8 +89,6 @@ public class Usuario  implements Serializable, Persona {
     		return"ERROR: la cancion no existe en mis me gusta";
     	}
     }
-    //Y si ya estï¿½ o no existe el artista?
-    //vuelve y lo agrega todo bien
     public void agg_MisFavoritos(Cancion cancion) {
     	mis_favoritos.agg_cancion(cancion);
     }
@@ -195,13 +193,13 @@ public class Usuario  implements Serializable, Persona {
 		ArrayList<Artista> artistillas = getMis_artistas().getArtistas();
 
 		if(artistillas.isEmpty()){
-			return("no hay ningún artista en mis artistas");
+			return("no hay ningun artista en mis artistas");
 		}
 
-		//AcÃ¡ se crea el diccionario
+		//Aca se crea el diccionario
 		Hashtable<Artista, Integer> artistaYNumero = new Hashtable<Artista, Integer>();
 
-		//AcÃ¡ se itera sobre todas las canciones de las playlists y se agregan sus artistas al diccionario
+		//Aca se itera sobre todas las canciones de las playlists y se agregan sus artistas al diccionario
 		for(Playlist p: getPlaylists()){
 			for(Cancion c: p.getCanciones()){
 				if(artistillas.contains(c.getArtista()) && artistaYNumero.containsKey(c.getArtista())){
@@ -216,7 +214,7 @@ public class Usuario  implements Serializable, Persona {
 		int mayorCanciones = 0;
 		Artista mayorArtista = artistillas.get(0);
 
-		// AcÃ¡ se itera sobre el diccionario para ver cual es el que tiene mÃ¡s canciones 
+		// Aca se itera sobre el diccionario para ver cual es el que tiene mas canciones 
 		for (Map.Entry<Artista, Integer> entry : artistaYNumero.entrySet()){
 			if(entry.getValue() > mayorCanciones){
 				mayorCanciones = entry.getValue();
@@ -225,7 +223,7 @@ public class Usuario  implements Serializable, Persona {
 		}
 
 
-		// AcÃ¡ se hace mimimimi
+		// Aca� se hace mimimimi
 
 		return mayorArtista.getNombre();
 

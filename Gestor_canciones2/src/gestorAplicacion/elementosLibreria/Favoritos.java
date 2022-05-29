@@ -25,4 +25,10 @@ public class Favoritos extends Playlist{
 		super(creador, "Favoritos");
 		favoritos.add(this);
 	}
+	public String creadorPlaylist() {
+		  return"Esta playlist fue creada por defecto"+"\n"+"Spotifoy todos los derechos reservados";	
+		}
+	public String toString() {
+		return"La playlist Favoritos es creada por Spotifoy al crear el usuario"+"\n"+ "y tiene el id "+getId_real();
+	}	
 }

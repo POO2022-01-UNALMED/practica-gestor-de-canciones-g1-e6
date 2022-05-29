@@ -121,15 +121,72 @@ public class App {
 		Artista test6=new Artista("El rompe traperas", "Baby brrr brrrr", Genero.REGGAETON);
 		Artista test7=new Artista("bad chicken", "tssss", Genero.MUSICA_PARA_PELAR_POLLOS);
 		Artista test8=new Artista("el motila abuelas", "yeah", Genero.MUSICA_PARA_TUSAR_CALVOS);
+		Artista test12=new Artista("los gansos rosas", "you know where you are", Genero.ROCK);
+		Artista test13=new Artista("Hector lavoe", "La calle es una selva de cemento", Genero.SALSA);
+		Artista test14=new Artista("Resibalvin","si", Genero.RAP);
 		Cancion test2=new Cancion("A lavar el patio", 180, test6, Genero.REGGAETON);
+		Cancion test15=new Cancion("baños limpios y relucientes con salvo", 150, test6, Genero.REGGAETON);
+		Cancion test10=new Cancion("guelkon turi yangol", 120, test12, Genero.ROCK);
+		Cancion test16=new Cancion("La leyenda de la chucha y el culebrero", 250, test12, Genero.ROCK);
 		Cancion test3=new Cancion("El patito Juan", 180, test7, Genero.MUSICA_PARA_PELAR_POLLOS);
-		Cancion test4= new Cancion("Vamo a trapear", 120, test8, Genero.MUSICA_PARA_PELAR_POLLOS);
 		Cancion test5= new Cancion("A pelar pollos", 120, test6, Genero.MUSICA_PARA_PELAR_POLLOS);
-		Cancion test10=new Cancion("guelkon turi yangol", 120, test8, Genero.ROCK);
+		Cancion test17= new Cancion("La abuela esta de pelos", 75, test8, Genero.MUSICA_PARA_TUSAR_CALVOS);
+		Cancion test4= new Cancion("Vamo a trapear", 120, test8, Genero.MUSICA_PARA_TUSAR_CALVOS);
+		Cancion test18= new Cancion("Tiraera a marbelle", 546, test14, Genero.RAP);
+		Cancion test19= new Cancion("La visita a bellavista", 134, test14, Genero.RAP);
+		Cancion test20= new Cancion("El gran baron", 180, test13, Genero.SALSA);
+		Cancion test21= new Cancion("Juanito alimaña", 180, test13, Genero.SALSA);
+		
+		
+		
+		Playlist test11= new Playlist(test1, "Mejores voces femeninas de todos los tiempos");
+		Playlist test22= new Playlist(test, "Mejores canciones para pelar pollos en rionegro un domingo");
+		Playlist test23= new Playlist(test9, "Aprende a motilar con esta musica para tusar calvos");
+		test11.agg_cancion(test2);
+		test11.agg_cancion(test10);
+		test11.agg_cancion(test18);
+		test22.agg_cancion(test10);
+		test22.agg_cancion(test5);
+		test23.agg_cancion(test2);
+		test23.agg_cancion(test17);
+		test23.agg_cancion(test18);
+		test.agg_Playlist(test11);
+		test.agg_Playlist(test23);
+		test.agg_Playlist(test22);
 		test9.agg_Megusta(test2);
 		test9.agg_Megusta(test3);
 		test9.agg_Megusta(test4);
 		test9.agg_Megusta(test10);
+		test.agg_Megusta(test2);
+		test.agg_Megusta(test17);
+		test.agg_Megusta(test16);
+		test.agg_Megusta(test15);
+		test1.agg_Megusta(test2);
+		test1.agg_Megusta(test19);
+		test1.agg_Megusta(test21);
+		test1.agg_Megusta(test10);
+		test9.agg_MisFavoritos(test20);
+		test9.agg_MisFavoritos(test2);
+		test9.agg_MisFavoritos(test15);
+		test9.agg_MisFavoritos(test17);
+		test.agg_MisFavoritos(test21);
+		test.agg_MisFavoritos(test18);
+		test.agg_MisFavoritos(test3);
+		test.agg_MisFavoritos(test16);
+		test1.agg_MisFavoritos(test20);
+		test1.agg_MisFavoritos(test2);
+		test1.agg_MisFavoritos(test16);
+		test1.agg_MisFavoritos(test3);
+		test9.agg_Miartistas(test14);
+		test9.agg_Miartistas(test12);
+		test9.agg_Miartistas(test8);
+		test.agg_Miartistas(test6);
+		test.agg_Miartistas(test7);
+		test.agg_Miartistas(test12);
+		test1.agg_Miartistas(test6);
+		test1.agg_Miartistas(test12);
+		test1.agg_Miartistas(test14);
+		
 	}
 	static void creacionUsuario() {
 		System.out.println("Ingrese nombre del nuevo usuario:");
@@ -179,14 +236,16 @@ public class App {
 					System.out.println(" 1. Ver mis artistas");
 					System.out.println(" 2. Agregar una cancion a una playlist");
 					System.out.println(" 3. Eliminar una cancion de una playlist");
-					System.out.println(" 4. Ver mis playlists");
-					System.out.println(" 5. Reproducir una cancion aleatoria de una playlist");
-					System.out.println(" 6. Reproducir una cancion de una playlist");
-					System.out.println(" 7. Ver la duracion total de todas las playlists (incluido Me gusta y Favoritos)");
-					System.out.println(" 8. Ver si una cancion se repite en varias playlists");
-					System.out.println(" 9. Crear una playlist");
-					System.out.println(" 10. Descubrir a mi artista favorito");//Falta
-					System.out.println(" 11. Salir de la biblioteca");
+					System.out.println(" 4. Ver info general de playlists");
+					System.out.println(" 5. Ver canciones con duracion de mis playlists");
+					System.out.println(" 6. verificar quien creo una playlist");
+					System.out.println(" 7. Reproducir una cancion aleatoria de una playlist");
+					System.out.println(" 8. Reproducir una cancion de una playlist");
+					System.out.println(" 9. Ver la duracion total de todas las playlists (incluido Me gusta y Favoritos)");
+					System.out.println(" 10. Ver si una cancion se repite en varias playlists");
+					System.out.println(" 11. Crear una playlist");
+					System.out.println(" 12. Descubrir a mi artista favorito");
+					System.out.println(" 13. Salir de la biblioteca");
 
 					opcion2 = (int) readInt();
 
@@ -207,6 +266,10 @@ public class App {
 							break;
 						case 4:
 							System.out.println("-----------------------------------------");
+							infoPlaylist(usuario);
+							break;
+						case 5:
+							System.out.println("-----------------------------------------");
 							for (Playlist playlist : usuario.getPlaylists()) {
 								System.out.println("Nombre de la playlist: "+playlist.getNombre()+"\n");
 								for (Cancion cancion : playlist.getCanciones()) {
@@ -218,31 +281,35 @@ public class App {
 								System.out.println();
 							}
 							break;
-						case 5:
-							System.out.println("-----------------------------------------");
-							repPlayl(usuario);
-							break;
 						case 6:
 							System.out.println("-----------------------------------------");
-							playl(usuario);
+							creador(usuario);
 							break;
 						case 7:
 							System.out.println("-----------------------------------------");
-							duracion(usuario);
+							repPlayl(usuario);
 							break;
 						case 8:
 							System.out.println("-----------------------------------------");
-							repite(usuario);
+							playl(usuario);
 							break;
 						case 9:
+							System.out.println("-----------------------------------------");
+							duracion(usuario);
+							break;
+						case 10:
+							System.out.println("-----------------------------------------");
+							repite(usuario);
+							break;
+						case 11:
 							System.out.println("-----------------------------------------\nRecuerda que las playlists deben tener nombres diferentes");
 							crearplaylist(usuario);
 							break;
-						case 10:
+						case 12:
 							System.out.println("-----------------------------------------\nEnhorabuena!\nTu artista favorito es: "+usuario.artista_favorito());
 							break;
 						}
-					if (opcion2 != 11) {
+					if (opcion2 != 13) {
 						System.out.println();
 						System.out.println("\nPresione Enter para continuar");
 						try {
@@ -251,7 +318,7 @@ public class App {
 							e.printStackTrace();
 						}
 					}
-				} while (opcion2 != 11);
+				} while (opcion2 != 13);
 				return;
 				}
 			}
@@ -303,7 +370,27 @@ public class App {
 		}
 		System.out.println("La playlist ingresada no existe");
 	}
-	
+	static void creador(Usuario usuario) {
+		System.out.println("Ingrese nombre de la playlist"+"\n");
+		Playlist p;
+		readString();
+		String nombrep= readString();
+		for (Playlist playlist: usuario.getPlaylists()) {
+			if (nombrep.equals(playlist.getNombre())){
+				p=playlist;
+				System.out.println(playlist.creadorPlaylist());
+				return;
+			}
+		}
+		System.out.println("Playlist "+nombrep+" no esta agregada o no existe.");
+		return;
+	}
+	static void infoPlaylist(Usuario usuario) {
+		for (Playlist playlist: usuario.getPlaylists()) {
+			Playlist p=playlist;
+			System.out.println(p);
+		}
+	}
 	static void repPlayl(Usuario usuario) {
 		System.out.println("Ingrese nombre de la playlist de la que desea reproducir una canciÃ³n aleatoria:");
 		readString();
