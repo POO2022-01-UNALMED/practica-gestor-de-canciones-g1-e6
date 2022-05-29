@@ -178,7 +178,7 @@ public class App {
 					System.out.println(" 7. Ver la duracion total de todas las playlists (incluido Me gusta y Favoritos)");
 					System.out.println(" 8. Ver si una cancion se repite en varias playlists");
 					System.out.println(" 9. Crear una playlist");
-					System.out.println(" 10. Generar una playlist con canciones en me gusta de un artista en especifico");//Falta
+					System.out.println(" 10. Descubrir a mi artista favorito");//Falta
 					System.out.println(" 11. Salir de la biblioteca");
 
 					opcion2 = (int) readInt();
@@ -232,6 +232,7 @@ public class App {
 							crearplaylist(usuario);
 							break;
 						case 10:
+							System.out.println("Enhorabuena!\nTu artista favorito es: "+usuario.artista_favorito());
 							break;
 						}
 					if (opcion2 != 11) {
