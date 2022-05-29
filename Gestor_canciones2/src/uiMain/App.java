@@ -115,6 +115,7 @@ public class App {
 		Cancion.setCancionesCreadas((new ArrayList<Cancion>()));
 		Usuario.setUsuarios((new ArrayList<Usuario>()));
 		Artista.setArtistas((new ArrayList<Artista>()));
+		Playlist.setPlaylists(new ArrayList<Playlist>());
 		Usuario test9 = new Usuario("Carlos");
 		Usuario test= new Usuario("Manuel");
 		Usuario test1= new Usuario("PachoGOD");
@@ -152,7 +153,7 @@ public class App {
 		test23.agg_cancion(test18);
 		test.agg_Playlist(test11);
 		test.agg_Playlist(test23);
-		test.agg_Playlist(test22);
+		test1.agg_Playlist(test22);
 		test9.agg_Megusta(test2);
 		test9.agg_Megusta(test3);
 		test9.agg_Megusta(test4);
@@ -392,7 +393,7 @@ public class App {
 		}
 	}
 	static void repPlayl(Usuario usuario) {
-		System.out.println("Ingrese nombre de la playlist de la que desea reproducir una canción aleatoria:");
+		System.out.println("Ingrese nombre de la playlist de la que desea reproducir una cancion aleatoria:");
 		readString();
 		String nombrer= readString();
 		for (Playlist playlist: usuario.getPlaylists()) {
@@ -443,6 +444,11 @@ public class App {
 			if (nombreep.equals(playlist.getNombre())){
 				System.out.println("Ingrese nombre de la segunda playlist a comparar con "+playlist.getNombre()+":");
 				String nombreecp2= readString();
+				if(nombreecp2=="") {
+					System.out.println("Se compara por defecto con me gusta o con favoritos si la playlist ingresada es me gusta");
+					System.out.println(usuario.cancionSeRepite(playlist));
+					return;
+				}
 				for (Playlist playlist2: usuario.getPlaylists()) {
 					if (nombreecp2.equals(playlist2.getNombre())){
 						System.out.println(usuario.cancionSeRepite(playlist, playlist2));

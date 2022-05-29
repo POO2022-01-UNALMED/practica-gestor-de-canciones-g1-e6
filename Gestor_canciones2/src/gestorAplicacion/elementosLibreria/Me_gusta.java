@@ -37,7 +37,7 @@ public class Me_gusta extends Playlist{
     		}
     	}
     	if (presente==true) {
-    		this.getCanciones().remove(cancion);
+    		this.canciones.remove(cancion);
     	}
 	}
 }

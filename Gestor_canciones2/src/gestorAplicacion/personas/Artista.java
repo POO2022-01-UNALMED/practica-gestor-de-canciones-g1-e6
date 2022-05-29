@@ -137,7 +137,7 @@ public class Artista implements Serializable, Persona {
     		return"cancion eliminada";
     	}
     	else {
-    		return"ERROR: la cancion no est� subida o no es del artista";
+    		return"ERROR: la cancion no esta subida o no es del artista";
     	}
     }
 

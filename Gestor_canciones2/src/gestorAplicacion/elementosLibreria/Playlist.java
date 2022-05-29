@@ -13,11 +13,11 @@ public class Playlist  implements Serializable {
 		playlists = new ArrayList<Playlist>();
 	}
 	
-	private String nombre;
-	private ArrayList<Cancion> canciones;
-	private int duracion;
-	private int numero_canciones;
-	private Usuario creador;
+	public String nombre;
+	protected ArrayList<Cancion> canciones;
+	protected int duracion;
+	protected int numero_canciones;
+	protected Usuario creador;
 	private static int id_playlist = 1;
 	private int id_real;
 	

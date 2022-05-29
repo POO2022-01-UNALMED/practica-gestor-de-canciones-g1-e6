@@ -169,6 +169,31 @@ public class Usuario  implements Serializable, Persona {
 			return respuesta;
 		}
 	}
+	public String cancionSeRepite(Playlist playlist1){
+		ArrayList<Cancion> canciones1 = playlist1.getCanciones();
+		ArrayList<Cancion> canciones2 = mis_me_gusta.getCanciones();
+		if(playlist1.getNombre()=="Me gusta") {
+			canciones2 = mis_favoritos.getCanciones();
+		}
+
+		ArrayList<Cancion> repetidas = new ArrayList<Cancion>();
+
+		for(Cancion c: canciones1){
+			if(canciones2.contains(c)){
+				repetidas.add(c);
+			}
+		}
+		String respuesta = new String("Se repiten: \n");
+
+		if (repetidas.isEmpty()){
+			return "No hay canciones repetidas";
+		}else{
+			for(Cancion c: repetidas){
+				respuesta = respuesta + c.getNombre() + " del artista " + c.getArtista().getNombre()+"\n";
+			}
+			return respuesta;
+		}
+	}
 
 	public int duracion_total(){
 		ArrayList<Playlist> playlists = getPlaylists();
