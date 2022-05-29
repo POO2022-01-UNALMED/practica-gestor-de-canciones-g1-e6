@@ -169,16 +169,16 @@ public class App {
 			if (nombreb.equals(usuario.getNombre())){
 				do {
 					System.out.println("Bienvenido "+usuario.getNombre()+", estas en la biblioteca.\n¿Qué deseas hacer?\n");
-					System.out.println(" 1. Mostrar todas las playlists");
+					System.out.println(" 1. Ver mis artistas");
 					System.out.println(" 2. Agregar una cancion a una playlist");
 					System.out.println(" 3. Eliminar una cancion de una playlist");
-					System.out.println(" 4. Ver las canciones de todas mis playlists");
+					System.out.println(" 4. Ver mis playlists");
 					System.out.println(" 5. Reproducir una cancion aleatoria de una playlist");
 					System.out.println(" 6. Reproducir una cancion de una playlist");
 					System.out.println(" 7. Ver la duracion total de todas las playlists (incluido Me gusta y Favoritos)");
 					System.out.println(" 8. Ver si una cancion se repite en varias playlists");
 					System.out.println(" 9. Crear una playlist");
-					System.out.println(" 10. Generar una playlist con canciones en me gusta de un artista en especifico");//Falta
+					System.out.println(" 10. Descubrir a mi artista favorito");//Falta
 					System.out.println(" 11. Salir de la biblioteca");
 
 					opcion2 = (int) readInt();
@@ -186,8 +186,8 @@ public class App {
 					switch (opcion2) {
 						case 1:
 							System.out.println("-----------------------------------------");
-							for (Playlist playlist : usuario.getPlaylists()) {
-								System.out.println(playlist.getNombre());
+							for (Artista artista : usuario.getMis_artistas().getArtistas()) {
+								System.out.println(artista.getNombre());
 							}
 							break;
 						case 2:
@@ -232,6 +232,7 @@ public class App {
 							crearplaylist(usuario);
 							break;
 						case 10:
+							System.out.println("Enhorabuena!\nTu artista favorito es: "+usuario.artista_favorito());
 							break;
 						}
 					if (opcion2 != 11) {
