@@ -112,81 +112,66 @@ public class App {
 
 	}
 	static void inicializar() {
-		Cancion.setCancionesCreadas((new ArrayList<Cancion>()));
-		Usuario.setUsuarios((new ArrayList<Usuario>()));
-		Artista.setArtistas((new ArrayList<Artista>()));
-		Playlist.setPlaylists(new ArrayList<Playlist>());
-		Usuario test9 = new Usuario("Carlos");
-		Usuario test= new Usuario("Manuel");
-		Usuario test1= new Usuario("PachoGOD");
-		Artista test6=new Artista("El rompe traperas", "Baby brrr brrrr", Genero.REGGAETON);
-		Artista test7=new Artista("bad chicken", "tssss", Genero.MUSICA_PARA_PELAR_POLLOS);
-		Artista test8=new Artista("el motila abuelas", "yeah", Genero.MUSICA_PARA_TUSAR_CALVOS);
-		Artista test12=new Artista("los gansos rosas", "you know where you are", Genero.ROCK);
-		Artista test13=new Artista("Hector lavoe", "La calle es una selva de cemento", Genero.SALSA);
-		Artista test14=new Artista("Resibalvin","si", Genero.RAP);
-		Cancion test2=new Cancion("A lavar el patio", 180, test6, Genero.REGGAETON);
-		Cancion test15=new Cancion("baños limpios y relucientes con salvo", 150, test6, Genero.REGGAETON);
-		Cancion test10=new Cancion("guelkon turi yangol", 120, test12, Genero.ROCK);
-		Cancion test16=new Cancion("La leyenda de la chucha y el culebrero", 250, test12, Genero.ROCK);
-		Cancion test3=new Cancion("El patito Juan", 180, test7, Genero.MUSICA_PARA_PELAR_POLLOS);
-		Cancion test5= new Cancion("A pelar pollos", 120, test6, Genero.MUSICA_PARA_PELAR_POLLOS);
-		Cancion test17= new Cancion("La abuela esta de pelos", 75, test8, Genero.MUSICA_PARA_TUSAR_CALVOS);
-		Cancion test4= new Cancion("Vamo a trapear", 120, test8, Genero.MUSICA_PARA_TUSAR_CALVOS);
-		Cancion test18= new Cancion("Tiraera a marbelle", 546, test14, Genero.RAP);
-		Cancion test19= new Cancion("La visita a bellavista", 134, test14, Genero.RAP);
-		Cancion test20= new Cancion("El gran baron", 180, test13, Genero.SALSA);
-		Cancion test21= new Cancion("Juanito alimaña", 180, test13, Genero.SALSA);
-		
-		
-		
-		Playlist test11= new Playlist(test1, "Mejores voces femeninas de todos los tiempos");
-		Playlist test22= new Playlist(test, "Mejores canciones para pelar pollos en rionegro un domingo");
-		Playlist test23= new Playlist(test9, "Aprende a motilar con esta musica para tusar calvos");
-		test11.agg_cancion(test2);
-		test11.agg_cancion(test10);
-		test11.agg_cancion(test18);
-		test22.agg_cancion(test10);
-		test22.agg_cancion(test5);
-		test23.agg_cancion(test2);
-		test23.agg_cancion(test17);
-		test23.agg_cancion(test18);
-		test.agg_Playlist(test11);
-		test.agg_Playlist(test23);
-		test1.agg_Playlist(test22);
-		test9.agg_Megusta(test2);
-		test9.agg_Megusta(test3);
-		test9.agg_Megusta(test4);
-		test9.agg_Megusta(test10);
-		test.agg_Megusta(test2);
-		test.agg_Megusta(test17);
-		test.agg_Megusta(test16);
-		test.agg_Megusta(test15);
-		test1.agg_Megusta(test2);
-		test1.agg_Megusta(test19);
-		test1.agg_Megusta(test21);
-		test1.agg_Megusta(test10);
-		test9.agg_MisFavoritos(test20);
-		test9.agg_MisFavoritos(test2);
-		test9.agg_MisFavoritos(test15);
-		test9.agg_MisFavoritos(test17);
-		test.agg_MisFavoritos(test21);
-		test.agg_MisFavoritos(test18);
-		test.agg_MisFavoritos(test3);
-		test.agg_MisFavoritos(test16);
-		test1.agg_MisFavoritos(test20);
-		test1.agg_MisFavoritos(test2);
-		test1.agg_MisFavoritos(test16);
-		test1.agg_MisFavoritos(test3);
-		test9.agg_Miartistas(test14);
-		test9.agg_Miartistas(test12);
-		test9.agg_Miartistas(test8);
-		test.agg_Miartistas(test6);
-		test.agg_Miartistas(test7);
-		test.agg_Miartistas(test12);
-		test1.agg_Miartistas(test6);
-		test1.agg_Miartistas(test12);
-		test1.agg_Miartistas(test14);
+		//Cancion.setCancionesCreadas((new ArrayList<Cancion>()));
+		//Usuario.setUsuarios((new ArrayList<Usuario>()));
+		//Artista.setArtistas((new ArrayList<Artista>()));
+		//Playlist.setPlaylists(new ArrayList<Playlist>());
+		//Usuario test9 = new Usuario("Carlos");
+		//Usuario test= new Usuario("Manuel");
+		//Usuario test1= new Usuario("PachoGOD");
+		//Artista test6=new Artista("El rompe traperas", "Baby brrr brrrr", Genero.REGGAETON);
+		//Artista test7=new Artista("bad chicken", "tssss", Genero.MUSICA_PARA_PELAR_POLLOS);
+		//Artista test8=new Artista("el motila abuelas", "yeah", Genero.MUSICA_PARA_TUSAR_CALVOS);
+		//Artista test12=new Artista("los gansos rosas", "you know where you are", Genero.ROCK);
+		//Artista test13=new Artista("Hector lavoe", "La calle es una selva de cemento", Genero.SALSA);
+		//Artista test14=new Artista("Resibalvin","si", Genero.RAP);
+		//Cancion test2=new Cancion("A lavar el patio", 180, test6, Genero.REGGAETON);
+		/*
+		 * Cancion test15=new Cancion("baños limpios y relucientes con salvo", 150,
+		 * test6, Genero.REGGAETON); Cancion test10=new Cancion("guelkon turi yangol",
+		 * 120, test12, Genero.ROCK); Cancion test16=new
+		 * Cancion("La leyenda de la chucha y el culebrero", 250, test12, Genero.ROCK);
+		 * Cancion test3=new Cancion("El patito Juan", 180, test7,
+		 * Genero.MUSICA_PARA_PELAR_POLLOS); Cancion test5= new
+		 * Cancion("A pelar pollos", 120, test6, Genero.MUSICA_PARA_PELAR_POLLOS);
+		 * Cancion test17= new Cancion("La abuela esta de pelos", 75, test8,
+		 * Genero.MUSICA_PARA_TUSAR_CALVOS); Cancion test4= new
+		 * Cancion("Vamo a trapear", 120, test8, Genero.MUSICA_PARA_TUSAR_CALVOS);
+		 * Cancion test18= new Cancion("Tiraera a marbelle", 546, test14, Genero.RAP);
+		 * Cancion test19= new Cancion("La visita a bellavista", 134, test14,
+		 * Genero.RAP); Cancion test20= new Cancion("El gran baron", 180, test13,
+		 * Genero.SALSA); Cancion test21= new Cancion("Juanito alimaña", 180, test13,
+		 * Genero.SALSA);
+		 * 
+		 * 
+		 * 
+		 * Playlist test11= new Playlist(test1,
+		 * "Mejores voces femeninas de todos los tiempos"); Playlist test22= new
+		 * Playlist(test, "Mejores canciones para pelar pollos en rionegro un domingo");
+		 * Playlist test23= new Playlist(test9,
+		 * "Aprende a motilar con esta musica para tusar calvos");
+		 * test11.agg_cancion(test2); test11.agg_cancion(test10);
+		 * test11.agg_cancion(test18); test22.agg_cancion(test10);
+		 * test22.agg_cancion(test5); test23.agg_cancion(test2);
+		 * test23.agg_cancion(test17); test23.agg_cancion(test18);
+		 * test.agg_Playlist(test11); test.agg_Playlist(test23);
+		 * test1.agg_Playlist(test22); test9.agg_Megusta(test2);
+		 * test9.agg_Megusta(test3); test9.agg_Megusta(test4);
+		 * test9.agg_Megusta(test10); test.agg_Megusta(test2); test.agg_Megusta(test17);
+		 * test.agg_Megusta(test16); test.agg_Megusta(test15); test1.agg_Megusta(test2);
+		 * test1.agg_Megusta(test19); test1.agg_Megusta(test21);
+		 * test1.agg_Megusta(test10); test9.agg_MisFavoritos(test20);
+		 * test9.agg_MisFavoritos(test2); test9.agg_MisFavoritos(test15);
+		 * test9.agg_MisFavoritos(test17); test.agg_MisFavoritos(test21);
+		 * test.agg_MisFavoritos(test18); test.agg_MisFavoritos(test3);
+		 * test.agg_MisFavoritos(test16); test1.agg_MisFavoritos(test20);
+		 * test1.agg_MisFavoritos(test2); test1.agg_MisFavoritos(test16);
+		 * test1.agg_MisFavoritos(test3); test9.agg_Miartistas(test14);
+		 * test9.agg_Miartistas(test12); test9.agg_Miartistas(test8);
+		 * test.agg_Miartistas(test6); test.agg_Miartistas(test7);
+		 * test.agg_Miartistas(test12); test1.agg_Miartistas(test6);
+		 * test1.agg_Miartistas(test12); test1.agg_Miartistas(test14);
+		 */
 		
 	}
 	static void creacionUsuario() {
