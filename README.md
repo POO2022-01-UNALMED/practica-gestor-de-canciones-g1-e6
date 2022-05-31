@@ -11,10 +11,10 @@
 # Practica
 
 ## Funcionalidades
-- Mostrar duración total de todas las canciones en una playlist.
+- Mostrar duración total de todas las canciones de las playlist.
 - Reproducir canción aleatoria de una playlist
 - Indicar si una canción se repite en varias playlists.
-- Generan una playlist con canciones en me gusta de un artista en especifico.
+- Mostrar artista favorito.
 - Recomendar una canción a un usuasio en específico.
 
 ## Diagrama de clases
