@@ -27,7 +27,7 @@ public class App {
 	public static void main(String[] args) {
 		Deserializador.deserializarTodo();
 		inicializar();
-		System.out.println("\n===¡Saludos!===\n");
+		System.out.println("\n===Â¡Saludos!===\n");
 		                                                         	                                    
 		int opcion;
 		do {
@@ -64,10 +64,10 @@ public class App {
 				System.out.println("-----------------------------------------");
 				
 				//PedirNombre();
-				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÃ‘ADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST, crear playlist Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
+				//LA IDEA ES QUE SOLICITE NOMBRE DE USUARIO Y LUEGO PUEDA DESPLEGAR TODAS LAS PLAYLIST QUE TIENE AÃƒâ€˜ADIDAS, SE DEBERA INCLUIR OPCION DE AGG O ELIM CANCION DE UNA PLAYLIST, crear playlist Y TAMBIEN REPRODUCIR POR NOMBRE O ALEATORIO.
 				//ESTE MENU TAMBIEN DEBE TENER LAS OPCIONES:
-				//1. Mostrar duraciÃ³n total de todas las canciones en una playlist.
-				//2. Indicar si una canciÃ³n se repite en varias playlists. (en este podriamos aplicar ligadura dinamica, creando un apuntador tipo playlist pero que se le puede asignar a un me gusta o favoritos)
+				//1. Mostrar duraciÃƒÂ³n total de todas las canciones en una playlist.
+				//2. Indicar si una canciÃƒÂ³n se repite en varias playlists. (en este podriamos aplicar ligadura dinamica, creando un apuntador tipo playlist pero que se le puede asignar a un me gusta o favoritos)
 				//3. Generar una playlist con canciones en me gusta de un artista en especifico.
 				biblio();
 				break;
@@ -127,7 +127,7 @@ public class App {
 		//Artista test14=new Artista("Resibalvin","si", Genero.RAP);
 		//Cancion test2=new Cancion("A lavar el patio", 180, test6, Genero.REGGAETON);
 		/*
-		 * Cancion test15=new Cancion("ba�os limpios y relucientes con salvo", 150,
+		 * Cancion test15=new Cancion("baños limpios y relucientes con salvo", 150,
 		 * test6, Genero.REGGAETON); Cancion test10=new Cancion("guelkon turi yangol",
 		 * 120, test12, Genero.ROCK); Cancion test16=new
 		 * Cancion("La leyenda de la chucha y el culebrero", 250, test12, Genero.ROCK);
@@ -140,7 +140,7 @@ public class App {
 		 * Cancion test18= new Cancion("Tiraera a marbelle", 546, test14, Genero.RAP);
 		 * Cancion test19= new Cancion("La visita a bellavista", 134, test14,
 		 * Genero.RAP); Cancion test20= new Cancion("El gran baron", 180, test13,
-		 * Genero.SALSA); Cancion test21= new Cancion("Juanito alima�a", 180, test13,
+		 * Genero.SALSA); Cancion test21= new Cancion("Juanito alimaña", 180, test13,
 		 * Genero.SALSA);
 		 * 
 		 * 
@@ -233,7 +233,9 @@ public class App {
 					System.out.println(" 12. Ver si una cancion se repite en varias playlists");
 					System.out.println(" 13. Crear una playlist");
 					System.out.println(" 14. Descubrir a mi artista favorito");
-					System.out.println(" 15. Salir de la biblioteca");
+					System.out.println(" 15. Agregar playlist");
+					System.out.println(" 16. Eliminar playlist");
+					System.out.println(" 17. Salir de la biblioteca");
 
 					opcion2 = (int) readInt();
 
@@ -304,8 +306,16 @@ public class App {
 						case 14:
 							System.out.println("-----------------------------------------\nEnhorabuena!\nTu artista favorito es: "+usuario.artista_favorito());
 							break;
+						case 15:
+							System.out.println("-----------------------------------------\n");
+							aggPlaylist(usuario);
+							break;
+						case 16:
+							System.out.println("-----------------------------------------\n");
+							elimPlaylist(usuario);
+							break;
 						}
-					if (opcion2 != 15) {
+					if (opcion2 != 17) {
 						System.out.println();
 						System.out.println("\nPresione Enter para continuar");
 						try {
@@ -314,7 +324,7 @@ public class App {
 							e.printStackTrace();
 						}
 					}
-				} while (opcion2 != 15);
+				} while (opcion2 != 17);
 				return;
 				}
 			}
@@ -366,6 +376,7 @@ public class App {
 		}
 		System.out.println("La playlist ingresada no existe");
 	}
+	
 	static void agregarArtista(Usuario usuario) {
 		System.out.println("Ingrese nombre del artista que desea agregar:");
 		readString();
@@ -436,7 +447,7 @@ public class App {
 	}
 	
 	static void playl(Usuario usuario) {
-		System.out.println("Ingrese nombre de la playlist en la que desea reproducir una canción:");
+		System.out.println("Ingrese nombre de la playlist en la que desea reproducir una canciÃ³n:");
 		readString();
 		String nombreep= readString();
 		for (Playlist playlist: usuario.getPlaylists()) {
@@ -510,7 +521,43 @@ public class App {
 		System.out.println("La playlist ha sido creada exitosamente");
 		return;
 	}
+	
+	static void aggPlaylist(Usuario usuario) {
+		System.out.println("Ingrese nombre de la playlist que desea agregar:");
+		readString();
+		String nombrepa= readString();
+		for (Playlist playlist: usuario.getPlaylists()) {
+			if (nombrepa.equals(playlist.getNombre())){
+				System.out.println("Lo lamentamos, no fue posible agregar la playlist\nEsto puede deberse a que esta no existe o es los me gusta o favoritos de otro usuario");
+				return;
+			}
+		}
+		for (Playlist playlists: Playlist.getPlaylists()) {
+			if ( nombrepa.equals(playlists.getNombre()) ){
+					usuario.agg_Playlist(playlists);
+					System.out.println("La playlist "+playlists.getNombre()+" se agrego con exito");
+					return;
+			}
+		}
+		System.out.println("Lo lamentamos, no fue posible agregar la playlist\nEsto puede deberse a que esta no existe o es los me gusta o favoritos de otro usuario");
+		return;
+	}
 		
+	static void elimPlaylist(Usuario usuario) {
+		System.out.println("Ingrese nombre de la playlist que desea eliminar:");
+		readString();
+		String nombrepae= readString();
+		for (Playlist playlists: usuario.getPlaylists()) {
+			if ( (nombrepae.equals(playlists.getNombre()))  & !(playlists.getNombre().equals("Me gusta")) & !(playlists.getNombre().equals("Favoritos")) ){
+				usuario.elim_Playlist(playlists);
+				System.out.println("La playlist "+playlists.getNombre()+" se elimino con exito "+ (nombrepae.equals(playlists.getNombre()))  + (playlists.getNombre() != "Me gusta") + (playlists.getNombre() != "Favoritos"));
+				return;
+			}
+		}
+		System.out.println("Lo lamentamos, no fue posible eliminar la playlist\nEsto puede deberse a que esta no existe o es Me gusta o Favoritos (estas no se pueden eliminar)");
+		return;		
+	}
+	
     public static void guardar() {
 	    Serializador.serializarTodo();
     }
