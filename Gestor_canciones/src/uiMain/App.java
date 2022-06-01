@@ -550,7 +550,7 @@ public class App {
 		for (Playlist playlists: usuario.getPlaylists()) {
 			if ( (nombrepae.equals(playlists.getNombre()))  & !(playlists.getNombre().equals("Me gusta")) & !(playlists.getNombre().equals("Favoritos")) ){
 				usuario.elim_Playlist(playlists);
-				System.out.println("La playlist "+playlists.getNombre()+" se elimino con exito "+ (nombrepae.equals(playlists.getNombre()))  + (playlists.getNombre() != "Me gusta") + (playlists.getNombre() != "Favoritos"));
+				System.out.println("La playlist "+playlists.getNombre()+" se elimino con exito");
 				return;
 			}
 		}
