@@ -67,4 +67,23 @@ class Usuario(Persona):
             return("playlist eliminada")
         else:
             return("ERROR: la playlist no existe o no esta agregada")
-    
+        
+        
+    def cancionSeRepite(playlist1, playlist2):
+        canciones1 = playlist1.getCanciones()
+        canciones2 = playlist2.getCanciones()
+        
+        repetidas = []
+        
+        for cancion in canciones1:
+            if cancion in canciones2:
+                repetidas.append(cancion)
+            
+        respuesta = "se repiten: \n"
+        
+        if len(repetidas) == 0:
+            return "No hay canciones repetidas"
+        else:
+            for cancion in repetidas:
+                respuesta = respuesta + cancion.getNombre() + "del artista " + cancion.getArtista().getNombre() + "\n"
+            return respuesta    
