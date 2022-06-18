@@ -87,3 +87,41 @@ class Usuario(Persona):
             for cancion in repetidas:
                 respuesta = respuesta + cancion.getNombre() + "del artista " + cancion.getArtista().getNombre() + "\n"
             return respuesta    
+
+    def duracion_total(self):
+        playlists = self.getPlaylists()
+        duracion_total = 0
+
+        for playlist in playlists:
+            canciones = playlist.getCanciones()
+            duracion_total_playlist = 0
+
+            for cancion in canciones:
+                duracion_total_playlist += cancion.getDuracion()
+            duracion_total += duracion_total_playlist
+
+        return duracion_total
+
+    
+    def artista_favorito(self):
+        artistillas = self.getMis_artistas().getArtistas()
+
+        if len(artistillas) == 0:
+            return "no hay ningun artista en mis artistas"
+
+        artistaYNumero = {}
+
+        for playlist in self.getPlaylists():
+            for cancion in playlist.getCanciones():
+                if cancion.getArtista() in artistillas and cancion.getArtista() in artistaYNumero:
+                    artistaYNumero[cancion.getArtista()] += 1
+                else:
+                    artistaYNumero[cancion.getArtista()] = 1
+                    
+        #como saben, acá se hace mimimimi
+        return  max(artistaYNumero, key=artistaYNumero.get)
+
+            
+        
+
+
