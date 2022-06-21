@@ -1,48 +1,69 @@
+from cgitb import text
 from curses import window
 import tkinter as tk
 
-ventana = tk.Tk()
-ventana.geometry("450x300")
+class Inicio():
 
-labelInicio = tk.Label(ventana, text="inicio")
-labelInicio.pack(side="top")
+    def __init__(self):
 
+        self.hojaActual = 0
+        self.hojasDeVida = ["Carlos", "Manuel", "David"]
 
+        self.ventana = tk.Tk()
+        self.ventana.geometry("450x300")
 
-frameLeft = tk.Frame(ventana, width=100, height=100, highlightthickness=1, highlightbackground="black")
-frameLeft.pack(side="left", fill="y", expand=True)
-
-saludoBienvenida = tk.Label(frameLeft, text="acá va la descripción   p3")
-saludoBienvenida.pack(side="top", fill="x")
-
-botonAcceso = tk.Button(frameLeft, text= "acá se accede al sistema  p4")
-botonAcceso.pack(side="bottom", fill="x")
+        self.labelInicio = tk.Label(self.ventana, text="inicio")
+        self.labelInicio.pack(side="top")
 
 
 
+        self.frameLeft = tk.Frame(self.ventana, width=100, height=100, highlightthickness=1, highlightbackground="black")
+        self.frameLeft.pack(side="left", fill="y", expand=True)
 
+        self.saludoBienvenida = tk.Label(self.frameLeft, text="acá va la descripción   p3")
+        self.saludoBienvenida.pack(side="top", fill="x")
 
-frameRight = tk.Frame(ventana, width=100, height=100, highlightthickness=1, highlightbackground="black")
-frameRight.pack(side="right",fill="y", expand=True)
-
-hojaDeVida = tk.Button(frameRight, text="acá va la hoja de vida p5")
-hojaDeVida.pack(side="top", fill="x")
-
-frameImagenes = tk.Frame(frameRight, highlightthickness=0.5, highlightbackground="black")
-frameImagenes.pack(side="bottom", fill="y")
-
-imagene1 = tk.Label(frameImagenes, text="imagen")
-imagene2 = tk.Label(frameImagenes, text="imagen")
-imagene3 = tk.Label(frameImagenes, text="imagen")
-imagene4 = tk.Label(frameImagenes, text="imagen")
-
-imagene1.grid(row=0, column=0)
-imagene1.grid(row=0, column=1)
-imagene1.grid(row=0, column=2)
-imagene1.grid(row=0, column=3)
+        self.botonAcceso = tk.Button(self.frameLeft, text= "acá se accede al sistema  p4")
+        self.botonAcceso.pack(side="bottom", fill="x")
 
 
 
 
 
-ventana.mainloop()
+        self.frameRight = tk.Frame(self.ventana, width=100, height=100, highlightthickness=1, highlightbackground="black")
+        self.frameRight.pack(side="right",fill="y", expand=True)
+
+        self.hojaDeVida = tk.Button(self.frameRight, text= self.hojasDeVida[self.hojaActual], command=self.cambiarHoja)
+        self.hojaDeVida.pack(side="top", fill="x")
+
+        self.frameImagenes = tk.Frame(self.frameRight, highlightthickness=0.5, highlightbackground="black")
+        self.frameImagenes.pack(side="bottom", fill="y")
+
+        self.imagene1 = tk.Label(self.frameImagenes, text="imagen")
+        self.imagene2 = tk.Label(self.frameImagenes, text="imagen")
+        self.imagene3 = tk.Label(self.frameImagenes, text="imagen")
+        self.imagene4 = tk.Label(self.frameImagenes, text="imagen")
+
+        self.imagene1.grid(row=0, column=0)
+        self.imagene1.grid(row=0, column=1)
+        self.imagene1.grid(row=0, column=2)
+        self.imagene1.grid(row=0, column=3)
+
+        self.ventana.mainloop()
+
+
+    def cambiarHoja(self):
+        if self.hojaActual == 2:
+            self.hojaActual = 0
+        else:
+            self.hojaActual = self.hojaActual +1
+
+        self.hojaDeVida["text"] = self.hojasDeVida[self.hojaActual]
+
+
+def main():
+    mi_app = Inicio()
+    return 0
+
+if __name__ == '__main__':
+    main()
