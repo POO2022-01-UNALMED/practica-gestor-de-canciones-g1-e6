@@ -13,7 +13,7 @@ class Inicio(Frame):
 
         self.ventana = tk.Tk()
         self.ventana.title("Inicio")
-        self.ventana.geometry("450x300")
+        self.ventana.geometry("680x420")
 
 
 
