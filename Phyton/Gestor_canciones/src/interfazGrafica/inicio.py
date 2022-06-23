@@ -1,8 +1,10 @@
 from cgitb import text
-from curses import window
+#from curses import window
+from tkinter import Label, Entry, Button, Text, PhotoImage, Frame, INSERT, scrolledtext
 import tkinter as tk
+from ventana_principal import Ventana_principal
 
-class Inicio():
+class Inicio(Frame):
 
     def __init__(self):
 
@@ -10,10 +12,8 @@ class Inicio():
         self.hojasDeVida = ["Carlos", "Manuel", "David"]
 
         self.ventana = tk.Tk()
+        self.ventana.title("Inicio")
         self.ventana.geometry("450x300")
-
-        self.labelInicio = tk.Label(self.ventana, text="inicio")
-        self.labelInicio.pack(side="top")
 
 
 
@@ -23,8 +23,10 @@ class Inicio():
         self.saludoBienvenida = tk.Label(self.frameLeft, text="acá va la descripción   p3")
         self.saludoBienvenida.pack(side="top", fill="x")
 
-        self.botonAcceso = tk.Button(self.frameLeft, text= "acá se accede al sistema  p4")
+        self.botonAcceso = tk.Button(self.frameLeft, text= "acceder a la pantalla principal:", command=self.abrir_ventana_principal)
         self.botonAcceso.pack(side="bottom", fill="x")
+        
+        
 
 
 
@@ -51,7 +53,9 @@ class Inicio():
 
         self.ventana.mainloop()
 
-
+    def abrir_ventana_principal(self):
+            self.ventana.destroy()
+            Ventana_principal()
     def cambiarHoja(self):
         if self.hojaActual == 2:
             self.hojaActual = 0
@@ -61,9 +65,3 @@ class Inicio():
         self.hojaDeVida["text"] = self.hojasDeVida[self.hojaActual]
 
 
-def main():
-    mi_app = Inicio()
-    return 0
-
-if __name__ == '__main__':
-    main()
