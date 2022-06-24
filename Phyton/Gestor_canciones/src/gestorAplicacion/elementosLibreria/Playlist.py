@@ -47,7 +47,7 @@ class Playlist():
             self.canciones.append(cancion)
             self.numero_canciones += 1
             self.duracion += cancion.getDuracion()
-            return "la canción fue agregada con exito..."
+            #return "la canción fue agregada con exito..."
         
     def elim_cancion(self, cancion):
         if cancion in self.canciones:

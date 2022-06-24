@@ -3,6 +3,8 @@ from gestorAplicacion.elementosLibreria.Me_gusta import Me_gusta
 from gestorAplicacion.elementosLibreria.Favoritos import Favoritos
 from gestorAplicacion.elementosLibreria.Mis_artistas import Mis_artistas
 from gestorAplicacion.elementosLibreria.Biblioteca import Biblioteca
+from gestorAplicacion.elementosLibreria.Genero import Genero
+from gestorAplicacion.elementosLibreria.Cancion import Cancion
 
 class Usuario(Persona):
     usuarios=[]
@@ -15,7 +17,7 @@ class Usuario(Persona):
         self._mis_favoritos=Favoritos(self)
         Usuario.usuarios.append(self)
     def datosPersona(self):
-        return "Nombre: " + self.nombre + "\n" + "Tipo: Usuario normal" + "\n" +"numero de canciones en me gusta: " + len(self._mis_me_gusta.getCanciones()) + "\n" + "número de canciones en favoritos: " + len(self._mis_favoritos.getCanciones())
+        return "Nombre: " + self.nombre + "\n" + "Tipo: Usuario normal" + "\n" +"numero de canciones en me gusta: " + str(len(self._mis_me_gusta.getCanciones())) + "\n" + "número de canciones en favoritos: " + str(len(self._mis_favoritos.getCanciones()))
     def getMis_artistas(self):
         return self._mis_artistas
     def setMis_artistas(self, arti):
@@ -120,6 +122,42 @@ class Usuario(Persona):
                     
         #como saben, acá se hace mimimimi
         return  max(artistaYNumero, key=artistaYNumero.get)
+    def recomendar_cancion(self):
+        rock=0
+        reggaeton=0
+        salsa=0
+        rap=0
+        pelar=0
+        tusar=0
+        for cancion in self.getMis_me_gusta().getCanciones():
+            if cancion.getGenero()==Genero.ROCK: rock+=1
+            elif cancion.getGenero()==Genero.REGGAETON: reggaeton+=1
+            elif cancion.getGenero()==Genero.RAP: rap+=1
+            elif cancion.getGenero()==Genero.SALSA: salsa+=1
+            elif cancion.getGenero()==Genero.MUSICA_PARA_PELAR_POLLOS: pelar+=1
+            elif cancion.getGenero()==Genero.MUSICA_PARA_TUSAR_CALVOS: tusar+=1
+        mayor=max([rock,reggaeton,salsa,rap,pelar,tusar])
+        if (mayor==rock): mayorGen=Genero.ROCK
+        if (mayor==reggaeton): mayorGen=Genero.REGGAETON
+        if (mayor==salsa): mayorGen=Genero.SALSA
+        if (mayor==rap): mayorGen=Genero.RAP
+        if (mayor==pelar): mayorGen=Genero.MUSICA_PARA_PELAR_POLLOS
+        if (mayor==tusar): mayorGen=Genero.MUSICA_PARA_TUSAR_CALVOS
+        encontrada=False
+        if len(self.getMis_me_gusta().getCanciones())==0:
+            return(Cancion.cancionesCreadas[0])
+        for cancion in Cancion.cancionesCreadas:
+          num=0
+          if cancion.getGenero().value==mayorGen.value:
+            for c1 in self.getMis_me_gusta().getCanciones():
+                if (c1!=cancion)==True:
+                    num+=1
+                else:
+                    continue
+            if num==len(self.getMis_me_gusta().getCanciones()):
+                return(cancion)
+          else:
+            continue
 
             
         

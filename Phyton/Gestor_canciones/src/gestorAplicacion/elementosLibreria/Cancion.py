@@ -8,9 +8,9 @@ class Cancion:
         self._duracion = duracion
         self._artista = artista
         self._genero = genero
-        Artista.getCanciones.append(self)
-        id_cancion += 1
-        self._id_realC = id_cancion
+        self._artista.getCanciones().append(self)
+        Cancion.id_cancion += 1
+        self._id_realC = Cancion.id_cancion
         Cancion.cancionesCreadas.append(self)
     def setNombre(self, nombre):
         self.nombre = nombre
@@ -32,10 +32,6 @@ class Cancion:
         self._id_realC = id_cancion
     def getId_cancion(self):
         return self._id_realC
-    def getCancionesCreadas(self):
-        return self.cancionesCreadas
-    def setCancionesCreadas(self, cancionesCreadas):
-        self.cancionesCreadas = cancionesCreadas
     def play(self):
         return "Reproduciendo: ", self.nombre
     def pause(self):

@@ -1,8 +1,8 @@
 from gestorAplicacion.elementosLibreria.Playlist import Playlist
 class Favoritos(Playlist):
     favoritos = []
-    def _init_(self, creador):
-      super()._init_(self, creador, "Favoritos")
+    def __init__(self, creador):
+      super().__init__(creador, "Favoritos")
       Favoritos.favoritos.append(self)
     def creadorPlaylist(self):
         return   "Esta playlist fue creada por defecto"+"\n"+"Spotifoy todos los derechos reservados"

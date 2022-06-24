@@ -3,8 +3,8 @@ class Me_gusta(Playlist):
     #Es broma, pero si quieres no lo es
     me_gustas = []
 
-    def _init_(self, creador):
-      super()._init_(self, creador, "Me gusta")
+    def __init__(self, creador):
+      super().__init__( creador, "Me gusta")
       Me_gusta.me_gustas.append(self)
     def creadorPlaylist(self):
         return   "Esta playlist fue creada por defecto"+"\n"+"Spotifoy todos los derechos reservados"
