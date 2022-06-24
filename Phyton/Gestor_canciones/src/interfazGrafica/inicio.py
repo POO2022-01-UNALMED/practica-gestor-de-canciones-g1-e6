@@ -72,7 +72,7 @@ class Inicio(Frame):
         self.imagene2.config(text = imagenes[1])
         self.imagene3.config(text = imagenes[2])
         self.imagene4.config(text = imagenes[3])
-            
+
 
 
 

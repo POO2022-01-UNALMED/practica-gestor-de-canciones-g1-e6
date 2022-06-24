@@ -10,9 +10,7 @@ from gestorAplicacion.personas.Usuario import Usuario
 import pathlib
 import os
 
-class Serializador():
-    
-    def serializar(lista, className):
+def serializar(lista, className):
         def camino(className):
             string = os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\"+className+".txt")
             return string
@@ -27,14 +25,14 @@ class Serializador():
         except:
             print("paila tuqui tuqui muñeco")
 
-    def serializarTodo():
+def serializarTodo():
 
-        Serializador.serializar(Biblioteca.bibliotecas, "Biblioteca")
-        Serializador.serializar(Cancion.cancionesCreadas, "Canciones")
-        Serializador.serializar(Favoritos.favoritos, "Favotitos")
-        Serializador.serializar(Me_gusta.me_gustas, "Me gusta")
-        Serializador.serializar(Mis_artistas.mis_artistas, "Mis artistas")
-        Serializador.serializar(Playlist.playlists, "Playlists")
-        Serializador.serializar(Artista.artistas, "Artistas")
-        Serializador.serializar(Usuario.usuarios, "Usuarios")
+        serializar(Biblioteca.bibliotecas, "Biblioteca")
+        serializar(Cancion.cancionesCreadas, "Canciones")
+        serializar(Favoritos.favoritos, "Favotitos")
+        serializar(Me_gusta.me_gustas, "Me gusta")
+        serializar(Mis_artistas.mis_artistas, "Mis artistas")
+        serializar(Playlist.playlists, "Playlists")
+        serializar(Artista.artistas, "Artistas")
+        serializar(Usuario.usuarios, "Usuarios")
 
