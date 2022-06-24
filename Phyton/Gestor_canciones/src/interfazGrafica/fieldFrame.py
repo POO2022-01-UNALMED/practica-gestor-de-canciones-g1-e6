@@ -57,4 +57,4 @@ class FieldFrame(Frame):
         return self._elementos[indice].get()
 
     def crearBotones(self, comando1):
-        aceptar = Button(self, text="Aceptar", font = ("Verdana", 12), fg = "white", bg = "#245efd", command=comando1).grid(pady = 50, column = 0, row = len(self._criterios)+1)
+        aceptar = Button(self, text="Aceptar", font = ("Verdana", 12), fg = "white", bg = "#007bff", command=comando1).grid(pady = 50, column = 0, row = len(self._criterios)+1)
