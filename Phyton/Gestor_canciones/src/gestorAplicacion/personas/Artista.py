@@ -1,4 +1,4 @@
-from Persona import Persona
+from gestorAplicacion.personas.Persona import Persona
 class Artista(Persona):
     id_artista=1
     artistas=[]

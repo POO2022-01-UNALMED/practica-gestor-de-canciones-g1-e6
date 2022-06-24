@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import Label
-#from baseDatos.Serializador import serializarTodo
-#from baseDatos.Deserializador import Deserializador
+from baseDatos.Serializador import serializarTodo
+from baseDatos.Deserializador import Deserializador
 
 class Ventana_principal:
     def __init__(self):
@@ -31,8 +31,8 @@ class Ventana_principal:
             info = Label(ventana2, text = textoInfo, justify = "left", font=("Verdana", 12))
             info.pack(fill=tk.Y, expand=True)
        def salir():
-        from inicio import Inicio
-        #serializarTodo()
+        from interfazGrafica.inicio import Inicio
+        serializarTodo()
         self.ventana.destroy()
         Inicio()
 

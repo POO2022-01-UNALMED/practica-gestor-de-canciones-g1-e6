@@ -2,7 +2,7 @@ from cgitb import text
 #from curses import window
 from tkinter import Label, Entry, Button, Text, PhotoImage, Frame, INSERT, scrolledtext
 import tkinter as tk
-from ventana_principal import Ventana_principal
+from interfazGrafica.ventana_principal import Ventana_principal
 
 class Inicio(Frame):
 

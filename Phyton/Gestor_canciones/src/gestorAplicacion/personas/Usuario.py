@@ -1,8 +1,8 @@
-from Persona import Persona
-from elementosLibreria.Me_gusta import Me_gusta
-from elementosLibreria.Favoritos import Favoritos
+from gestorAplicacion.personas.Persona import Persona
+from gestorAplicacion.elementosLibreria.Me_gusta import Me_gusta
+from gestorAplicacion.elementosLibreria.Favoritos import Favoritos
 from gestorAplicacion.elementosLibreria.Mis_artistas import Mis_artistas
-from elementosLibreria.Biblioteca import Biblioteca
+from gestorAplicacion.elementosLibreria.Biblioteca import Biblioteca
 
 class Usuario(Persona):
     usuarios=[]

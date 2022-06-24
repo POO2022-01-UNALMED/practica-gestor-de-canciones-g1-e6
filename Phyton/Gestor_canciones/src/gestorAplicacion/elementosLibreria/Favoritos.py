@@ -1,4 +1,4 @@
-from Playlist import Playlist
+from gestorAplicacion.elementosLibreria.Playlist import Playlist
 class Favoritos(Playlist):
     favoritos = []
     def _init_(self, creador):

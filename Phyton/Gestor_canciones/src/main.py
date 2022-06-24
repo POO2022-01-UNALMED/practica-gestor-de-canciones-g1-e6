@@ -1,4 +1,4 @@
-from inicio import Inicio
+from interfazGrafica.inicio import Inicio
 def main():
     mi_app = Inicio()
     return 0

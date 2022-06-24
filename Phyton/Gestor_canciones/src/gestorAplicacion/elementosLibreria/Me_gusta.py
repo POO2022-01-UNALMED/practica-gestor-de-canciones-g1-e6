@@ -1,4 +1,4 @@
-from Playlist import Playlist
+from gestorAplicacion.elementosLibreria.Playlist import Playlist
 class Me_gusta(Playlist):
     #Es broma, pero si quieres no lo es
     me_gustas = []

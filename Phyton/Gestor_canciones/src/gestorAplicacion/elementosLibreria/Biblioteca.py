@@ -1,7 +1,6 @@
 from random import random
-from typing_extensions import Self
-from Genero import Genero
-from Cancion import Cancion
+from gestorAplicacion.elementosLibreria.Genero import Genero
+from gestorAplicacion.elementosLibreria.Cancion import Cancion
 class Biblioteca:
     bibliotecas = []
     def __init__(self, usuario):
