@@ -54,4 +54,19 @@ class Ventana_principal2(Tk):
        menuBar.add_cascade(label="Procesos y consultas", menu=procesos)
        self.config(menu=menuBar)
 
+       #Frame inicial
+
+       frameInicial= Frame(self)
+       nombreInicial = Label(frameInicial, text="Como usar la biblioteca?", font=("Verdana", 16), fg = "#31a919")
+       descInicial = Label(frameInicial,text="Aqui en la biblioteca puedes acceder a la mayoría de funciones de spotifoi \n desde Procesos y consultas puedes; \n -gestionar mis artistas: ver, agregar y eliminar \n -gestionar playlits: info general, info de las canciones, crear y eliminar \n funciones especiales: \n descubrir artista favorito \n ver duracion total de playlists \n ver si cancion se repite en varias playlist \n para regresar a pantalla principal: \n Archivo -> Regresar a la pantalla principal",font=("Verdana", 12))
+       
+       Ventana_principal2.frames.append(frameInicial)
+
+       nombreInicial.pack()
+       descInicial.pack()
+
+       Ventana_principal2.frames.append(frameInicial)
+
+       Vista(frameInicial)
+
        self.mainloop()

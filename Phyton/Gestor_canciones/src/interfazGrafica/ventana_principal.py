@@ -29,7 +29,8 @@ class Ventana_principal(Tk):
             text.delete("1.0", "end")
             text.insert(INSERT, string)
             text.pack(fill=X, expand=True, padx=(10,10))
-
+       
+      
        #Funciones basicas de archivo y ayuda
        def aplicacion():
             ventana1 = tk.Tk()
@@ -86,6 +87,21 @@ class Ventana_principal(Tk):
        menuBar.add_cascade(label="Ayuda", menu=ayuda)
        self.config(menu=menuBar)
 
+       #Frame inicial
+
+       frameInicial= Frame(self)
+       nombreInicial = Label(frameInicial, text="Como usar Spotifoi?", font=("Verdana", 16), fg = "#31a919")
+       descInicial = Label(frameInicial,text="En spotifoi puedes crear varios usuarios y gestionar sus bibliotecas \n todas las funcionalidades las encuentras en procesos y consultas \n desde este pestaña puedes crear y visualizar usuarios \n tambien visualizar las canciones subidas por artistas \n ademas de recomendar una cancion a un usuario \n para ingresar en la biblioteca de un usuario sigue la ruta: \n Procesos y consultas -> Desplegar la biblioteca de un usuario -> ingresa nombre \n desde allí gestionas playlist, artistas y demas de un usuario \n para obtener información de los creadores: \n ayuda -> acerca de \n para info general de Spotifoi: \n Archivo -> Aplicacion \n para regresar a la pantalla inicial: \n Archivo -> Guardar y salir",font=("Verdana", 12))
+       
+       Ventana_principal.frames.append(frameInicial)
+
+       nombreInicial.pack()
+       descInicial.pack()
+
+       Ventana_principal.frames.append(frameInicial)
+
+       Vista(frameInicial)
+
        #Funcion para crear un usuario
        def crearUsuario():
           nombre=FieldCrearUsuario.getValue("Nombre")
@@ -96,7 +112,7 @@ class Ventana_principal(Tk):
        #FieldFrame para crear usuario
 
        frameCrearUsuario= Frame(self)
-       nombreCrearUsuario = Label(frameCrearUsuario, text="Crear un usuario", font=("Verdana", 16), fg = "#007bff")
+       nombreCrearUsuario = Label(frameCrearUsuario, text="Crear un usuario", font=("Verdana", 16), fg = "#31a919")
        descCrearUsuario = Label(frameCrearUsuario,text="Por favor ingrese el nombre del nuevo usuario",font=("Verdana", 12))
        FieldCrearUsuario = FieldFrame(frameCrearUsuario, None, ["Nombre"], None, None, None)
        FieldCrearUsuario.crearBotones(crearUsuario)
@@ -126,7 +142,7 @@ class Ventana_principal(Tk):
 
        #FieldFrame para recomendar cancion
        frameRecomendacion= Frame(self)
-       nombreRecomendacion = Label(frameRecomendacion, text="Recomendar cancion a un usuario", font=("Verdana", 16), fg = "#007bff")
+       nombreRecomendacion = Label(frameRecomendacion, text="Recomendar cancion a un usuario", font=("Verdana", 16), fg = "#31a919")
        descRecomendacion = Label(frameRecomendacion,text="Por favor ingrese el nombre del usuario a recomendar",font=("Verdana", 12))
        FieldRecomendacion = FieldFrame(frameRecomendacion, None, ["Nombre"], None, None, None)
        FieldRecomendacion.crearBotones(crearRecomendacion)
@@ -159,7 +175,7 @@ class Ventana_principal(Tk):
 
        #FieldFrame para abrir biblioteca
        frameBiblioteca= Frame(self)
-       nombreBiblioteca = Label(frameBiblioteca, text="Abrir la biblioteca de un usuario", font=("Verdana", 16), fg = "#007bff")
+       nombreBiblioteca = Label(frameBiblioteca, text="Abrir la biblioteca de un usuario", font=("Verdana", 16), fg = "#31a919")
        descBiblioteca = Label(frameBiblioteca,text="Por favor ingrese el nombre del usuario",font=("Verdana", 12))
        FieldBiblioteca = FieldFrame(frameBiblioteca, None, ["Nombre"], None, None, None)
        FieldBiblioteca.crearBotones(abrirBiblioteca)
@@ -191,9 +207,9 @@ class Ventana_principal(Tk):
        #Frame usado para ver usuarios   
       
        frameVerUsuarios= Frame(self)
-       nombreVerUsuarios = Label(frameVerUsuarios, text="Usuarios creados en la app", font=("Verdana", 16), fg = "#007bff")
+       nombreVerUsuarios = Label(frameVerUsuarios, text="Usuarios creados en la app", font=("Verdana", 16), fg = "#31a919")
        descVerUsuarios = Label(frameVerUsuarios,text="Recuerde que puede que inicialmente no se observe la totalidad de los usuarios \n Puebe a mover rueda del mouse para ver más usuarios",font=("Verdana", 12))
-       refrescarVerUsuarios = Button(frameVerUsuarios, text="Mostrar/Refescar", font=("Verdana", 12), fg="white",bg="#007bff", command=refrescarUsuarios)
+       refrescarVerUsuarios = Button(frameVerUsuarios, text="Mostrar/Refescar", font=("Verdana", 12), fg="white",bg="#31a919", command=refrescarUsuarios)
        
 
        outputVerUsuarios= Text(frameVerUsuarios, height=100, font=("Verdana", 10))
@@ -219,9 +235,9 @@ class Ventana_principal(Tk):
        #Frame usado para ver canciones
 
        frameVerCanciones= Frame(self)
-       nombreVerCanciones = Label(frameVerCanciones, text="Canciones creadas en la app", font=("Verdana", 16), fg = "#007bff")
+       nombreVerCanciones = Label(frameVerCanciones, text="Canciones creadas en la app", font=("Verdana", 16), fg = "#31a919")
        descVerCanciones = Label(frameVerCanciones,text="Recuerde que puede que inicialmente no se observe la totalidad de las canciones \n Puebe a mover rueda del mouse para ver más canciones",font=("Verdana", 12))
-       refrescarVerCanciones = Button(frameVerCanciones, text="Mostrar/Refescar", font=("Verdana", 12), fg="white",bg="#007bff", command=refrescarCanciones)
+       refrescarVerCanciones = Button(frameVerCanciones, text="Mostrar/Refescar", font=("Verdana", 12), fg="white",bg="#31a919", command=refrescarCanciones)
        
 
 
