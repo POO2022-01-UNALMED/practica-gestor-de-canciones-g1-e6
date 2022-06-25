@@ -195,11 +195,9 @@ class Ventana_principal(Tk):
           listaUsuarios= Usuario.usuarios
           listaArtistas= Artista.artistas
           for i in range(len(listaUsuarios)):
-               string += f"ID: {i}\n"\
-                     f"{listaUsuarios[i].datosPersona()}\n\n"
+               string += f"{listaUsuarios[i].datosPersona()}\n\n"
           for i in range(len(listaArtistas)):
-               string += f"ID: {i}\n"\
-                     f"{listaArtistas[i].datosPersona()}\n\n"
+               string += f"{listaArtistas[i].datosPersona()}\n\n"
           if string == "":
                 string += "No hay usuarios creados"
           mostrarOutput(string, outputVerUsuarios)
@@ -209,7 +207,7 @@ class Ventana_principal(Tk):
        frameVerUsuarios= Frame(self)
        nombreVerUsuarios = Label(frameVerUsuarios, text="Usuarios creados en la app", font=("Verdana", 16), fg = "#31a919")
        descVerUsuarios = Label(frameVerUsuarios,text="Recuerde que puede que inicialmente no se observe la totalidad de los usuarios \n Puebe a mover rueda del mouse para ver más usuarios",font=("Verdana", 12))
-       refrescarVerUsuarios = Button(frameVerUsuarios, text="Mostrar/Refescar", font=("Verdana", 12), fg="white",bg="#31a919", command=refrescarUsuarios)
+       refrescarVerUsuarios = Button(frameVerUsuarios, text="Mostrar", font=("Verdana", 12), fg="white",bg="#31a919", command=refrescarUsuarios)
        
 
        outputVerUsuarios= Text(frameVerUsuarios, height=100, font=("Verdana", 10))
@@ -226,8 +224,7 @@ class Ventana_principal(Tk):
           string=""
           listaCanciones= Cancion.cancionesCreadas
           for i in range(len(listaCanciones)):
-               string += f"ID: {i}\n"\
-                     f"{listaCanciones[i].getNombre()} del artista {listaCanciones[i].getArtista().nombre}\n\n"
+               string +=f"{listaCanciones[i].getNombre()} del artista {listaCanciones[i].getArtista().nombre}\n\n"
           if string == "":
                 string += "No hay canciones creadas"
           mostrarOutput(string, outputVerCanciones)
@@ -237,7 +234,7 @@ class Ventana_principal(Tk):
        frameVerCanciones= Frame(self)
        nombreVerCanciones = Label(frameVerCanciones, text="Canciones creadas en la app", font=("Verdana", 16), fg = "#31a919")
        descVerCanciones = Label(frameVerCanciones,text="Recuerde que puede que inicialmente no se observe la totalidad de las canciones \n Puebe a mover rueda del mouse para ver más canciones",font=("Verdana", 12))
-       refrescarVerCanciones = Button(frameVerCanciones, text="Mostrar/Refescar", font=("Verdana", 12), fg="white",bg="#31a919", command=refrescarCanciones)
+       refrescarVerCanciones = Button(frameVerCanciones, text="Mostrar", font=("Verdana", 12), fg="white",bg="#31a919", command=refrescarCanciones)
        
 
 

@@ -46,7 +46,10 @@ class Ventana_principal2(Tk):
 
        
 
-       procesos.add_command(label="*inserte funciones xd", command= lambda:print(""))
+       procesos.add_command(label="Ver mis artistas", command= lambda:Vista(frameVerArtistas))
+       procesos.add_command(label="Eliminar cancion de playlist", command= lambda:Vista(frameElimCancionPlay))
+       procesos.add_command(label="Eliminar un artista de Mis artistas", command= lambda:Vista(frameElimArtista))
+       procesos.add_command(label="Ver canciones con duracion de mis playlist", command= lambda:Vista(frameCanDur))
 
        archivo.add_command(label="Regresar a la pantalla principal", command= lambda: salir())
 
@@ -68,5 +71,133 @@ class Ventana_principal2(Tk):
        Ventana_principal2.frames.append(frameInicial)
 
        Vista(frameInicial)
+
+       #Funcion para ver mis artistas
+
+       def verArtisas():
+          string=""
+          lista= self.usuario._mis_artistas.getArtistas()
+          for i in range(len(lista)):
+               string +=f"{lista[i].nombre}\n\n"
+          if string == "":
+                string += "No hay artistas agregados"
+          mostrarOutput(string, outputVerArtistas)
+
+       #Frame usado para ver mis artistas   
+      
+       frameVerArtistas= Frame(self)
+       nombreVerArtistas= Label(frameVerArtistas, text="Mis artistas", font=("Verdana", 16), fg = "#31a919")
+       descVerArtistas = Label(frameVerArtistas,text="Mueva la rueda del mouse para ver mas artistas",font=("Verdana", 12))
+       refrescarVerArtistas = Button(frameVerArtistas, text="Mostrar", font=("Verdana", 12), fg="white",bg="#31a919", command=verArtisas)
+       
+
+       outputVerArtistas= Text(frameVerArtistas, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(frameVerArtistas)
+
+       nombreVerArtistas.pack()
+       descVerArtistas.pack()
+       refrescarVerArtistas.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameVerArtistas)
+
+       #Funcion para eliminar cancion de playlist
+       def ElimCancionPlay():
+          cancion=FieldElimCancionPlay.getValue("Cancion")
+          playlist=FieldElimCancionPlay.getValue("Playlist")
+          play=None
+          for i in usuario.getPlaylists():
+              if i.nombre==playlist:
+                play=i
+                break
+          if play==None:
+              mostrarOutput("la playlist no esta agregada o no existe", outputElimCancionPlay)
+              return
+          for i in play.getCanciones():
+            if i.nombre==cancion:
+                mostrarOutput(play.elim_cancion(i), outputElimCancionPlay)
+                return
+          mostrarOutput("la cancion no esta agregada o no existe", outputElimCancionPlay)
+
+          
+
+
+       #FieldFrame para eliminar cancion de playlist
+
+       frameElimCancionPlay= Frame(self)
+       nombreElimCancionPlay = Label(frameElimCancionPlay, text="Eliminar cancion de una playlist", font=("Verdana", 16), fg = "#31a919")
+       descElimCancionPlay = Label(frameElimCancionPlay,text="Por favor ingrese el nombre de la cancion y la playlist",font=("Verdana", 12))
+       FieldElimCancionPlay = FieldFrame(frameElimCancionPlay, None, ["Cancion", "Playlist"], None, None, None)
+       FieldElimCancionPlay.crearBotones(ElimCancionPlay)
+
+       outputElimCancionPlay= Text(frameElimCancionPlay, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputElimCancionPlay)
+
+       nombreElimCancionPlay.pack()
+       descElimCancionPlay.pack()
+       FieldElimCancionPlay.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameElimCancionPlay)
+
+       #Funcion para eliminar artista de mis artistas
+       def ElimArtista():
+          artista=FieldElimArtista.getValue("Artista")
+          art=None
+          for i in usuario.getMis_artistas().getArtistas():
+              if i.nombre==artista:
+                art=i
+                break
+          if art==None:
+              mostrarOutput("el artista no esta agregado o no existe", outputElimArtista)
+              return
+          mostrarOutput(self.usuario.getMis_artistas().elim_artista(art), outputElimArtista)
+
+       #FieldFrame para eliminar artista de mis artistas
+
+       frameElimArtista= Frame(self)
+       nombreElimArtista = Label(frameElimArtista, text="Eliminar un artista de mis artistas", font=("Verdana", 16), fg = "#31a919")
+       descElimArtista = Label(frameElimArtista,text="Por favor ingrese el nombre del artista",font=("Verdana", 12))
+       FieldElimArtista = FieldFrame(frameElimArtista, None, ["Artista"], None, None, None)
+       FieldElimArtista.crearBotones(ElimArtista)
+
+       outputElimArtista= Text(frameElimArtista, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputElimArtista)
+
+       nombreElimArtista.pack()
+       descElimArtista.pack()
+       FieldElimArtista.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameElimArtista)
+
+       #Funcion para ver canciones con duracion
+
+       def verCanDur():
+        string=""
+        for i in usuario.getPlaylists():
+            string+=f"Nombre de la playlist: {i.nombre}\n\n"
+            for j in i.getCanciones():
+                hora=j.getDuracion()//3600
+                min=(j.getDuracion()-(3600*hora))//60
+                seg=j.getDuracion()-((hora*3600)+(min*60))
+                string+=f"{j.nombre} --> dura {hora} horas con {min} minutos con {seg}\n\n"
+        mostrarOutput(string, outputCanDur)
+
+          
+
+       #Frame usado para ver canciones con duracion   
+      
+       frameCanDur= Frame(self)
+       nombreCanDur= Label(frameCanDur, text="Canciones de las playlist con duracion", font=("Verdana", 16), fg = "#31a919")
+       descCanDur = Label(frameCanDur,text="Mueva la rueda del mouse para ver mas canciones y playlists",font=("Verdana", 12))
+       refrescarCanDur = Button(frameCanDur, text="Mostrar", font=("Verdana", 12), fg="white",bg="#31a919", command=verCanDur)
+       
+
+       outputCanDur= Text(frameCanDur, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(frameCanDur)
+
+       nombreCanDur.pack()
+       descCanDur.pack()
+       refrescarCanDur.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameCanDur)
 
        self.mainloop()

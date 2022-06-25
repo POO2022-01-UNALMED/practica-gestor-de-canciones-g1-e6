@@ -10,6 +10,7 @@ class Playlist():
         self.duracion = 0
         self.canciones = []
         self.numero_canciones = 0
+        self._creador.agg_Playlist(self)
         
     def getCreador(self):
         return self._creador
