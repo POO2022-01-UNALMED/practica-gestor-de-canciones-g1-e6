@@ -6,6 +6,7 @@ from interfazGrafica.inicio import Inicio
 from baseDatos.Deserializador import Deserializador
 def main():
     mi_app = Inicio()
+    mi_app.mainloop()
     return 0
 
 if __name__ == '__main__':
@@ -28,4 +29,4 @@ if __name__ == '__main__':
     u1.agg_MisFavoritos(C3)
     u1.getMis_artistas().agg_artista(A1)
     u1.getMis_artistas().agg_artista(A3)
-    Inicio()
+    main()
