@@ -39,7 +39,7 @@ class Playlist():
         
     
     def creadorPlaylist(self):
-        return "Esta playlist fue creada por " + self.getCreador.getNombre()
+        return "Esta playlist fue creada por " + self.getCreador.nombre
     
     def agg_cancion(self, cancion):
         if cancion in self.canciones:

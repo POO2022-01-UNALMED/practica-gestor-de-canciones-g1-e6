@@ -2,6 +2,7 @@ from gestorAplicacion.personas.Usuario import Usuario
 from gestorAplicacion.personas.Artista import Artista
 from gestorAplicacion.elementosLibreria.Genero import Genero
 from gestorAplicacion.elementosLibreria.Cancion import Cancion
+from gestorAplicacion.elementosLibreria.Playlist import Playlist
 from interfazGrafica.inicio import Inicio
 from baseDatos.Deserializador import Deserializador
 def main():
@@ -29,4 +30,7 @@ if __name__ == '__main__':
     u1.agg_MisFavoritos(C3)
     u1.getMis_artistas().agg_artista(A1)
     u1.getMis_artistas().agg_artista(A3)
+    P1= Playlist(u2, "canciones para atracar en Bucaramanga")
+    P1.agg_cancion(C2)
+    P1.agg_cancion(C5)
     main()

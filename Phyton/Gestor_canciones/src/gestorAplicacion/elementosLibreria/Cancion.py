@@ -33,6 +33,6 @@ class Cancion:
     def getId_cancion(self):
         return self._id_realC
     def play(self):
-        return "Reproduciendo: ", self.nombre
+        return f"Reproduciendo: {self.nombre}"
     def pause(self):
         return "la cancion", self.nombre ,"ha sido pausada"

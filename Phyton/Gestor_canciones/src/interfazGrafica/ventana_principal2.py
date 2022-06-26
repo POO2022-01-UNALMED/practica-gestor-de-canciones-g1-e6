@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from baseDatos.Serializador import serializarTodo
 from baseDatos.Deserializador import Deserializador
+from gestorAplicacion.elementosLibreria.Playlist import Playlist
 from interfazGrafica.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Usuario import *
 from gestorAplicacion.personas.Artista import *
@@ -51,6 +52,10 @@ class Ventana_principal2(Tk):
        procesos.add_command(label="Eliminar cancion de playlist", command= lambda:Vista(frameElimCancionPlay))
        procesos.add_command(label="Eliminar un artista de Mis artistas", command= lambda:Vista(frameElimArtista))
        procesos.add_command(label="Ver canciones con duracion de mis playlist", command= lambda:Vista(frameCanDur))
+       procesos.add_command(label="Reproducir una cancion aleatoria de una playlist", command= lambda:Vista(frameAleatoria))
+       procesos.add_command(label="Ver duracion total de las playlist", command= lambda:Vista(frameDuracion))
+       procesos.add_command(label="Crear una playlist", command= lambda:Vista(frameCrearPlay))
+       procesos.add_command(label="Agregar una playlist", command= lambda:Vista(frameAggPlay))
 
        archivo.add_command(label="Regresar a la pantalla principal", command= lambda: salir())
 
@@ -212,6 +217,7 @@ class Ventana_principal2(Tk):
                 min=(j.getDuracion()-(3600*hora))//60
                 seg=j.getDuracion()-((hora*3600)+(min*60))
                 string+=f"{j.nombre} --> dura {hora} horas con {min} minutos con {seg}\n\n"
+            string+=f"----------------------------------------\n\n"
         mostrarOutput(string, outputCanDur)
 
           
@@ -232,5 +238,131 @@ class Ventana_principal2(Tk):
        refrescarCanDur.pack(pady=(10,10))
 
        Ventana_principal2.frames.append(frameCanDur)
+
+       #Funcion para reproducir cancion aleatoria
+
+       def Aleatoria():
+        playlist=FieldAleatoria.getValue("Playlist")
+        play=None
+        for i in Playlist.playlists:
+            if i.nombre==playlist:
+                play=i
+                break
+        if play==None:
+              mostrarOutput("la playlist no existe", outputAleatoria)
+              return
+        mostrarOutput(self.usuario.getBiblioteca().repo_aleatoria(play), outputAleatoria)
+
+          
+
+       #FieldFrame usado para reproducir cancion aleatoria   
+      
+       frameAleatoria= Frame(self)
+       nombreAleatoria= Label(frameAleatoria, text="Reproduccion aleatoria de cancion de una playlist", font=("Verdana", 16), fg = "#31a919")
+       descAleatoria = Label(frameAleatoria,text="Ingrese el nombre de la playlist que desea reproducir",font=("Verdana", 12))
+       FieldAleatoria= FieldFrame(frameAleatoria, None, ["Playlist"], None, None, None)
+       FieldAleatoria.crearBotones(Aleatoria)
+
+       outputAleatoria= Text(frameAleatoria, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputAleatoria)
+
+       nombreAleatoria.pack()
+       descAleatoria.pack()
+       FieldAleatoria.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameAleatoria)
+
+       #Funcion para ver duracion total
+
+       def Duracion():
+        duracion=self.usuario.duracion_total()
+        hora=duracion//3600
+        min=(duracion-(3600*hora))//60
+        seg=duracion-((hora*3600)+(min*60))
+        string=f"La duracion de todas las playlist es de {hora} horas con {min} minutos con {seg}\n\n"
+        mostrarOutput(string, outputDuracion)
+
+          
+
+       #Frame usado para ver duracion total  
+      
+       frameDuracion= Frame(self)
+       nombreDuracion= Label(frameDuracion, text="Duracion total de las playlist", font=("Verdana", 16), fg = "#31a919")
+       descDuracion = Label(frameDuracion,text="Aqui puede observar cuanto duran las canciones de sus playlist en total",font=("Verdana", 12))
+       refrescarDuracion = Button(frameDuracion, text="Mostrar", font=("Verdana", 12), fg="white",bg="#31a919", command=Duracion)
+       
+
+       outputDuracion= Text(frameDuracion, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(frameDuracion)
+
+       nombreDuracion.pack()
+       descDuracion.pack()
+       refrescarDuracion.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameDuracion)
+
+       #Funcion para crear playlist
+
+       def CrearPlay():
+        playlist=FieldCrearPlay.getValue("Nombre")
+        for i in Playlist.playlists:
+            if i.nombre==playlist:
+                mostrarOutput("la playlist ya existe", outputCrearPlay)
+                return
+        play=Playlist(self.usuario, playlist)    
+        mostrarOutput(f"playlist {playlist} creada exitosamente", outputCrearPlay)
+
+          
+
+       #FieldFrame usado para crear playlist
+      
+       frameCrearPlay= Frame(self)
+       nombreCrearPlay= Label(frameCrearPlay, text="Crear una playlist", font=("Verdana", 16), fg = "#31a919")
+       descCrearPlay = Label(frameCrearPlay,text="Ingrese el nombre de la playlist, \n recuerde que debe ser diferente a otra creada, incluso por otro usuario",font=("Verdana", 12))
+       FieldCrearPlay= FieldFrame(frameCrearPlay, None, ["Nombre"], None, None, None)
+       FieldCrearPlay.crearBotones(CrearPlay)
+
+       outputCrearPlay= Text(frameCrearPlay, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputCrearPlay)
+
+       nombreCrearPlay.pack()
+       descCrearPlay.pack()
+       FieldCrearPlay.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameCrearPlay)
+
+       #Funcion para agregar playlist
+
+       def AggPlay():
+        playlist=FieldAggPlay.getValue("Nombre")
+        for i in Playlist.playlists:
+            if i.nombre==playlist:
+                for j in self.usuario.getPlaylists():
+                    if i==j:
+                        mostrarOutput(f"La playlist ya fue agregada anteriormente", outputAggPlay)
+                        return
+                self.usuario.agg_Playlist(i)
+                mostrarOutput(f"Playlist {i.nombre} agregada exitosamente", outputAggPlay)
+                return
+        mostrarOutput("La playlist no existe", outputAggPlay)
+
+          
+
+       #FieldFrame usado para agregar playlist
+      
+       frameAggPlay= Frame(self)
+       nombreAggPlay= Label(frameAggPlay, text="Agregar una playlist", font=("Verdana", 16), fg = "#31a919")
+       descAggPlay = Label(frameAggPlay,text="Ingrese el nombre de la playlist",font=("Verdana", 12))
+       FieldAggPlay= FieldFrame(frameAggPlay, None, ["Nombre"], None, None, None)
+       FieldAggPlay.crearBotones(AggPlay)
+
+       outputAggPlay= Text(frameAggPlay, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputAggPlay)
+
+       nombreAggPlay.pack()
+       descAggPlay.pack()
+       FieldAggPlay.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameAggPlay)
 
        self.mainloop()

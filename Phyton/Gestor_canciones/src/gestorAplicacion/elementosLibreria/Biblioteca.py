@@ -27,6 +27,6 @@ class Biblioteca:
             index = int(random()* len(playlist.getCanciones()))
             return playlist.getCanciones()[index].play()
         else:
-            return "La playlist "+ playlist.getNombre()+"no existe en el usuario "+self._usuario.getNombre()
+            return "La playlist "+ playlist.getNombre()+"no existe en el usuario "+self._usuario.nombre+" pruebe a agregarla primero"
     
     		
