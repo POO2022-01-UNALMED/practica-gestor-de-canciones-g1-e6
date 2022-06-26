@@ -137,6 +137,9 @@ class Ventana_principal(Tk):
                resultado="No existe el usuario"
           else:
                result=usuario.recomendar_cancion()
+               if result==None:
+                     mostrarOutput(f"se recomienda {Cancion.cancionesCreadas[0].nombre}",outputRecomendacion)
+                     return
                resultado=f"se recomienda {result.getNombre()}"
           mostrarOutput(resultado,outputRecomendacion)
 

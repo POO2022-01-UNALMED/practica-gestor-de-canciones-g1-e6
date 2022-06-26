@@ -143,7 +143,6 @@ class Usuario(Persona):
         if (mayor==rap): mayorGen=Genero.RAP
         if (mayor==pelar): mayorGen=Genero.MUSICA_PARA_PELAR_POLLOS
         if (mayor==tusar): mayorGen=Genero.MUSICA_PARA_TUSAR_CALVOS
-        encontrada=False
         if len(self.getMis_me_gusta().getCanciones())==0:
             return(Cancion.cancionesCreadas[0])
         for cancion in Cancion.cancionesCreadas:
@@ -158,6 +157,7 @@ class Usuario(Persona):
                 return(cancion)
           else:
             continue
+        
 
             
         
