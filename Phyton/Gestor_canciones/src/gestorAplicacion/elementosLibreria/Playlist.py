@@ -1,8 +1,11 @@
 
 
+from gestorAplicacion.elementosLibreria.Cancion import Cancion
+
+
 class Playlist():
     playlists = []
-    
+    id_playlist = 0
     def __init__(self, creador, nombre):
         self.nombre = nombre
         self._creador = creador
@@ -10,6 +13,8 @@ class Playlist():
         self.duracion = 0
         self.canciones = []
         self.numero_canciones = 0
+        Playlist.id_playlist += 1
+        self.id_real = Playlist.id_playlist
         self._creador.agg_Playlist(self)
         
     def getCreador(self):
@@ -57,4 +62,14 @@ class Playlist():
             self.duracion -= cancion.getDuracion()
             return "la cancion ha sido eliminada de la playlist exitosamente"
         else:
-            return "la cancion no se encontraba en la playlist"        
+            return "la cancion no se encontraba en la playlist" 
+    
+    def setId_playlist(self, id_plylist):
+        self.id_real = id_plylist
+
+    def getId_playlist(self):
+        return self.id_real
+
+    def toString(self):
+        return f"La playlist de nombre {Playlist.getNombre}\n fue creada por: {Playlist.getCreador}\n y tiene el id {Playlist.getId_real}"
+
