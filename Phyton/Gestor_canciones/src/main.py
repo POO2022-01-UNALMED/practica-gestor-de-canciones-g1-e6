@@ -14,7 +14,7 @@ if __name__ == '__main__':
     Deserializador.deserializarTodo()
 
     #Casos de prueba creados
-    
+
     """ Cancion.cancionesCreadas=[]
     Usuario.usuarios=[]
     Artista.artistas=[]
@@ -86,5 +86,5 @@ if __name__ == '__main__':
     test.getMis_artistas().getArtistas().append(test12) 
     test1.getMis_artistas().getArtistas().append(test6)
     test1.getMis_artistas().getArtistas().append(test12) 
-    test1.getMis_artistas().getArtistas().append(test14) """ 
+    test1.getMis_artistas().getArtistas().append(test14) """
     main()
