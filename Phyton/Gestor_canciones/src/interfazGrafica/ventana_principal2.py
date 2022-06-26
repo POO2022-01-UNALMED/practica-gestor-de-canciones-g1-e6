@@ -47,6 +47,7 @@ class Ventana_principal2(Tk):
        
 
        procesos.add_command(label="Ver mis artistas", command= lambda:Vista(frameVerArtistas))
+       procesos.add_command(label="Agregar una cancion a una playlist", command= lambda:Vista(frameAggCancionPlay))
        procesos.add_command(label="Eliminar cancion de playlist", command= lambda:Vista(frameElimCancionPlay))
        procesos.add_command(label="Eliminar un artista de Mis artistas", command= lambda:Vista(frameElimArtista))
        procesos.add_command(label="Ver canciones con duracion de mis playlist", command= lambda:Vista(frameCanDur))
@@ -100,6 +101,41 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameVerArtistas)
 
+       #Funcion para agregar una cancion a una playlist
+       def AggCancionPlay():
+          cancion=FieldAggCancionPlay.getValue("Cancion")
+          playlist=FieldAggCancionPlay.getValue("Playlist")
+          play=None
+          for i in usuario.getPlaylists():
+              if i.nombre==playlist:
+                play=i
+                break
+          if play==None:
+              mostrarOutput("la playlist no esta agregada o no existe", outputAggCancionPlay)
+              return
+          for i in Cancion.cancionesCreadas:
+            if i.nombre==cancion:
+                mostrarOutput(play.agg_cancion(i), outputAggCancionPlay)
+                return
+          mostrarOutput("la cancion no esta agregada o no existe", outputAggCancionPlay)      
+
+       #FieldFrame para agregar cancion a playlist
+
+       frameAggCancionPlay= Frame(self)
+       nombreAggCancionPlay = Label(frameAggCancionPlay, text="Agregar una cancion a una playlist", font=("Verdana", 16), fg = "#31a919")
+       descAggCancionPlay = Label(frameAggCancionPlay,text="Por favor ingrese el nombre de la cancion y la playlist",font=("Verdana", 12))
+       FieldAggCancionPlay = FieldFrame(frameAggCancionPlay, None, ["Cancion", "Playlist"], None, None, None)
+       FieldAggCancionPlay.crearBotones(AggCancionPlay)
+
+       outputAggCancionPlay= Text(frameAggCancionPlay, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputAggCancionPlay)
+
+       nombreAggCancionPlay.pack()
+       descAggCancionPlay.pack()
+       FieldAggCancionPlay.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameAggCancionPlay)
+
        #Funcion para eliminar cancion de playlist
        def ElimCancionPlay():
           cancion=FieldElimCancionPlay.getValue("Cancion")
@@ -117,9 +153,6 @@ class Ventana_principal2(Tk):
                 mostrarOutput(play.elim_cancion(i), outputElimCancionPlay)
                 return
           mostrarOutput("la cancion no esta agregada o no existe", outputElimCancionPlay)
-
-          
-
 
        #FieldFrame para eliminar cancion de playlist
 
