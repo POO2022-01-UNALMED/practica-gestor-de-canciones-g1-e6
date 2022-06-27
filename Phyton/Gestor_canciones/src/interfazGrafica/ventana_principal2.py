@@ -50,13 +50,19 @@ class Ventana_principal2(Tk):
        procesos.add_command(label="Ver mis artistas", command= lambda:Vista(frameVerArtistas))
        procesos.add_command(label="Agregar una cancion a una playlist", command= lambda:Vista(frameAggCancionPlay))
        procesos.add_command(label="Eliminar cancion de playlist", command= lambda:Vista(frameElimCancionPlay))
+       procesos.add_command(label="Agregar un artista a Mis artistas", command= lambda:Vista(frameAggArtista))
        procesos.add_command(label="Eliminar un artista de Mis artistas", command= lambda:Vista(frameElimArtista))
+       procesos.add_command(label="Ver info general de playlsits", command= lambda:Vista(framePlaDesc))
        procesos.add_command(label="Ver canciones con duracion de mis playlist", command= lambda:Vista(frameCanDur))
+       procesos.add_command(label="Verificar quien creo una playlsit", command= lambda:Vista(frameVeriCrea))
        procesos.add_command(label="Reproducir una cancion aleatoria de una playlist", command= lambda:Vista(frameAleatoria))
+       procesos.add_command(label="Reproducir una cancion de una playlist", command= lambda:Vista(frameNoAleatoria))
        procesos.add_command(label="Ver duracion total de las playlist", command= lambda:Vista(frameDuracion))
+       procesos.add_command(label="Ver canciones repetidas en dos playlists", command= lambda:Vista(frameRepeticiones))
        procesos.add_command(label="Crear una playlist", command= lambda:Vista(frameCrearPlay))
+       procesos.add_command(label="Descubrir a mi artista favorito", command= lambda:Vista(frameDescubrir))
        procesos.add_command(label="Agregar una playlist", command= lambda:Vista(frameAggPlay))
-
+       procesos.add_command(label="Eliminar una playlist", command= lambda:Vista(frameDelPlay))
        archivo.add_command(label="Regresar a la pantalla principal", command= lambda: salir())
 
        menuBar.add_cascade(label="Archivo",menu=archivo)
@@ -177,6 +183,41 @@ class Ventana_principal2(Tk):
        Ventana_principal2.frames.append(frameElimCancionPlay)
 
        #Funcion para eliminar artista de mis artistas
+       def AggArtista():
+          artista=FieldAggArtista.getValue("Artista")
+          art=None
+          for i in Artista.artistas:
+              if i.nombre==artista:
+                art=i
+                break
+          if art==None:
+              mostrarOutput("El artistas ingresado no existe", outputAggArtista)
+              return
+          for j in usuario.getMis_artistas().getArtistas():
+              if j.nombre==artista:
+                mostrarOutput("El artistas ingresado ya se encuentra en Mis artistas", outputAggArtista)
+                return
+          self.usuario.getMis_artistas().agg_artista(art)
+          mostrarOutput("El artistas ingresado fue agregado exitosamente", outputAggArtista)
+
+       #FieldFrame para agregar artista a mis artistas
+
+       frameAggArtista= Frame(self)
+       nombreAggArtista = Label(frameAggArtista, text="Agregar un artista a mis artistas", font=("Verdana", 16), fg = "#31a919")
+       descAggArtista = Label(frameAggArtista,text="Por favor ingrese el nombre del artista",font=("Verdana", 12))
+       FieldAggArtista = FieldFrame(frameAggArtista, None, ["Artista"], None, None, None)
+       FieldAggArtista.crearBotones(AggArtista)
+
+       outputAggArtista= Text(frameAggArtista, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputAggArtista)
+
+       nombreAggArtista.pack()
+       descAggArtista.pack()
+       FieldAggArtista.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameAggArtista)
+
+       #Funcion para eliminar artista de mis artistas
        def ElimArtista():
           artista=FieldElimArtista.getValue("Artista")
           art=None
@@ -206,6 +247,38 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameElimArtista)
 
+       #Funcion para ver info de playlists
+
+       def verPlaDesc():
+        string=""
+        for i in usuario.getPlaylists():
+            if i.nombre == "Me gusta":
+                string+=f"La playlist Me gusta es creada por Spotifoy al crear el usuario\n\n"
+            elif i.nombre == "Favoritos":
+                string+=f"La playlist Favoritos es creada por Spotifoy al crear el usuario\n\n"
+            else:
+                 string+=f"La playlist de nombre {i.getNombre()}\n fue creada por: {i.getCreador().nombre}\n\n"
+            
+            string+=f"----------------------------------------\n\n"
+        mostrarOutput(string, outputPlaDesc)
+
+       #Frame usado para ver info de playlists 
+      
+       framePlaDesc= Frame(self)
+       nombrePlaDesc= Label(framePlaDesc, text="Descripcion de las playlists", font=("Verdana", 16), fg = "#31a919")
+       descPlaDesc = Label(framePlaDesc,text="Mueva la rueda del mouse para ver la descripcion de  las playlists",font=("Verdana", 12))
+       refrescarPlaDesc = Button(framePlaDesc, text="Mostrar", font=("Verdana", 12), fg="white",bg="#31a919", command=verPlaDesc)
+       
+
+       outputPlaDesc= Text(framePlaDesc, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(framePlaDesc)
+
+       nombrePlaDesc.pack()
+       descPlaDesc.pack()
+       refrescarPlaDesc.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(framePlaDesc)
+
        #Funcion para ver canciones con duracion
 
        def verCanDur():
@@ -219,8 +292,6 @@ class Ventana_principal2(Tk):
                 string+=f"{j.nombre} --> dura {hora} horas con {min} minutos con {seg}\n\n"
             string+=f"----------------------------------------\n\n"
         mostrarOutput(string, outputCanDur)
-
-          
 
        #Frame usado para ver canciones con duracion   
       
@@ -239,6 +310,38 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameCanDur)
 
+       #Funcion para verificar creador de playlist
+
+       def VeriCrea():
+        playlist=FieldVeriCrea.getValue("Nombre")
+        for i in Playlist.playlists:
+            if i.nombre==playlist:
+                if i.nombre == "Me gusta" or i.nombre == "Favoritos":
+                    string = f"Esta playlist fue creada por defecto\nSpotifoy todos los derechos reservados"
+                else:
+                    string = f"Esta playlist fue creada por {i.getCreador().nombre}\nSpotifoy todos los derechos reservados"
+                mostrarOutput(string, outputVeriCrea)
+                return
+            else:
+                mostrarOutput("La playlist ingresada no esta agregada o no existe", outputVeriCrea)  
+
+       #FieldFrame usado para verificar creador de playlist
+      
+       frameVeriCrea= Frame(self)
+       nombreVeriCrea= Label(frameVeriCrea, text="Verificar creador de playlist", font=("Verdana", 16), fg = "#31a919")
+       descVeriCrea = Label(frameVeriCrea,text="Ingrese el nombre de la playlist que desea verificar su creador",font=("Verdana", 12))
+       FieldVeriCrea= FieldFrame(frameVeriCrea, None, ["Nombre"], None, None, None)
+       FieldVeriCrea.crearBotones(VeriCrea)
+
+       outputVeriCrea= Text(frameVeriCrea, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputVeriCrea)
+
+       nombreVeriCrea.pack()
+       descVeriCrea.pack()
+       FieldVeriCrea.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameVeriCrea)
+
        #Funcion para reproducir cancion aleatoria
 
        def Aleatoria():
@@ -252,8 +355,6 @@ class Ventana_principal2(Tk):
               mostrarOutput("la playlist no existe", outputAleatoria)
               return
         mostrarOutput(self.usuario.getBiblioteca().repo_aleatoria(play), outputAleatoria)
-
-          
 
        #FieldFrame usado para reproducir cancion aleatoria   
       
@@ -271,6 +372,50 @@ class Ventana_principal2(Tk):
        FieldAleatoria.pack(pady=(10,10))
 
        Ventana_principal2.frames.append(frameAleatoria)
+
+       #Funcion para reproducir cancion aleatoria
+
+       def NoAleatoria():
+        playlist=FieldNoAleatoria.getValue("Playlist")
+        nombrec=FieldNoAleatoria.getValue("Nombre")
+        play=None
+        for i in Playlist.playlists:
+            if i.nombre==playlist:
+                play=i
+                break
+        if play==None:
+              mostrarOutput("la playlist no existe", outputNoAleatoria)
+              return
+        play2=None
+        for i in Cancion.cancionesCreadas:
+            if i.nombre==nombrec:
+                play2=i
+                break
+        if play2==None:
+              mostrarOutput("La cancion no existe", outputNoAleatoria)
+              return
+        mostrarOutput(play2.play(), outputNoAleatoria)
+
+       #FieldFrame usado para reproducir cancion aleatoria   
+      
+       frameNoAleatoria= Frame(self)
+       nombreNoAleatoria= Label(frameNoAleatoria, text="Reproduccion de cancion de una playlist", font=("Verdana", 16), fg = "#31a919")
+       descNoAleatoria = Label(frameNoAleatoria,text="Ingrese el nombre de la playlist que desea reproducir",font=("Verdana", 12))
+       nombreNoAleatoria = Label(frameNoAleatoria,text="y de la cancion que desea reproducir",font=("Verdana", 12))
+
+
+       
+       FieldNoAleatoria= FieldFrame(frameNoAleatoria, None, ["Playlist", "Nombre"], None, None, None)
+       FieldNoAleatoria.crearBotones(NoAleatoria)
+
+       outputNoAleatoria= Text(frameNoAleatoria, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputNoAleatoria)
+
+       nombreNoAleatoria.pack()
+       descNoAleatoria.pack()
+       FieldNoAleatoria.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameNoAleatoria)
 
        #Funcion para ver duracion total
 
@@ -300,6 +445,50 @@ class Ventana_principal2(Tk):
        refrescarDuracion.pack(pady=(10,10))
 
        Ventana_principal2.frames.append(frameDuracion)
+
+#Funcion para ver si una cancion se repite en varias playlists
+
+       def Repeticiones():
+        playlist1=FieldRepeticiones.getValue("Playlist 1")
+        playlist2=FieldRepeticiones.getValue("Playlist 2")
+        play=None
+        for i in usuario.getPlaylists():
+            if i.nombre==playlist1:
+                play=i
+                break
+        if play==None:
+              mostrarOutput(f"la playlist {playlist1} no existe", outputRepeticiones)
+              return
+        play2=None
+        for ii in usuario.getPlaylists():
+            if ii.nombre==playlist2:
+                play2=ii
+                break
+        if play2==None:
+              mostrarOutput(f"la playlist {playlist2} no existe", outputRepeticiones)
+              return
+        mostrarOutput(usuario.cancionSeRepite(play,play2), outputRepeticiones)
+
+       #FieldFrame usado para ver si una cancion se repite en varias playlists
+      
+       frameRepeticiones = Frame(self)
+       nombreRepeticiones = Label(frameRepeticiones, text="Ver si una cancion se repite en varias playlists", font=("Verdana", 16), fg = "#31a919")
+       descRepeticiones = Label(frameRepeticiones,text="Ingrese nombre de una de las playlists a comparar",font=("Verdana", 12))
+       nombreRepeticiones = Label(frameRepeticiones,text="Ingrese nombre de otra de las playlists a comparar",font=("Verdana", 12))
+
+
+       
+       FieldRepeticiones= FieldFrame(frameRepeticiones, None, ["Playlist 1", "Playlist 2"], None, None, None)
+       FieldRepeticiones.crearBotones(Repeticiones)
+
+       outputRepeticiones= Text(frameRepeticiones, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputRepeticiones)
+
+       nombreRepeticiones.pack()
+       descRepeticiones.pack()
+       FieldRepeticiones.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameRepeticiones)
 
        #Funcion para crear playlist
 
@@ -331,6 +520,26 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameCrearPlay)
 
+       #Funcion para Descubrir a mi artista favorito
+       def Descubrir():
+          mostrarOutput(self.usuario.artista_favorito().nombre, outputDescubrir)
+       
+       #Frame usado para Descubrir a mi artista favorito
+
+       frameDescubrir= Frame(self)
+       nombreDescubrir = Label(frameDescubrir, text="Descubrir a mi artista favorito", font=("Verdana", 16), fg = "#31a919")
+       descDescubrir = Label(frameDescubrir,text="Cual es tu artista favorito?",font=("Verdana", 12))
+       refrescarDescubrir = Button(frameDescubrir, text="Descubrir", font=("Verdana", 12), fg="white",bg="#31a919", command=Descubrir)
+       
+       outputDescubrir= Text(frameDescubrir, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(frameDescubrir)
+
+       nombreDescubrir.pack()
+       descDescubrir.pack()
+       refrescarDescubrir.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameDescubrir)
+
        #Funcion para agregar playlist
 
        def AggPlay():
@@ -345,8 +554,6 @@ class Ventana_principal2(Tk):
                 mostrarOutput(f"Playlist {i.nombre} agregada exitosamente", outputAggPlay)
                 return
         mostrarOutput("La playlist no existe", outputAggPlay)
-
-          
 
        #FieldFrame usado para agregar playlist
       
@@ -364,5 +571,49 @@ class Ventana_principal2(Tk):
        FieldAggPlay.pack(pady=(10,10))
 
        Ventana_principal2.frames.append(frameAggPlay)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+       #Funcion para eliminar playlist
+
+       def DelPlay():
+        playlist=FieldDelPlay.getValue("Nombre")
+        for j in self.usuario.getPlaylists():
+            if playlist==j.nombre and playlist!="Me gusta" and playlist!="Favoritos":
+                self.usuario.elim_Playlist(j)
+                mostrarOutput(f"Playlist {j.nombre} fue eliminada exitosamente", outputDelPlay)
+                return
+        mostrarOutput(f"La playlist no existe o no puede ser eliminada (Me gusta, Favoritos)", outputDelPlay)
+        return
+        mostrarOutput("La playlist no existe", outputDelPlay)
+
+       #FieldFrame usado para eliminar playlist
+      
+       frameDelPlay= Frame(self)
+       nombreDelPlay= Label(frameDelPlay, text="Eliminar una playlist", font=("Verdana", 16), fg = "#31a919")
+       descDelPlay = Label(frameDelPlay,text="Ingrese el nombre de la playlist",font=("Verdana", 12))
+       FieldDelPlay= FieldFrame(frameDelPlay, None, ["Nombre"], None, None, None)
+       FieldDelPlay.crearBotones(DelPlay)
+
+       outputDelPlay= Text(frameDelPlay, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputDelPlay)
+
+       nombreDelPlay.pack()
+       descDelPlay.pack()
+       FieldDelPlay.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameDelPlay)
 
        self.mainloop()

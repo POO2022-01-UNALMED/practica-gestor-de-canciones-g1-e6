@@ -8,5 +8,6 @@ class Me_gusta(Playlist):
       Me_gusta.me_gustas.append(self)
     def creadorPlaylist(self):
         return   "Esta playlist fue creada por defecto"+"\n"+"Spotifoy todos los derechos reservados"
-    def toString():
-        return "La playlist Me gusta es creada por Spotifoy al crear el usuario"+"\n"+ "y tiene el id "+super().getId_real()
+    
+    def toString(self):
+        return f"La playlist Me gusta es creada por Spotifoy al crear el usuario\n y tiene el id {super().getId_real()}"
