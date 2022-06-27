@@ -310,6 +310,12 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameCanDur)
 
+
+
+
+
+
+
        #Funcion para verificar creador de playlist
 
        def VeriCrea():
@@ -373,6 +379,14 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameAleatoria)
 
+
+
+
+
+
+
+
+
        #Funcion para reproducir cancion aleatoria
 
        def NoAleatoria():
@@ -416,6 +430,13 @@ class Ventana_principal2(Tk):
        FieldNoAleatoria.pack(pady=(10,10))
 
        Ventana_principal2.frames.append(frameNoAleatoria)
+
+
+
+
+
+
+
 
        #Funcion para ver duracion total
 
@@ -572,20 +593,6 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameAggPlay)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
        #Funcion para eliminar playlist
 
        def DelPlay():
