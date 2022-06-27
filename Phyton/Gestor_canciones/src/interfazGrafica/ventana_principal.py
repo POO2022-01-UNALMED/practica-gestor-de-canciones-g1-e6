@@ -1,3 +1,4 @@
+from ast import In
 import tkinter as tk
 from tkinter import *
 from baseDatos.Serializador import serializarTodo
@@ -6,6 +7,7 @@ from interfazGrafica.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Usuario import *
 from gestorAplicacion.personas.Artista import *
 from gestorAplicacion.elementosLibreria.Cancion import *
+from excepciones.usuario_no_existe import UsuarioNoExiste
 
 class Ventana_principal(Tk):
     frames=[]
@@ -129,19 +131,26 @@ class Ventana_principal(Tk):
        #Funcion para recomendar cancion
        def crearRecomendacion():
           username=FieldRecomendacion.getValue("Nombre")
-          usuario=None
-          for i in Usuario.usuarios:
-               if i.nombre==username:
-                    usuario=i
-          if usuario==None:
-               resultado="No existe el usuario"
-          else:
-               result=usuario.recomendar_cancion()
-               if result==None:
-                     mostrarOutput(f"se recomienda {Cancion.cancionesCreadas[0].nombre}",outputRecomendacion)
-                     return
-               resultado=f"se recomienda {result.getNombre()}"
-          mostrarOutput(resultado,outputRecomendacion)
+          try:
+               listanombres = []
+               for usuarioP in Usuario.usuarios:
+                    listanombres.append(usuarioP.nombre)
+               if username in listanombres:
+                    for i in Usuario.usuarios:
+                         if i.nombre==username:
+                              usuario=i
+                    result=usuario.recomendar_cancion()
+                    if result==None:
+                         mostrarOutput(f"se recomienda {Cancion.cancionesCreadas[0].nombre}",outputRecomendacion)
+                         return
+                    resultado=f"se recomienda {result.getNombre()}"
+                    mostrarOutput(resultado,outputRecomendacion)
+               else:
+                    raise UsuarioNoExiste(username)
+          except UsuarioNoExiste as e:
+               mostrarOutput(e.mostrar_mensaje(), outputRecomendacion)
+
+          
 
        #FieldFrame para recomendar cancion
        frameRecomendacion= Frame(self)
