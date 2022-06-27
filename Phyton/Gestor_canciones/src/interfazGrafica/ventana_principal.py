@@ -14,7 +14,7 @@ class Ventana_principal(Tk):
     def __init__(self):
        super().__init__()
        self.geometry("680x420")
-       self.title("Spotifoi")
+       self.title("Spotifoy")
        self.option_add('*tearOff', False)
        self.resizable(False, False)
 
@@ -37,7 +37,7 @@ class Ventana_principal(Tk):
        def aplicacion():
             ventana1 = tk.Tk()
             ventana1.geometry("680x420")
-            ventana1.title("Spotifoi")
+            ventana1.title("Spotifoy")
             textoInfo = f"Spotifoi es un gestor de canciones.\n" \
                         f"donde se pueden tener varios usuarios\n" \
                         f"cada uno con su propia biblioteca con playlists\n"\
@@ -48,7 +48,7 @@ class Ventana_principal(Tk):
        def acercaDe():
             ventana2 = tk.Tk()
             ventana2.geometry("680x420")
-            ventana2.title("Spotifoi")
+            ventana2.title("Spotifoy")
             textoInfo = f"Autores:\n" \
                         f"David Esteban Toro Arango\n" \
                         f"Manuel Alejandro Gallego Jiménez\n"\
@@ -92,8 +92,8 @@ class Ventana_principal(Tk):
        #Frame inicial
 
        frameInicial= Frame(self)
-       nombreInicial = Label(frameInicial, text="Como usar Spotifoi?", font=("Verdana", 16), fg = "#31a919")
-       descInicial = Label(frameInicial,text="En spotifoi puedes crear varios usuarios y gestionar sus bibliotecas \n todas las funcionalidades las encuentras en procesos y consultas \n desde este pestaña puedes crear y visualizar usuarios \n tambien visualizar las canciones subidas por artistas \n ademas de recomendar una cancion a un usuario \n para ingresar en la biblioteca de un usuario sigue la ruta: \n Procesos y consultas -> Desplegar la biblioteca de un usuario -> ingresa nombre \n desde allí gestionas playlist, artistas y demas de un usuario \n para obtener información de los creadores: \n ayuda -> acerca de \n para info general de Spotifoi: \n Archivo -> Aplicacion \n para regresar a la pantalla inicial: \n Archivo -> Guardar y salir",font=("Verdana", 12))
+       nombreInicial = Label(frameInicial, text="Como usar Spotifoy?", font=("Verdana", 16), fg = "#31a919")
+       descInicial = Label(frameInicial,text="En spotifoy puedes crear varios usuarios y gestionar sus bibliotecas \n todas las funcionalidades las encuentras en procesos y consultas \n desde este pestaña puedes crear y visualizar usuarios \n tambien visualizar las canciones subidas por artistas \n ademas de recomendar una cancion a un usuario \n para ingresar en la biblioteca de un usuario sigue la ruta: \n Procesos y consultas -> Desplegar la biblioteca de un usuario -> ingresa nombre \n desde allí gestionas playlist, artistas y demas de un usuario \n para obtener información de los creadores: \n ayuda -> acerca de \n para info general de Spotifoi: \n Archivo -> Aplicacion \n para regresar a la pantalla inicial: \n Archivo -> Guardar y salir",font=("Verdana", 12))
        
        Ventana_principal.frames.append(frameInicial)
 
