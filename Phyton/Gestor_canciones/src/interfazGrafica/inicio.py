@@ -13,7 +13,7 @@ class Inicio(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title('i-Lunch - Inicio')
+        self.title('Spotifoy')
         self.option_add("*tearOff",  False)
         self.geometry("1400x720")
         self.resizable(False,False)
@@ -59,8 +59,8 @@ class FrameLeft(Frame):
         
         #saludo de bienvenida
 
-        textoSaludo = "Bienvenido de nuevo a i-Lunch."
-        self._saludo = Label(self._p3, text = textoSaludo, font = ("Verdana", 16), fg = "#245efd")
+        textoSaludo = "BIENVENDIO A SPOTIFOY"
+        self._saludo = Label(self._p3, text = textoSaludo, font = ("Verdana", 16), fg = "#198C3A")
         self._saludo.pack()
 
         #descripción del sistema
@@ -86,7 +86,7 @@ class FrameLeft(Frame):
 
         # Boton de acceso a la aplicacion abajo en P4
 
-        self._boton = Button(self._p4_2, text = "Acceder a la aplicacion", font = ("Verdana", 16), fg = "white", bg = "#245efd", command = self.abrir_ventana_principal)
+        self._boton = Button(self._p4_2, text = "Acceder a la aplicacion", font = ("Verdana", 16), fg = "white", bg = "#198C3A", command = self.abrir_ventana_principal)
         self._boton.pack()
 
         # Colocar todos los elementos en pantalla
@@ -126,22 +126,42 @@ class FrameRight(Frame):
         self._text = None
         self._next_hv = 0
         self._photos = [None, None, None, None]
+        self._labels = []
 
 
         self.cargarHVTexto(0)
-    
+        
+        for i in range(0, 4):
+            label = Label(self._p6, width = 320, height = 240)
+            (r, c) = FrameRight._posicion_imagen[i]
+            label.grid(row=r, column=c)
+            self._labels.append(label)
+            # Se cargan las primeras imagenes
+            self.cargarHVImagen(0, i)
+
+
         self._p5.grid()
         self._p6.grid()
 
     # Se usa para mostrar la hoja de vida que sigue, aumentando el atributo next_hv
     def proximo(self, _):
-        if self._next_hv < 3:
+        if self._next_hv < 2:
             self._next_hv = self._next_hv + 1
         else:
             self._next_hv = 0
 
         self._photos = [None, None, None, None]
         self.cargarHVTexto(self._next_hv)
+        for i in range(0, 4):
+            self.cargarHVImagen(self._next_hv, i)
+
+
+    def cargarHVImagen(self, hv_num, numero):
+        path = os.path.join(pathlib.Path(__file__).parent.parent.parent.absolute(),'src\\recursos\HV{0}{1}.png'.format(hv_num, numero))
+        photo = PhotoImage(file = path)
+        self._labels[numero].configure(image = photo)
+        self._labels[numero].image = photo
+
 
 
     # Carga el texto para la hoja de vida respecto al numero asignado
