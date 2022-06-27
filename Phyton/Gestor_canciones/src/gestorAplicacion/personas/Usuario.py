@@ -1,3 +1,4 @@
+from gestorAplicacion.elementosLibreria.Playlist import Playlist
 from gestorAplicacion.personas.Persona import Persona
 from gestorAplicacion.elementosLibreria.Me_gusta import Me_gusta
 from gestorAplicacion.elementosLibreria.Favoritos import Favoritos
@@ -71,7 +72,7 @@ class Usuario(Persona):
             return("ERROR: la playlist no existe o no esta agregada")
         
         
-    def cancionSeRepite(playlist1, playlist2):
+    def cancionSeRepite(self, playlist1, playlist2):
         canciones1 = playlist1.getCanciones()
         canciones2 = playlist2.getCanciones()
         
@@ -87,7 +88,7 @@ class Usuario(Persona):
             return "No hay canciones repetidas"
         else:
             for cancion in repetidas:
-                respuesta = respuesta + cancion.getNombre() + "del artista " + cancion.getArtista().getNombre() + "\n"
+                respuesta = respuesta + cancion.getNombre() + "del artista " + cancion.getArtista().nombre + "\n"
             return respuesta    
 
     def duracion_total(self):

@@ -58,9 +58,11 @@ class Ventana_principal2(Tk):
        procesos.add_command(label="Reproducir una cancion aleatoria de una playlist", command= lambda:Vista(frameAleatoria))
        procesos.add_command(label="Reproducir una cancion de una playlist", command= lambda:Vista(frameNoAleatoria))
        procesos.add_command(label="Ver duracion total de las playlist", command= lambda:Vista(frameDuracion))
+       procesos.add_command(label="Ver canciones repetidas en dos playlists", command= lambda:Vista(frameRepeticiones))
        procesos.add_command(label="Crear una playlist", command= lambda:Vista(frameCrearPlay))
+       procesos.add_command(label="Descubrir a mi artista favorito", command= lambda:Vista(frameDescubrir))
        procesos.add_command(label="Agregar una playlist", command= lambda:Vista(frameAggPlay))
-
+       procesos.add_command(label="Eliminar una playlist", command= lambda:Vista(frameDelPlay))
        archivo.add_command(label="Regresar a la pantalla principal", command= lambda: salir())
 
        menuBar.add_cascade(label="Archivo",menu=archivo)
@@ -465,6 +467,50 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameDuracion)
 
+#Funcion para ver si una cancion se repite en varias playlists
+
+       def Repeticiones():
+        playlist1=FieldRepeticiones.getValue("Playlist 1")
+        playlist2=FieldRepeticiones.getValue("Playlist 2")
+        play=None
+        for i in usuario.getPlaylists():
+            if i.nombre==playlist1:
+                play=i
+                break
+        if play==None:
+              mostrarOutput(f"la playlist {playlist1} no existe", outputRepeticiones)
+              return
+        play2=None
+        for ii in usuario.getPlaylists():
+            if ii.nombre==playlist2:
+                play2=ii
+                break
+        if play2==None:
+              mostrarOutput(f"la playlist {playlist2} no existe", outputRepeticiones)
+              return
+        mostrarOutput(usuario.cancionSeRepite(play,play2), outputRepeticiones)
+
+       #FieldFrame usado para ver si una cancion se repite en varias playlists
+      
+       frameRepeticiones = Frame(self)
+       nombreRepeticiones = Label(frameRepeticiones, text="Ver si una cancion se repite en varias playlists", font=("Verdana", 16), fg = "#31a919")
+       descRepeticiones = Label(frameRepeticiones,text="Ingrese nombre de una de las playlists a comparar",font=("Verdana", 12))
+       nombreRepeticiones = Label(frameRepeticiones,text="Ingrese nombre de otra de las playlists a comparar",font=("Verdana", 12))
+
+
+       
+       FieldRepeticiones= FieldFrame(frameRepeticiones, None, ["Playlist 1", "Playlist 2"], None, None, None)
+       FieldRepeticiones.crearBotones(Repeticiones)
+
+       outputRepeticiones= Text(frameRepeticiones, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputRepeticiones)
+
+       nombreRepeticiones.pack()
+       descRepeticiones.pack()
+       FieldRepeticiones.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameRepeticiones)
+
        #Funcion para crear playlist
 
        def CrearPlay():
@@ -495,6 +541,26 @@ class Ventana_principal2(Tk):
 
        Ventana_principal2.frames.append(frameCrearPlay)
 
+       #Funcion para Descubrir a mi artista favorito
+       def Descubrir():
+          mostrarOutput(self.usuario.artista_favorito().nombre, outputDescubrir)
+       
+       #Frame usado para Descubrir a mi artista favorito
+
+       frameDescubrir= Frame(self)
+       nombreDescubrir = Label(frameDescubrir, text="Descubrir a mi artista favorito", font=("Verdana", 16), fg = "#31a919")
+       descDescubrir = Label(frameDescubrir,text="Cual es tu artista favorito?",font=("Verdana", 12))
+       refrescarDescubrir = Button(frameDescubrir, text="Descubrir", font=("Verdana", 12), fg="white",bg="#31a919", command=Descubrir)
+       
+       outputDescubrir= Text(frameDescubrir, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(frameDescubrir)
+
+       nombreDescubrir.pack()
+       descDescubrir.pack()
+       refrescarDescubrir.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameDescubrir)
+
        #Funcion para agregar playlist
 
        def AggPlay():
@@ -509,8 +575,6 @@ class Ventana_principal2(Tk):
                 mostrarOutput(f"Playlist {i.nombre} agregada exitosamente", outputAggPlay)
                 return
         mostrarOutput("La playlist no existe", outputAggPlay)
-
-          
 
        #FieldFrame usado para agregar playlist
       
@@ -528,5 +592,35 @@ class Ventana_principal2(Tk):
        FieldAggPlay.pack(pady=(10,10))
 
        Ventana_principal2.frames.append(frameAggPlay)
+
+       #Funcion para eliminar playlist
+
+       def DelPlay():
+        playlist=FieldDelPlay.getValue("Nombre")
+        for j in self.usuario.getPlaylists():
+            if playlist==j.nombre and playlist!="Me gusta" and playlist!="Favoritos":
+                self.usuario.elim_Playlist(j)
+                mostrarOutput(f"Playlist {j.nombre} fue eliminada exitosamente", outputDelPlay)
+                return
+        mostrarOutput(f"La playlist no existe o no puede ser eliminada (Me gusta, Favoritos)", outputDelPlay)
+        return
+        mostrarOutput("La playlist no existe", outputDelPlay)
+
+       #FieldFrame usado para eliminar playlist
+      
+       frameDelPlay= Frame(self)
+       nombreDelPlay= Label(frameDelPlay, text="Eliminar una playlist", font=("Verdana", 16), fg = "#31a919")
+       descDelPlay = Label(frameDelPlay,text="Ingrese el nombre de la playlist",font=("Verdana", 12))
+       FieldDelPlay= FieldFrame(frameDelPlay, None, ["Nombre"], None, None, None)
+       FieldDelPlay.crearBotones(DelPlay)
+
+       outputDelPlay= Text(frameDelPlay, height=100, font=("Verdana", 10))
+       Ventana_principal2.frames.append(outputDelPlay)
+
+       nombreDelPlay.pack()
+       descDelPlay.pack()
+       FieldDelPlay.pack(pady=(10,10))
+
+       Ventana_principal2.frames.append(frameDelPlay)
 
        self.mainloop()
