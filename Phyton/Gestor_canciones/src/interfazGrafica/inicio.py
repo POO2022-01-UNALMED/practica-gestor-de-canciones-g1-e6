@@ -65,7 +65,7 @@ class FrameLeft(Frame):
 
         #descripción del sistema
 
-        textoDescripcion = f"canciones yupi" 
+        textoDescripcion = f"Spotifoy es un gestor de canciones que permite a los usuarios navegar y gestionar todos lo relacionado a ellas" 
         self._descripcion = Label(self._p3, text = textoDescripcion, width = 100, justify = "left", font=("Verdana", 8))
 
         # cargar las imagenes
