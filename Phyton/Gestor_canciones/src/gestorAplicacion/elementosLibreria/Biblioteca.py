@@ -23,9 +23,10 @@ class Biblioteca:
     
     
     def repo_aleatoria(self, playlist):
-        if playlist in self._usuario.getPlaylists():
-            index = int(random()* len(playlist.getCanciones()))
-            return playlist.getCanciones()[index].play()
+        for p in self._usuario.getPlaylists():
+            if p.getNombre()==playlist.getNombre():
+                index = int(random()* len(playlist.getCanciones()))
+                return playlist.getCanciones()[index].play()
         else:
             return "La playlist "+ playlist.getNombre()+"no existe en el usuario "+self._usuario.nombre+" pruebe a agregarla primero"
     
