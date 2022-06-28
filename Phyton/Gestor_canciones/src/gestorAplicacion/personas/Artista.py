@@ -1,8 +1,9 @@
+from gestorAplicacion.elementosLibreria.Genero import Genero
 from gestorAplicacion.personas.Persona import Persona
 class Artista(Persona):
     id_artista=1
     artistas=[]
-    def __init__(self, nombre, presentacion, genero):
+    def __init__(self, nombre, presentacion = "Presentación por defecto", genero = Genero.MUSICA_PARA_PELAR_POLLOS):
         self.nombre=nombre
         self._canciones=[]
         self._presentacion=presentacion
@@ -22,7 +23,7 @@ class Artista(Persona):
         self._presentacion=presentacion
     def getGenero(self):
         return self._genero
-    def setGenero(self, genero):
+    def setGenero(self, genero = Genero.MUSICA_PARA_PELAR_POLLOS):
         self._genero=genero
     def getId_artista(self):
         return self._id_realA
