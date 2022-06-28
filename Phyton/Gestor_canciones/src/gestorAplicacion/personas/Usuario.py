@@ -88,7 +88,7 @@ class Usuario(Persona):
             return "No hay canciones repetidas"
         else:
             for cancion in repetidas:
-                respuesta = respuesta + cancion.getNombre() + "del artista " + cancion.getArtista().nombre + "\n"
+                respuesta = respuesta + cancion.getNombre() + " del artista " + cancion.getArtista().nombre + "\n"
             return respuesta    
 
     def duracion_total(self):

@@ -495,7 +495,6 @@ class Ventana_principal2(Tk):
        frameRepeticiones = Frame(self)
        nombreRepeticiones = Label(frameRepeticiones, text="Ver si una cancion se repite en varias playlists", font=("Verdana", 16), fg = "#31a919")
        descRepeticiones = Label(frameRepeticiones,text="Ingrese nombre de una de las playlists a comparar",font=("Verdana", 12))
-       nombreRepeticiones = Label(frameRepeticiones,text="Ingrese nombre de otra de las playlists a comparar",font=("Verdana", 12))
 
 
        
